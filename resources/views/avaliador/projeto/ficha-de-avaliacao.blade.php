@@ -63,7 +63,7 @@
                     </blockquote>
                     <div class="row">
                         <div class="input-field col s12">
-                            <select>
+                            <select name="notaUm">
                                 @include('_layouts._avaliacao.select-avaliacao')
                             </select>
                             <label>Uso adequado da metodologia científica</label>
@@ -83,7 +83,7 @@
                     </blockquote>
                     <div class="row">
                         <div class="input-field col s12">
-                            <select>
+                            <select name="notaDois">
                                 @include('_layouts._avaliacao.select-avaliacao')
                             </select>
                             <label>Relevância do projeto</label>
@@ -103,7 +103,7 @@
                 </blockquote>
                 <div class="row">
                     <div class="input-field col s12">
-                        <select>
+                        <select name="notaTres">
                             @include('_layouts._avaliacao.select-avaliacao')
                         </select>
                         <label>Registros da realização da pesquisa</label>
@@ -116,7 +116,7 @@
                 </blockquote>
                 <div class="row">
                     <div class="input-field col s12">
-                        <select>
+                        <select name="notaQuatro">
                             @include('_layouts._avaliacao.select-avaliacao')
                         </select>
                         <label>Clareza e adequação do resumo</label>
@@ -134,7 +134,7 @@
                 </blockquote>
                 <div class="row">
                     <div class="input-field col s12">
-                        <select>
+                        <select name="notaCinco">
                             @include('_layouts._avaliacao.select-avaliacao')
                         </select>
                         <label>Desempenho na apresentação do projeto</label>
@@ -146,7 +146,7 @@
                 </blockquote>
                 <div class="row">
                     <div class="input-field col s12">
-                        <select>
+                        <select name="notaSeis">
                             @include('_layouts._avaliacao.select-avaliacao')
                         </select>
                         <label>Relação da apresentação oral com o projeto</label>
@@ -165,7 +165,7 @@
                 </blockquote>
                 <div class="row">
                     <div class="input-field col s12">
-                        <select>
+                        <select name="notaSete">
                             @include('_layouts._avaliacao.select-avaliacao')
                         </select>
                         <label>Apresentação visual do estande do

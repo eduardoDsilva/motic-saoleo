@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Avaliador\Projeto;
 use App\Avaliador;
 use App\Http\Controllers\Controller;
 use App\Projeto;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AvaliadorProjetoController extends Controller
@@ -35,6 +36,18 @@ class AvaliadorProjetoController extends Controller
         $this->authorize('view', $avaliacao);
         $projeto = Projeto::find($id);
         $this->authorize('avaliar', $projeto);
+        try {
+            $projeto = Projeto::find($id);
+            return view('avaliador/projeto/ficha-de-avaliacao', compact('projeto'));
+        } catch (\Exception $e) {
+            return "ERRO: " . $e->getMessage();
+        }
+    }
+
+    public function avaliacao(Request $request)
+    {
+        $avaliacao = \App\Avaliacao::orderBy('id', 'desc')->first();
+        $this->authorize('view', $avaliacao);
         try {
             $projeto = Projeto::find($id);
             return view('avaliador/projeto/ficha-de-avaliacao', compact('projeto'));
