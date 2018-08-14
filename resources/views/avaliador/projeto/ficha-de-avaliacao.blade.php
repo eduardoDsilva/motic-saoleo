@@ -19,7 +19,8 @@
 @section('conteudo-header', 'Esta é a página de availiação do projeto '.$projeto->titulo)
 
 @includeIf('_layouts._sub-titulo')
-<form>
+<form action="{{route('avaliador.projeto.avaliacao')}}" method="post">
+    {{csrf_field()}}
     <div class="section container col s12 m6 l8">
         <div class="card-panel">
             <div class="row">
@@ -173,6 +174,23 @@
                     </div>
                 </div>
             </div>
+
+            <div class="section">
+                <h5 class="center-align">Observação (opcional)</h5>
+
+                <blockquote>
+                    No campo abaixo você pode opcionalmente escrever uma observação para  projeto avaliado.
+                </blockquote>
+                <div class='row'>
+                    <div class="input-field col s12 m12 l12">
+                        <i class="material-icons prefix">assignment</i>
+                        <textarea name="observacao" id="textarea1" data-length="240"
+                                  class="materialize-textarea"></textarea>
+                        <label for="textarea1">Observação</label>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="id_projeto" value="{{$projeto->id}}">
             <div class="center-align">
                 <button class="btn waves-effect waves-light" type="submit" name="action">Enviar
                     <i class="material-icons right">send</i>

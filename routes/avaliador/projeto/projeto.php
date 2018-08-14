@@ -6,5 +6,7 @@ Route::group(['prefix' => 'avaliador/projeto', 'namespace' => 'Avaliador\Projeto
 
     Route::get('/projeto/avaliar/{id}', ['as' => 'avaliador.projeto.avaliar', 'uses' => 'AvaliadorProjetoController@avaliar']);
 
+    Route::post('/projeto/avaliacao', ['as' => 'avaliador.projeto.avaliacao', 'uses' => 'AvaliadorProjetoController@avaliacao']);
+
 
 });

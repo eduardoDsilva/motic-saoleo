@@ -15,12 +15,12 @@ class CreateNotas extends Migration
     {
         Schema::create('notas', function (Blueprint $table) {
             $table->increments('id');
-            $table->double('notaUm',5,4);
-            $table->double('notaDois',5,4);
-            $table->double('notaTres',5,4);
-            $table->double('notaQuatro',5,4 );
-            $table->double('notaCinco',5,4);
-            $table->double('notaFinal',5,4);
+            $table->bigInteger('notaUm')->unsigned();
+            $table->bigInteger('notaDois')->unsigned();
+            $table->bigInteger('notaTres')->unsigned();
+            $table->bigInteger('notaQuatro')->unsigned();
+            $table->bigInteger('notaCinco')->unsigned();
+            $table->bigInteger('notaFinal')->unsigned();
             $table->longText('observacoes')->nullable();
             $table->unsignedInteger('projeto_id');
             $table->foreign('projeto_id')->references('id')->on('projetos')->onDelete('cascade');
