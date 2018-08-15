@@ -24,6 +24,10 @@ class AvaliadorController extends Controller
      */
     public function index()
     {
-        return view('avaliador/home');
+        try {
+            return view('avaliador/home');
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 }

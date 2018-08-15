@@ -24,6 +24,10 @@ class ProfessorController extends Controller
      */
     public function index()
     {
-        return view('professor/home');
+        try {
+            return view('professor/home');
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 }

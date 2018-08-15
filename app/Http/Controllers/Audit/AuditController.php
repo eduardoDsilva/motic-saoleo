@@ -20,42 +20,66 @@ class AuditController
 {
 
     public function index(){
-        $auditorias = Audit::latest()->paginate(10);
-        return view('admin.auditoria.home', compact('auditorias'));
+        try {
+            $auditorias = Audit::latest()->paginate(10);
+            return view('admin.auditoria.home', compact('auditorias'));
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function usuarios(){
-        $accesses = Access::latest()->paginate(10);
-        return view('admin.auditoria.usuarios', compact('accesses'));
+        try {
+            $accesses = Access::latest()->paginate(10);
+            return view('admin.auditoria.usuarios', compact('accesses'));
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function usuariosFiltrar(Request $request){
-        $dataForm = $request->all();
-        $usuario = User::where('username', '=', $dataForm['search'])->first();
-        $accesses = Access::where('user_id', '=', $usuario->id)->paginate(10);
-        return view('admin.auditoria.usuarios', compact('accesses'));
+        try {
+            $dataForm = $request->all();
+            $usuario = User::where('username', '=', $dataForm['search'])->first();
+            $accesses = Access::where('user_id', '=', $usuario->id)->paginate(10);
+            return view('admin.auditoria.usuarios', compact('accesses'));
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function relatorios(){
-        $usuarios = User::paginate(10);
-        return view('admin.auditoria.relatorios', compact('usuarios'));
+        try {
+            $usuarios = User::paginate(10);
+            return view('admin.auditoria.relatorios', compact('usuarios'));
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function export()
     {
-        return Excel::download(new InvoicesExport, 'audit.xlsx');
+        try {
+            return Excel::download(new InvoicesExport, 'audit.xlsx');
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function exportByUser($id)
     {
-        return Excel::download(new InvoicesExportByUser($id), 'audit-user:'.$id.'.xlsx');
+        try {
+            return Excel::download(new InvoicesExportByUser($id), 'audit-user:'.$id.'.xlsx');
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function filtrarUsuarios(Request $request)
     {
-        $dataForm = $request->all();
-        $modal2 = true;
         try {
+            $dataForm = $request->all();
+            $modal2 = true;
             if ($dataForm['tipo'] == 'id') {
                 $usuarios = User::where('id', '=', $dataForm['search'])->get();
             } else if ($dataForm['tipo'] == 'name') {
@@ -67,7 +91,7 @@ class AuditController
             }
             return view('admin.auditoria.relatorios', compact('usuarios', 'modal2'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -90,7 +114,7 @@ class AuditController
             }
             return view('admin.auditoria.home', compact('auditorias'));
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 

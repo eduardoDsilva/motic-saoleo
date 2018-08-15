@@ -18,9 +18,14 @@ class ProfessorContaController extends Controller
         $this->middleware('auth');
         $this->middleware('check.professor');
     }
+
     public function index()
     {
-        return view('professor/conta/home');
+        try {
+            return view('professor/conta/home');
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function alterarSenha()
@@ -28,28 +33,29 @@ class ProfessorContaController extends Controller
         try {
             return view('professor.config.mudar-senha');
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());return abort(403, '' . $e->getMessage());
         }
     }
 
-    public function alteraSenha(Request $request){
-        try{
+    public function alteraSenha(Request $request)
+    {
+        try {
             $dataForm = $request->all();
             $validator = Validator::make($request->all(), [
-                'senha_atual.required'  => 'O campo senha é de preenchimento obrigatório!',
-                'senha_atual.min'       => 'A senha deve ter no mínimo 6 caractéres',
+                'senha_atual.required' => 'O campo senha é de preenchimento obrigatório!',
+                'senha_atual.min' => 'A senha deve ter no mínimo 6 caractéres',
                 'senha_atual.confirmed' => 'As senhas devem ser iguais!',
                 'senha_atual.alpha_num' => 'Insira uma senha sem caracteres especiais!',
 
-                'password.required'     => 'O campo senha é de preenchimento obrigatório!',
-                'password.min'          => 'A senha deve ter no mínimo 6 caractéres',
-                'password.confirmed'    => 'As senhas devem ser iguais!',
-                'password.alpha_num'    => 'Insira uma senha sem caracteres especiais!',
+                'password.required' => 'O campo senha é de preenchimento obrigatório!',
+                'password.min' => 'A senha deve ter no mínimo 6 caractéres',
+                'password.confirmed' => 'As senhas devem ser iguais!',
+                'password.alpha_num' => 'Insira uma senha sem caracteres especiais!',
 
-                'password_confirmed.required'   => 'O campo senha é de preenchimento obrigatório!',
-                'password_confirmed.min'        => 'A senha deve ter no mínimo 6 caractéres',
-                'password_confirmed.alpha_num'  => 'Insira uma senha sem caracteres especiais',
-                'password_confirmed.confirmed'  => 'As senhas devem ser iguais',
+                'password_confirmed.required' => 'O campo senha é de preenchimento obrigatório!',
+                'password_confirmed.min' => 'A senha deve ter no mínimo 6 caractéres',
+                'password_confirmed.alpha_num' => 'Insira uma senha sem caracteres especiais',
+                'password_confirmed.confirmed' => 'As senhas devem ser iguais',
 
             ]);
             if ($validator->fails()) {
@@ -57,7 +63,7 @@ class ProfessorContaController extends Controller
                     ->withErrors($validator)
                     ->withInput();
             }
-            if(!(Hash::check($dataForm['senha_atual'], Auth::user()->password))){
+            if (!(Hash::check($dataForm['senha_atual'], Auth::user()->password))) {
                 Session::put('mensagem', "Senha incorreta!");
                 return redirect()->route('professor.config.alterar-senha')->withErrors(['password' => 'Senha atual está incorreta'])->withInput();
             }
@@ -66,8 +72,9 @@ class ProfessorContaController extends Controller
             $user->save();
             Session::put('mensagem', "Senha atualizada!");
             return redirect()->route('professor.config.alterar-senha');
-        } catch(\Exception $e) {
-            return "Erro " . $e->getMessage();
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 

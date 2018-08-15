@@ -28,16 +28,24 @@ class AdminAvaliadorController extends Controller
 
     public function index()
     {
-        $avaliadores = Avaliador::orderBy('name', 'asc')
-            ->paginate(10);
-        $quantidade = count(Avaliador::all());
-        return view("admin.avaliador.home", compact('avaliadores', 'quantidade'));
+        try {
+            $avaliadores = Avaliador::orderBy('name', 'asc')
+                ->paginate(10);
+            $quantidade = count(Avaliador::all());
+            return view("admin.avaliador.home", compact('avaliadores', 'quantidade'));
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function create()
     {
-        $titulo = 'Cadastrar avaliador';
-        return view('admin.avaliador.cadastro', compact('titulo'));
+        try {
+            $titulo = 'Cadastrar avaliador';
+            return view('admin.avaliador.cadastro', compact('titulo'));
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function store(AvaliadorCreateFormRequest $request)
@@ -60,7 +68,7 @@ class AdminAvaliadorController extends Controller
 
             return redirect()->route("admin.avaliador");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -70,7 +78,7 @@ class AdminAvaliadorController extends Controller
             $avaliador = Avaliador::findOrFail($id);
             return view("admin.avaliador.show", compact('avaliador'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -80,7 +88,7 @@ class AdminAvaliadorController extends Controller
             $avaliadores = Avaliador::all()->where('projetos', '<', '3');
             return view("admin.avaliador.avaliador-disponivel", compact('avaliadores'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -92,7 +100,7 @@ class AdminAvaliadorController extends Controller
 
             return view("admin.avaliador.cadastro", compact('avaliador', 'titulo'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -120,7 +128,7 @@ class AdminAvaliadorController extends Controller
             $avaliadores = $this->avaliador->all();
             return redirect()->route("admin.avaliador", compact('avaliadores'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -145,7 +153,7 @@ class AdminAvaliadorController extends Controller
             $quantidade = count(Avaliador::all());
             return view('admin.avaliador.home', compact('avaliadores', 'quantidade'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -157,7 +165,7 @@ class AdminAvaliadorController extends Controller
 
             Session::put('mensagem', "O avaliador " . $avaliador->name . " foi deletado com sucesso!");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -172,7 +180,7 @@ class AdminAvaliadorController extends Controller
 
             return view('admin.avaliador.atribuir', compact('projetos', 'avaliador'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -188,65 +196,85 @@ class AdminAvaliadorController extends Controller
 
             return view('admin.avaliador.atribuir');
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
-    public function vincularProjetos($id){
-        $avaliador = Avaliador::findOrFail($id);
-        $educacao_infantil = Projeto::all()
-            ->where('categoria_id', '=', '1')
-            ->where('avaliadores', '<', '3')
-            ->where('tipo', '=', 'normal');
-        $emef1 = Projeto::all()
-            ->where('categoria_id', '=', '2')
-            ->where('avaliadores', '<', '3')
-            ->where('tipo', '=', 'normal');
-        $emef2 = Projeto::all()
-            ->where('categoria_id', '=', '3')
-            ->where('avaliadores', '<', '3')
-            ->where('tipo', '=', 'normal');
-        $emef3 = Projeto::all()
-            ->where('categoria_id', '=', '4')
-            ->where('avaliadores', '<', '3')
-            ->where('tipo', '=', 'normal');
-        $eja = Projeto::all()
-            ->where('categoria_id', '=', '5')
-            ->where('avaliadores', '<', '3')
-            ->where('tipo', '=', 'normal');
-        return view('admin.avaliador.vincular-projetos', compact('avaliador', 'educacao_infantil', 'emef1', 'emef2', 'emef3', 'eja'));
+    public function vincularProjetos($id)
+    {
+        try {
+            $avaliador = Avaliador::findOrFail($id);
+            $educacao_infantil = Projeto::all()
+                ->where('categoria_id', '=', '1')
+                ->where('avaliadores', '<', '3')
+                ->where('tipo', '=', 'normal');
+            $emef1 = Projeto::all()
+                ->where('categoria_id', '=', '2')
+                ->where('avaliadores', '<', '3')
+                ->where('tipo', '=', 'normal');
+            $emef2 = Projeto::all()
+                ->where('categoria_id', '=', '3')
+                ->where('avaliadores', '<', '3')
+                ->where('tipo', '=', 'normal');
+            $emef3 = Projeto::all()
+                ->where('categoria_id', '=', '4')
+                ->where('avaliadores', '<', '3')
+                ->where('tipo', '=', 'normal');
+            $eja = Projeto::all()
+                ->where('categoria_id', '=', '5')
+                ->where('avaliadores', '<', '3')
+                ->where('tipo', '=', 'normal');
+            return view('admin.avaliador.vincular-projetos', compact('avaliador', 'educacao_infantil', 'emef1', 'emef2', 'emef3', 'eja'));
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
-    public function desvincularProjetos($id){
-        $avaliador = Avaliador::findOrFail($id);
-        return view('admin.avaliador.desvincular-projetos', compact('avaliador'));
+    public function desvincularProjetos($id)
+    {
+        try {
+            $avaliador = Avaliador::findOrFail($id);
+            return view('admin.avaliador.desvincular-projetos', compact('avaliador'));
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
-    public function desvinculaProjetos($id){
-        $avaliador = Avaliador::findOrFail(Session::get('id'));
-        $projeto = Projeto::findOrFail($id);
-        $avaliador->projeto()->detach($id);
-        $tamanho = $avaliador->projetos;
-        $avaliador->projetos = $tamanho - 1;
-        $avaliador->save();
-        $tamanho = $projeto->avaliadores;
-        $projeto->avaliadores = $tamanho - 1;
-        $projeto->save();
-        return redirect()->route("admin.avaliador");
+    public function desvinculaProjetos($id)
+    {
+        try {
+            $avaliador = Avaliador::findOrFail(Session::get('id'));
+            $projeto = Projeto::findOrFail($id);
+            $avaliador->projeto()->detach($id);
+            $tamanho = $avaliador->projetos;
+            $avaliador->projetos = $tamanho - 1;
+            $avaliador->save();
+            $tamanho = $projeto->avaliadores;
+            $projeto->avaliadores = $tamanho - 1;
+            $projeto->save();
+            return redirect()->route("admin.avaliador");
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
-    public function vinculaProjetos(Request $request){
-        $dataForm = $request->all();
-        $avaliador = Avaliador::findOrFail(Session::get('id'));
-        $avaliador->projeto()->attach($dataForm['projeto']);
-        $tamanho = $avaliador->projetos;
-        $avaliador->projetos = $tamanho + 1;
-        $avaliador->save();
-        $projeto = Projeto::findOrFail($dataForm['projeto']);
-        $tamanho = $projeto->avaliadores;
-        $projeto->avaliadores = $tamanho + 1;
-        $projeto->save();
-        return redirect()->route("admin.avaliador");
+    public function vinculaProjetos(Request $request)
+    {
+        try {
+            $dataForm = $request->all();
+            $avaliador = Avaliador::findOrFail(Session::get('id'));
+            $avaliador->projeto()->attach($dataForm['projeto']);
+            $tamanho = $avaliador->projetos;
+            $avaliador->projetos = $tamanho + 1;
+            $avaliador->save();
+            $projeto = Projeto::findOrFail($dataForm['projeto']);
+            $tamanho = $projeto->avaliadores;
+            $projeto->avaliadores = $tamanho + 1;
+            $projeto->save();
+            return redirect()->route("admin.avaliador");
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
 }

@@ -22,7 +22,7 @@ class AdminConfigAvaliacoesController extends Controller
             $datas = Avaliacao::latest()->first();
             return view('admin.config.avaliacoes', compact('datas'));
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -35,22 +35,34 @@ class AdminConfigAvaliacoesController extends Controller
             Session::put('mensagem', "O período de avaliação foi salvo com sucesso!");
             return redirect()->route("admin.config.avaliacoes");
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
     public function edit()
     {
-        //
+        try {
+
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function update()
     {
-        //
+        try {
+
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function destroy()
     {
-        //
+        try {
+
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 }

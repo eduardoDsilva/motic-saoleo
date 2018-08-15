@@ -40,7 +40,7 @@ class EscolaSuplenteController extends Controller
 
             return view('escola.suplente.home', compact('projetos'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -66,7 +66,7 @@ class EscolaSuplenteController extends Controller
 
             return view("escola.suplente.cadastro", compact('disciplinas', 'escola', 'categorias', 'professores'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -79,7 +79,7 @@ class EscolaSuplenteController extends Controller
             $this->suplenteController->store($dataForm);
             return redirect()->route("escola.suplente");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
 
     }
@@ -97,7 +97,7 @@ class EscolaSuplenteController extends Controller
                 ->where('projeto_id', '=', $projeto->id);
             return view("escola.suplente.show", compact('projeto', 'alunos', 'professores'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -112,7 +112,7 @@ class EscolaSuplenteController extends Controller
             $titulo = 'Editar suplente: ' . $projeto->titulo;
             return view("escola.suplente.editar", compact('projeto', 'titulo', 'disciplinas'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -123,7 +123,7 @@ class EscolaSuplenteController extends Controller
             $projetos = $this->suplenteController->filtrar($dataForm);
             return view('escola.suplente.home', compact('projetos'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -136,7 +136,7 @@ class EscolaSuplenteController extends Controller
             $this->suplenteController->update($dataForm, $id);
             return redirect()->route("escola.suplente");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -149,7 +149,7 @@ class EscolaSuplenteController extends Controller
         try {
             $this->projetoController->destroy($id);
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -168,7 +168,7 @@ class EscolaSuplenteController extends Controller
 
             return response()->json($categoria);
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -182,7 +182,7 @@ class EscolaSuplenteController extends Controller
                 ->get();
             return response()->json($alunos);
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -195,7 +195,7 @@ class EscolaSuplenteController extends Controller
                 ->get();
             return response()->json($professores);
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 

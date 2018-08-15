@@ -45,7 +45,8 @@ class EscolaController extends Controller
             }
             return $escolas;
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 
@@ -70,7 +71,8 @@ class EscolaController extends Controller
 
             Session::put('mensagem', "A escola " . $escola->name . " foi cadastrada com sucesso!");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
 
     }
@@ -103,7 +105,8 @@ class EscolaController extends Controller
             Session::put('mensagem', "A escola " . $escola->name . " foi editada com sucesso!");
 
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 
@@ -115,7 +118,8 @@ class EscolaController extends Controller
 
             Session::put('mensagem', "A escola " . $escola->name . " foi deletada com sucesso!");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 

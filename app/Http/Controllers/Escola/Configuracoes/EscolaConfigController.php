@@ -25,7 +25,7 @@ class EscolaConfigController extends Controller
         try {
             return view('escola.config.mudar-senha');
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -68,7 +68,7 @@ class EscolaConfigController extends Controller
             Session::put('mensagem', "Senha atualizada!");
             return redirect()->route('escola.config.alterar-senha');
         } catch(\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 

@@ -41,7 +41,7 @@ class AdminSuplenteController extends Controller
             $quantidade = count(Projeto::all()->where('tipo', '=', 'suplente'));
             return view('admin.suplente.home', compact('projetos', 'quantidade'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -52,7 +52,7 @@ class AdminSuplenteController extends Controller
             $escolas = Escola::all();
             return view("admin.suplente.cadastro", compact('disciplinas', 'escolas', 'categorias'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -63,7 +63,7 @@ class AdminSuplenteController extends Controller
             $this->suplenteController->store($dataForm);
             return redirect()->route("admin.suplente");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
 
     }
@@ -76,7 +76,7 @@ class AdminSuplenteController extends Controller
             $quantidade = count(Projeto::all()->where('tipo', '=', 'suplente'));
             return view('admin.suplente.home', compact('projetos', 'quantidade'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -91,7 +91,7 @@ class AdminSuplenteController extends Controller
                 ->where('projeto_id', '=', $projeto->id);
             return view("admin.suplente.show", compact('projeto', 'alunos', 'professores'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -103,7 +103,7 @@ class AdminSuplenteController extends Controller
             $titulo = 'Editar suplente: ' . $projeto->titulo;
             return view("admin.suplente.editar", compact('projeto', 'titulo', 'disciplinas'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -114,7 +114,7 @@ class AdminSuplenteController extends Controller
             $this->suplenteController->update($dataForm, $id);
             return redirect()->route("admin.suplente");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -123,7 +123,8 @@ class AdminSuplenteController extends Controller
         try {
             $this->suplenteController->destroy($id);
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 
@@ -132,10 +133,10 @@ class AdminSuplenteController extends Controller
         try {
             $projeto = Projeto::findOrFail($id);
             $projeto->update(['tipo' => 'normal']);
-            Session::put('mensagem', 'O projeto '.$projeto->titulo.' foi promovido para titular com sucesso!');
+            Session::put('mensagem', 'O projeto ' . $projeto->titulo . ' foi promovido para titular com sucesso!');
             return redirect()->route("admin.suplente");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -158,7 +159,7 @@ class AdminSuplenteController extends Controller
 
             return response()->json($categoria);
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -172,7 +173,7 @@ class AdminSuplenteController extends Controller
                 ->get();
             return response()->json($alunos);
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -185,7 +186,7 @@ class AdminSuplenteController extends Controller
                 ->get();
             return response()->json($professores);
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 

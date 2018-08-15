@@ -21,7 +21,11 @@ class AvaliadorContaController extends Controller
 
     public function index()
     {
-        return view('avaliador/conta/mudar-senha');
+        try {
+            return view('avaliador/conta/mudar-senha');
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function alterarSenha()
@@ -29,7 +33,7 @@ class AvaliadorContaController extends Controller
         try {
             return view('avaliador/conta/mudar-senha');
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -68,7 +72,7 @@ class AvaliadorContaController extends Controller
             Session::put('mensagem', "Senha atualizada!");
             return redirect()->route('avaliador.config.alterar-senha');
         } catch(\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 

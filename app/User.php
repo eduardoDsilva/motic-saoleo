@@ -50,6 +50,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Professor::class);
     }
+
     public function accesses()
     {
         return $this->hasMany(Access::class);
@@ -58,8 +59,8 @@ class User extends Authenticatable
     public function registerAccess()
     {
         return $this->accesses()->create([
-            'user_id'   => $this->id,
-            'datetime'  => date('YmdHis'),
+            'user_id' => $this->id,
+            'datetime' => date('YmdHis'),
         ]);
     }
 

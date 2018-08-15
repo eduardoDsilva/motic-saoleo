@@ -33,7 +33,7 @@ class EscolaAlunoController extends Controller
             $projetos = Projeto::where('escola_id', '=', Auth::user()->escola->id)->paginate(10);
             return view('escola.aluno.home', compact('alunos', 'projetos'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -51,7 +51,7 @@ class EscolaAlunoController extends Controller
             }
             return view('escola.aluno.cadastro', compact('escola', 'ano'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -64,7 +64,7 @@ class EscolaAlunoController extends Controller
             $this->alunoController->store($dataForm);
             return redirect()->route("escola.aluno");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -75,7 +75,7 @@ class EscolaAlunoController extends Controller
         try {
             return view('escola.aluno.show', compact('aluno'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -110,7 +110,7 @@ class EscolaAlunoController extends Controller
             }
             return view('escola.aluno.cadastro', compact('escola', 'ano', 'aluno'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -123,7 +123,7 @@ class EscolaAlunoController extends Controller
             $alunos = $this->alunoController->update($dataForm, $id);
             return redirect()->route("escola.aluno", compact('alunos'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -134,7 +134,7 @@ class EscolaAlunoController extends Controller
             $alunos = $this->alunoController->filtro($dataForm);
             return view('escola.aluno.home', compact('alunos'));
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -147,7 +147,7 @@ class EscolaAlunoController extends Controller
         try {
             $this->alunoController->destroy($id);
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -180,7 +180,7 @@ class EscolaAlunoController extends Controller
             }
             return response()->json($ano);
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 

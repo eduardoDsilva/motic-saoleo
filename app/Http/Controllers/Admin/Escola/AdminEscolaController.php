@@ -25,17 +25,25 @@ class AdminEscolaController extends Controller
 
     public function index()
     {
-        $escolas = Escola::orderBy('name', 'asc')->paginate(10);
-        $quantidade = count(Escola::all());
-        return view("admin.escola.home", compact('escolas', 'quantidade'));
+        try {
+            $escolas = Escola::orderBy('name', 'asc')->paginate(10);
+            $quantidade = count(Escola::all());
+            return view("admin.escola.home", compact('escolas', 'quantidade'));
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function create()
     {
-        $categorias = Categoria::all();
-        $titulo = 'Cadastrar escola';
+        try {
+            $categorias = Categoria::all();
+            $titulo = 'Cadastrar escola';
 
-        return view('admin.escola.cadastro', compact('categorias', 'titulo'));
+            return view('admin.escola.cadastro', compact('categorias', 'titulo'));
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function store(EscolaCreateFormRequest $request)
@@ -45,7 +53,7 @@ class AdminEscolaController extends Controller
             $this->escolaController->store($dataForm);
             return redirect()->route("admin.escola");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -58,7 +66,7 @@ class AdminEscolaController extends Controller
             $projetos = Projeto::where('escola_id', '=', $escola->id)->paginate(6);
             return view('admin.escola.show', compact('escola', 'alunos', 'professores', 'projetos'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -70,7 +78,7 @@ class AdminEscolaController extends Controller
             $quantidade = count(Escola::all());
             return view('admin.escola.home', compact('escolas', 'quantidade'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -85,7 +93,7 @@ class AdminEscolaController extends Controller
             }
             return view("admin.escola.cadastro", compact('escola', 'categorias', 'titulo', 'categoria_escola'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -96,7 +104,7 @@ class AdminEscolaController extends Controller
             $escolas = $this->escolaController->update($dataForm, $id);
             return redirect()->route("admin.escola", compact('escolas'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -105,7 +113,7 @@ class AdminEscolaController extends Controller
         try {
             $this->escolaController->destroy($id);
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 

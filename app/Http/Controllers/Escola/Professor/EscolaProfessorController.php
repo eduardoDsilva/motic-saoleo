@@ -30,7 +30,7 @@ class EscolaProfessorController extends Controller
             $professores = Professor::where('escola_id', '=', Auth::user()->escola->id)->orderBy('name', 'asc')->paginate(10);
             return view("escola.professor.home", compact('professores'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -42,7 +42,7 @@ class EscolaProfessorController extends Controller
             $escola = Escola::findOrFail(Auth::user()->escola->id);
             return view('escola.professor.cadastro', compact('escola'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -55,7 +55,7 @@ class EscolaProfessorController extends Controller
             $this->professorController->store($dataForm);
             return redirect()->route("escola.professor");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -68,7 +68,7 @@ class EscolaProfessorController extends Controller
         try {
             return view("escola.professor.show", compact('professor'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -83,7 +83,7 @@ class EscolaProfessorController extends Controller
             $titulo = 'Editar professor: ' . $professor->name;
             return view("escola.professor.cadastro", compact('professor', 'titulo', 'escola'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -94,8 +94,7 @@ class EscolaProfessorController extends Controller
             $professores = $this->professorController->filtro($dataForm);
             return view('escola.professor.home', compact('professores'));
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
-        }
+            return abort(403, '' . $e->getMessage());        }
     }
 
     public function update(ProfessorUpdateFormRequest $request, $id)
@@ -107,7 +106,7 @@ class EscolaProfessorController extends Controller
             $this->professorController->update($dataForm, $id);
             return redirect()->route("escola.professor");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -120,7 +119,7 @@ class EscolaProfessorController extends Controller
         try {
             $this->professorController->destroy($id);
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 

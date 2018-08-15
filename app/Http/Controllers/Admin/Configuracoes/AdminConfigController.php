@@ -25,12 +25,12 @@ class AdminConfigController extends Controller
         try {
             return view('admin.config.mudar-senha');
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
     public function alteraSenha(Request $request){
-        try{
+        try {
             $dataForm = $request->all();
             $validator = Validator::make($request->all(), [
                 'senha_atual.required'  => 'O campo senha é de preenchimento obrigatório!',
@@ -63,8 +63,8 @@ class AdminConfigController extends Controller
             $user->save();
             Session::put('mensagem', "Senha atualizada!");
             return redirect()->route('admin.config.alterarr-senha');
-        } catch(\Exception $e) {
-            return "Erro " . $e->getMessage();
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
         }
     }
 

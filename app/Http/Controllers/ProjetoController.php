@@ -62,11 +62,12 @@ class ProjetoController extends Controller
                 $coorientador->save();
             }
 
-            Session::put('mensagem', "O projeto ".$projeto->titulo." foi salvo com sucesso!");
+            Session::put('mensagem', "O projeto " . $projeto->titulo . " foi salvo com sucesso!");
 
 
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 
@@ -95,7 +96,8 @@ class ProjetoController extends Controller
             }
             return $projetos;
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 
@@ -112,7 +114,8 @@ class ProjetoController extends Controller
             Session::put('mensagem', "O projeto " . $projeto->titulo . " foi editado com sucesso!");
 
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 
@@ -124,10 +127,11 @@ class ProjetoController extends Controller
             $projeto = Projeto::findOrFail($id);
             $projeto->delete($id);
 
-            Session::put('mensagem', "O projeto ".$projeto->titulo." foi deletado com sucesso!");
+            Session::put('mensagem', "O projeto " . $projeto->titulo . " foi deletado com sucesso!");
 
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 

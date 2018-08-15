@@ -66,7 +66,8 @@ class ProfessorController extends Controller
 
             return $professores;
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 
@@ -88,7 +89,8 @@ class ProfessorController extends Controller
             Session::put('mensagem', "O professor " . $user->name . " foi criado com sucesso!");
 
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 
@@ -114,7 +116,8 @@ class ProfessorController extends Controller
             Session::put('mensagem', "O professor " . $user->name . " foi editado com sucesso!");
 
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 
@@ -123,9 +126,10 @@ class ProfessorController extends Controller
         try {
             $professor = Professor::findOrFail($id);
             $professor->user()->delete($id);
-            Session::put('mensagem', "O professor ".$professor->name." foi deletado com sucesso!");
+            Session::put('mensagem', "O professor " . $professor->name . " foi deletado com sucesso!");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 

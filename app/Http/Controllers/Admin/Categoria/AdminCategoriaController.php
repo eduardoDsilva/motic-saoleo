@@ -16,8 +16,12 @@ class AdminCategoriaController extends Controller
      */
     public function index()
     {
-        $categorias = Categoria::all();
-        return view('admin.categoria.categoria', compact('categorias'));
+        try {
+            $categorias = Categoria::all();
+            return view('admin.categoria.categoria', compact('categorias'));
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     /**
@@ -33,54 +37,62 @@ class AdminCategoriaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        try{
+        try {
             $dataForm = $request->all();
             $categoria = Categoria::create($dataForm);
             Session::put('mensagem', "A categoria " . $categoria->categoria . " foi criada com sucesso!");
             return redirect()->route('admin.categoria');
-        }catch (\Exception $e){
-            abort(404);
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+        try {
+
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $categoria = Categoria::find($id);
-        return view('admin.categoria.editar', compact('categoria'));
+        try {
+            $categoria = Categoria::find($id);
+            return view('admin.categoria.editar', compact('categoria'));
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        try{
+        try {
             $dataForm = $request->all();
             $categoria = Categoria::find($id);
             $categoria->categoria = $dataForm['categoria'];
@@ -88,26 +100,26 @@ class AdminCategoriaController extends Controller
             $categoria->save();
             Session::put('mensagem', "A categoria " . $categoria->categoria . " foi editada com sucesso!");
             return redirect()->route('admin.categoria');
-        }catch (\Exception $e){
-            abort(404);
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        try{
+        try {
             $categoria = Categoria::find($id);
             $categoria->delete($id);
             Session::put('mensagem', "A categoria " . $categoria->categoria . " foi deletada com sucesso!");
             return route('admin.categoria');
-        }catch (\Exception $e){
-            abort(404);
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
         }
     }
 }

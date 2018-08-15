@@ -29,28 +29,32 @@ class AdminDisciplinaController extends Controller
 
     public function index()
     {
-        $disciplinas = Disciplina::orderBy('name', 'asc')->paginate(10);
-        $quantidade = count(Disciplina::all());
-        return view('admin.disciplinas.home', compact('disciplinas', 'quantidade'));
+        try {
+            $disciplinas = Disciplina::orderBy('name', 'asc')->paginate(10);
+            $quantidade = count(Disciplina::all());
+            return view('admin.disciplinas.home', compact('disciplinas', 'quantidade'));
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function store(DisciplinaCreateFormRequest $request)
     {
-        $dataForm = $request->all();
         try {
+            $dataForm = $request->all();
             $disciplinas = Disciplina::create($dataForm);
             Session::put('mensagem', "Disciplina " . $disciplinas->name . " adicionada com sucesso!");
             return redirect()
                 ->route("admin.disciplina");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
     public function filtrar(Request $request)
     {
-        $dataForm = $request->all();
         try {
+            $dataForm = $request->all();
             if ($dataForm['tipo'] == 'id') {
                 $disciplinas = Disciplina::all()->where('id', '=', $dataForm['search']);
             } else if ($dataForm['tipo'] == 'nome') {
@@ -60,7 +64,7 @@ class AdminDisciplinaController extends Controller
             $quantidade = count(Disciplina::all());
             return view("admin.disciplinas.home", compact('disciplinas', 'quantidade'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -70,22 +74,22 @@ class AdminDisciplinaController extends Controller
             $disciplina = disciplina::findOrFail($id);
             return view("admin.disciplinas.editar", compact('disciplina'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
     public function update(DisciplinaUpdateFormRequest $request, $id)
     {
-        $dataForm = $request->all();
         try {
+            $dataForm = $request->all();
             $disciplinas = Disciplina::findOrFail($id);
             $disciplinas->update($dataForm);
 
-            Session::put('mensagem', 'A disciplina '.$disciplinas->name.' foi editada com sucesso!');
+            Session::put('mensagem', 'A disciplina ' . $disciplinas->name . ' foi editada com sucesso!');
             $disciplinas = Disciplina::all();
             return view('admin.disciplinas.home', compact('disciplinas'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -94,10 +98,10 @@ class AdminDisciplinaController extends Controller
         try {
             $disciplina = Disciplina::findOrFail($id);
             $disciplina->delete($id);
-            Session::put('mensagem', 'A disciplina '.$disciplina->name.' foi deletada com sucesso!');
+            Session::put('mensagem', 'A disciplina ' . $disciplina->name . ' foi deletada com sucesso!');
 
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 

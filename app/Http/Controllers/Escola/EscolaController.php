@@ -25,7 +25,11 @@ class EscolaController extends Controller
      */
     public function index()
     {
-        $dia = Inscricao::latest()->first();
-        return view('escola.home', compact('dia'));
+        try {
+            $dia = Inscricao::latest()->first();
+            return view('escola.home', compact('dia'));
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 }

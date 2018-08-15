@@ -53,7 +53,8 @@ class AlunoController extends Controller
             }
             return $alunos;
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 
@@ -66,7 +67,8 @@ class AlunoController extends Controller
             Session::put('mensagem', "O aluno " . $aluno->name . " foi cadastrado com sucesso!");
 
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 
@@ -82,7 +84,8 @@ class AlunoController extends Controller
 
             return Aluno::paginate(10);
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 
@@ -94,7 +97,8 @@ class AlunoController extends Controller
 
             Session::put('mensagem', "O aluno " . $aluno->name . " foi deletado com sucesso!");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 

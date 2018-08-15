@@ -16,7 +16,11 @@ class EscolaDocumentosController extends Controller
 
     public function index()
     {
-        return view('escola.documentos.documentos');
+        try {
+            return view('escola.documentos.documentos');
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
 }

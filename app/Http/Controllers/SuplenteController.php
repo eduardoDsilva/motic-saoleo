@@ -63,11 +63,12 @@ class SuplenteController extends Controller
                 $coorientador->save();
             }
 
-            Session::put('mensagem', 'O projeto suplente '.$projeto->titulo.' foi salvo com sucesso!');
+            Session::put('mensagem', 'O projeto suplente ' . $projeto->titulo . ' foi salvo com sucesso!');
 
 
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 
@@ -96,7 +97,8 @@ class SuplenteController extends Controller
             }
             return $projetos;
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 
@@ -113,7 +115,8 @@ class SuplenteController extends Controller
             Session::put('mensagem', "O projeto suplente " . $projeto->titulo . " foi editado com sucesso!");
 
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 
@@ -124,10 +127,11 @@ class SuplenteController extends Controller
             DB::update('update professores set projeto_id = ? where projeto_id = ?', [null, $id]);
             $projeto = Projeto::findOrFail($id);
             $projeto->delete($id);
-            Session::put('mensagem', "O projeto suplente ".$projeto->titulo." foi deletado com sucesso!");
+            Session::put('mensagem', "O projeto suplente " . $projeto->titulo . " foi deletado com sucesso!");
 
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 

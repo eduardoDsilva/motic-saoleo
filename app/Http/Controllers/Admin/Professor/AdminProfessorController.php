@@ -30,7 +30,7 @@ class AdminProfessorController extends Controller
             $quantidade = count(Professor::all());
             return view("admin.professor.home", compact('professores', 'quantidade'));
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -42,7 +42,7 @@ class AdminProfessorController extends Controller
 
             return view('admin.professor.cadastro', compact('escolas', 'titulo'));
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -54,7 +54,7 @@ class AdminProfessorController extends Controller
 
             return redirect()->route("admin.professor");
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -64,7 +64,7 @@ class AdminProfessorController extends Controller
             $professor = Professor::findOrFail($id);
             return view("admin.professor.show", compact('professor'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -76,7 +76,7 @@ class AdminProfessorController extends Controller
             $quantidade = count(Professor::all());
             return view('admin.professor.home', compact('professores', 'quantidade'));
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -89,7 +89,7 @@ class AdminProfessorController extends Controller
 
             return view("admin.professor.cadastro", compact('professor', 'titulo', 'escolas'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -100,7 +100,7 @@ class AdminProfessorController extends Controller
             $this->professorController->update($dataForm, $id);
             return redirect()->route("admin.professor");
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -109,7 +109,7 @@ class AdminProfessorController extends Controller
         try {
             $this->professorController->destroy($id);
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 

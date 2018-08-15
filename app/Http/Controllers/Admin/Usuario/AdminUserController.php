@@ -23,7 +23,7 @@ class AdminUserController extends Controller
             $quantidade = count(User::all());
             return view('admin.user.home', compact('users', 'quantidade'));
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -32,7 +32,7 @@ class AdminUserController extends Controller
         try {
             return view('admin.user.cadastro');
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -43,7 +43,7 @@ class AdminUserController extends Controller
             User::create($dataForm);
             return redirect()->route("admin.user.home");
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -60,7 +60,7 @@ class AdminUserController extends Controller
     {
         try {
             $usuario = User::find($id);
-            $usuario->password = bcrypt($usuario->username.'123456');
+            $usuario->password = bcrypt($usuario->username . '123456');
             $usuario->save();
             Session::put('mensagem', "A senha do usuário " . $usuario->name . " foi resetada com sucesso!");
             return redirect()->route("admin.user");
@@ -72,12 +72,12 @@ class AdminUserController extends Controller
     public function filtrar(Request $request)
     {
         try {
-        //    $dataForm = $request->all();
-          //  $alunos = $this->alunoController->filtro($dataForm);
+            //    $dataForm = $request->all();
+            //  $alunos = $this->alunoController->filtro($dataForm);
             //$quantidade = count(Aluno::all());
             //return view('admin.aluno.home', compact('alunos', 'quantidade'));
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -88,7 +88,8 @@ class AdminUserController extends Controller
             $titulo = "Editar usuário: " . $user->name;
             return view("admin.user.home", compact('aluno', 'titulo', 'escolas'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
+
         }
     }
 
@@ -101,7 +102,7 @@ class AdminUserController extends Controller
             Session::put('mensagem', "O usuário " . $user->name . " foi editado com sucesso!");
             return redirect()->route("admin.user.home", compact('alunos'));
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -113,7 +114,7 @@ class AdminUserController extends Controller
 
             Session::put('mensagem', "O aluno " . $user->name . " foi deletado com sucesso!");
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 }

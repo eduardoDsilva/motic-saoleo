@@ -21,7 +21,7 @@ class AdminConfigPdfController extends Controller
         try {
             return view('admin.config.pdf');
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -30,7 +30,7 @@ class AdminConfigPdfController extends Controller
         try {
             return view('admin.config.termos-escola');
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -39,7 +39,7 @@ class AdminConfigPdfController extends Controller
         try {
             return view('admin.config.regras-regulamentos');
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -56,7 +56,7 @@ class AdminConfigPdfController extends Controller
             }
 
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -71,7 +71,7 @@ class AdminConfigPdfController extends Controller
                 return redirect()->back();
             }
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -87,7 +87,7 @@ class AdminConfigPdfController extends Controller
             }
 
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -103,7 +103,7 @@ class AdminConfigPdfController extends Controller
             }
 
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -119,7 +119,7 @@ class AdminConfigPdfController extends Controller
             }
 
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -135,27 +135,43 @@ class AdminConfigPdfController extends Controller
             }
 
         } catch (\Exception $e) {
-            return "Erro " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
     public function store()
     {
-        //
+        try {
+
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function edit()
     {
-        //
+        try {
+
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function update()
     {
-        //
+        try {
+
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function destroy()
     {
-        //
+        try {
+
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 }

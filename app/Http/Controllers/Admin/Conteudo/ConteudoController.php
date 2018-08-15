@@ -23,21 +23,34 @@ class ConteudoController extends Controller
 
     public function index()
     {
-        return view('admin.config.pagina-inicial');
+        try {
+            return view('admin.config.pagina-inicial');
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function sobre()
     {
-        $conteudo = Conteudo::latest()->first();
+        try {
+            $conteudo = Conteudo::latest()->first();
 
-        return view('admin.config.gerenciar-sobre', compact('conteudo'));
+            return view('admin.config.gerenciar-sobre', compact('conteudo'));
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
     }
 
     public function contato()
     {
-        $conteudo = Conteudo::latest()->first();
+        try {
+            $conteudo = Conteudo::latest()->first();
 
-        return view('admin.config.gerenciar-contato', compact('conteudo'));
+            return view('admin.config.gerenciar-contato', compact('conteudo'));
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
+
     }
 
     public function sobreStore(Request $request)
@@ -55,7 +68,7 @@ class ConteudoController extends Controller
             return response()->json($response);
 
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -74,7 +87,7 @@ class ConteudoController extends Controller
             return response()->json($response);
 
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 

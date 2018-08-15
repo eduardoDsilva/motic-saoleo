@@ -27,7 +27,7 @@ class AvaliadorProjetoController extends Controller
             $projetos = $avaliador->projeto;
             return view('avaliador/projeto/home', compact('projetos'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -41,7 +41,7 @@ class AvaliadorProjetoController extends Controller
             $projeto = Projeto::find($id);
             return view('avaliador/projeto/ficha-de-avaliacao', compact('projeto'));
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 
@@ -65,7 +65,7 @@ class AvaliadorProjetoController extends Controller
             $nota->save();
             return redirect()->route('avaliador.projeto');
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(403, '' . $e->getMessage());
         }
     }
 

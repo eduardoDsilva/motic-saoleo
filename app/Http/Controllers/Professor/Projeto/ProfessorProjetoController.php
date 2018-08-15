@@ -17,9 +17,13 @@ class ProfessorProjetoController extends Controller
 
     public function index()
     {
-        $projeto = Projeto::find(Auth::user()->professor->projeto);
+        try {
+            $projeto = Projeto::find(Auth::user()->professor->projeto);
+            return view('professor.projeto.home', compact('projeto'));
+        } catch (\Exception $e) {
+            return abort(403, '' . $e->getMessage());
+        }
 
-        return view('professor.projeto.home', compact('projeto'));
     }
 
 }
