@@ -1,6 +1,6 @@
 <option value="" disabled selected>Avaliar...</option>
 <optgroup label="Ótimo">
-    <option value="1">10 pontos</option>
+    <option value="10">10 pontos</option>
 </optgroup>
 <optgroup label="Ótimo">
     <option value="9">9 pontos</option>

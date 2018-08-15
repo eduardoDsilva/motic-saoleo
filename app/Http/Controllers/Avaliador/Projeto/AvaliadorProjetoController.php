@@ -63,9 +63,7 @@ class AvaliadorProjetoController extends Controller
             $nota->avaliador_id = Auth::user()->avaliador->id;
             $nota->projeto_id = $dataForm['id_projeto'];
             $nota->save();
-            $avaliador = Avaliador::find(Auth::user()->avaliador->id);
-            $projetos = $avaliador->projeto;
-            return view('avaliador/projeto/home', compact('projetos'));
+            return redirect()->route('avaliador.projeto');
         } catch (\Exception $e) {
             return "ERRO: " . $e->getMessage();
         }
