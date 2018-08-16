@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Aluno;
 use App\Escola;
+use App\Etapa;
 use Illuminate\Support\Facades\Session;
 
 class AlunoController extends Controller
@@ -61,7 +62,10 @@ class AlunoController extends Controller
     public function store($dataForm)
     {
         try {
-            $dataForm += ['categoria_id' => $this->categoriaAluno($dataForm['etapa'])];
+            $etapa = Etapa::find($dataForm['categoria_id']);
+            $dataForm += ['etapa' => $etapa->etapa];
+            unset($dataForm['categoria_id']);
+            $dataForm += ['categoria_id' => $etapa->categoria->id];
             $aluno = Aluno::create($dataForm);
 
             Session::put('mensagem', "O aluno " . $aluno->name . " foi cadastrado com sucesso!");
@@ -75,7 +79,10 @@ class AlunoController extends Controller
     public function update($dataForm, $id)
     {
         try {
-            $dataForm += ['categoria_id' => $this->categoriaAluno($dataForm['etapa'])];
+            $etapa = Etapa::find($dataForm['categoria_id']);
+            $dataForm += ['etapa' => $etapa->etapa];
+            unset($dataForm['categoria_id']);
+            $dataForm += ['categoria_id' => $etapa->categoria->id];
 
             $aluno = Aluno::findOrFail($id);
             $aluno->update($dataForm);
@@ -102,32 +109,4 @@ class AlunoController extends Controller
         }
     }
 
-    private function categoriaAluno($ano)
-    {
-        if ($ano == 'Educação Infantil') {
-            return '1';
-        } else if ($ano == '1° ANO') {
-            return '2';
-        } else if ($ano == '2° ANO') {
-            return '2';
-        } else if ($ano == '3° ANO') {
-            return '2';
-        } else if ($ano == '4° ANO') {
-            return '3';
-        } else if ($ano == '5° ANO') {
-            return '3';
-        } else if ($ano == '6° ANO') {
-            return '3';
-        } else if ($ano == '7° ANO') {
-            return '4';
-        } else if ($ano == '8° ANO') {
-            return '4';
-        } else if ($ano == '9° ANO') {
-            return '4';
-        } else if ($ano == 'EJA') {
-            return '5';
-        } else {
-            dd('erro');
-        }
-    }
 }

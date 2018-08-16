@@ -35,7 +35,7 @@
 
 @section('content')
 
-@section('titulo-header', 'Cadastrar escola')
+@section('titulo-header', 'Cadastrar professor')
 
 @section('conteudo-header', "- Os campos com ' * ' são de preenchimento obrigatório")
 

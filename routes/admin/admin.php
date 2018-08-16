@@ -6,8 +6,22 @@ Route::middleware(['auth', 'check.admin'])->group(function () {
 
     Route::get('admin/decomposer','\Lubusin\Decomposer\Controllers\DecomposerController@index');
 
-    Route::get('admin/home', ['as' => 'admin', 'uses' => 'Admin\AdminController@index']);
+    Route::get('admin/clear-cache', function() {
+        Artisan::call('cache:clear');
+        return "Cache is cleared";
+    });
 
+    Route::get('admin/config-cache', function() {
+        Artisan::call('config:cache');
+        return "Config cache";
+    });
+
+    Route::get('admin/view-cache', function() {
+        Artisan::call('view:clear');
+        return "View is cleared";
+    });
+
+    Route::get('admin/home', ['as' => 'admin', 'uses' => 'Admin\AdminController@index']);
 
     require_once('audit/audit.php');
 

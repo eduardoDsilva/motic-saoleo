@@ -33,7 +33,7 @@
 @section('campo-etapa')
     <div class="input-field col s12 m6 l6">
         <i class="material-icons prefix">book</i>
-        <select id='anoLetivo' name="etapa">
+        <select id='anoLetivo' name="categoria_id">
         </select>
         <label>Ano/Etapa *</label>
     </div>
@@ -52,7 +52,7 @@
         <div class="row">
             @includeIf('_layouts._mensagem-erro')
             <form class="col s12" method="POST" enctype="multipart/form-data"
-                  action="@if(isset($aluno)){{route('admin.aluno.update',$aluno->id)}}@else{{route('admin.aluno.store')}}"@endif>
+                  action="@if(isset($aluno)){{route('admin.aluno.update',$aluno->id)}}@else{{route('admin.aluno.store')}}@endif">
                 {{csrf_field()}}
                 @include('_layouts._aluno._form-aluno')
             </form>

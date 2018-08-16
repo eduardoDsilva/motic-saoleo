@@ -66,8 +66,7 @@ class ProfessorController extends Controller
 
             return $professores;
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-
+            return "ERRO: " . $e->getMessage();
         }
     }
 
@@ -76,8 +75,8 @@ class ProfessorController extends Controller
         try {
             $user = User::create([
                 'name' => $dataForm['name'],
-                'username' => $dataForm['username'],
-                'email' => $dataForm['email'],
+                'username' => strtolower($dataForm['username']),
+                'email' => strtolower($dataForm['email']),
                 'password' => bcrypt($dataForm['password']),
                 'tipoUser' => $dataForm['tipoUser'],
             ]);
@@ -89,8 +88,7 @@ class ProfessorController extends Controller
             Session::put('mensagem', "O professor " . $user->name . " foi criado com sucesso!");
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-
+            return "ERRO: " . $e->getMessage();
         }
     }
 
@@ -100,8 +98,8 @@ class ProfessorController extends Controller
             $user = User::findOrFail($id);
             $user->update([
                 'name' => $dataForm['name'],
-                'username' => $dataForm['username'],
-                'email' => $dataForm['email'],
+                'username' => strtolower($dataForm['username']),
+                'email' => strtolower($dataForm['email']),
                 'password' => bcrypt($dataForm['password']),
                 'tipoUser' => $dataForm['tipoUser'],
             ]);
@@ -116,8 +114,7 @@ class ProfessorController extends Controller
             Session::put('mensagem', "O professor " . $user->name . " foi editado com sucesso!");
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-
+            return "ERRO: " . $e->getMessage();
         }
     }
 
@@ -126,10 +123,9 @@ class ProfessorController extends Controller
         try {
             $professor = Professor::findOrFail($id);
             $professor->user()->delete($id);
-            Session::put('mensagem', "O professor " . $professor->name . " foi deletado com sucesso!");
+            Session::put('mensagem', "O professor ".$professor->name." foi deletado com sucesso!");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-
+            return "ERRO: " . $e->getMessage();
         }
     }
 

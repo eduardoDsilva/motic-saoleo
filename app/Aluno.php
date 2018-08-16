@@ -9,7 +9,7 @@ class Aluno extends Model implements Auditable
 {
     use \OwenIt\Auditing\Auditable;
     protected $fillable = [
-        'name', 'etapa', 'turma', 'nascimento', 'cpf', 'sexo', 'email', 'telefone', 'rua', 'numero', 'complemento', 'bairro', 'cep', 'cidade', 'estado', 'pais', 'camisa', 'escola_id', 'categoria_id', 'projeto_id',
+        'name', 'nascimento', 'etapa', 'turma' , 'cpf', 'sexo', 'email', 'telefone', 'rua', 'numero', 'complemento', 'bairro', 'cep', 'cidade', 'estado', 'pais', 'camisa', 'escola_id', 'categoria_id', 'projeto_id',
     ];
 
     public function projeto()

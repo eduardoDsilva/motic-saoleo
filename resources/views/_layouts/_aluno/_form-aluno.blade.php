@@ -41,6 +41,7 @@
     <div class="row">
 
         @yield('campo-etapa')
+
         <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">perm_identity</i>
             <input minlength="2" id="turma" class="validate" type="text" name="turma"

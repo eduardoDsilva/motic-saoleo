@@ -56,8 +56,8 @@ class EscolaController extends Controller
         try {
             $user = User::create([
                 'name' => $dataForm['name'],
-                'username' => $dataForm['username'],
-                'email' => $dataForm['email'],
+                'username' => strtolower($dataForm['username']),
+                'email' => strtolower($dataForm['email']),
                 'password' => bcrypt($dataForm['password']),
                 'tipoUser' => $dataForm['tipoUser'],
             ]);
@@ -84,8 +84,8 @@ class EscolaController extends Controller
             $user = User::findOrFail($id);
             $user->update([
                 'name' => $dataForm['name'],
-                'username' => $dataForm['username'],
-                'email' => $dataForm['email'],
+                'username' => strtolower($dataForm['username']),
+                'email' => strtolower($dataForm['email']),
                 'password' => bcrypt($dataForm['password']),
                 'tipoUser' => $dataForm['tipoUser'],
             ]);

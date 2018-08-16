@@ -119,7 +119,7 @@ class AdminAlunoController extends Controller
             $ano = [];
             foreach($escola->categoria as $categoria){
                 foreach($categoria->etapa as $etapa){
-                    $ano[] = $etapa->etapa;
+                    $ano[] = $etapa;
                 }
             }
             return response()->json($ano);

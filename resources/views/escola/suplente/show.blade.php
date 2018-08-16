@@ -5,18 +5,12 @@
 @section('breadcrumb')
     <a href="{{route ('escola')}}" class="breadcrumb">Home</a>
     <a href="{{route ('escola.suplente')}}" class="breadcrumb">Suplentes</a>
-    <a href="" class="breadcrumb">{{$suplente->titulo}}</a>
+    <a href="" class="breadcrumb">{{$projeto->titulo}}</a>
 @endsection
 
 @extends('_layouts._app')
 
 @section('titulo','Motic Admin')
-
-@section('breadcrumb')
-    <a href="{{route ('escola')}}" class="breadcrumb">Home</a>
-    <a href="{{route ('escola.suplente')}}" class="breadcrumb">Suplentes</a>
-    <a href="" class="breadcrumb">{{$projeto->titulo}}</a>
-@endsection
 
 @section('content')
 

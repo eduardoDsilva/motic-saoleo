@@ -46,7 +46,7 @@ class EscolaSuplenteController extends Controller
 
     public function create()
     {
-        $inscricao = \App\Inscricao::orderBy('id', 'desc')->first();
+        $inscricao = \App\Inscricao::all()->last();
         $this->authorize('view', $inscricao);
         try {
             $disciplinas = Disciplina::all();
@@ -72,7 +72,7 @@ class EscolaSuplenteController extends Controller
 
     public function store(Request $request)
     {
-        $inscricao = \App\Inscricao::orderBy('id', 'desc')->first();
+        $inscricao = \App\Inscricao::all()->last();
         $this->authorize('view', $inscricao);
         try {
             $dataForm = $request->all() + ['escola_id' => Auth::user()->escola->id] + ['tipo' => 'suplente'];
@@ -86,7 +86,7 @@ class EscolaSuplenteController extends Controller
 
     public function show($id)
     {
-        $inscricao = \App\Inscricao::orderBy('id', 'desc')->first();
+        $inscricao = \App\Inscricao::all()->last();
         $this->authorize('view', $inscricao);
         $projeto = Projeto::findOrFail($id);
         $this->authorize('show', $projeto);
@@ -103,7 +103,7 @@ class EscolaSuplenteController extends Controller
 
     public function edit($id)
     {
-        $inscricao = \App\Inscricao::orderBy('id', 'desc')->first();
+        $inscricao = \App\Inscricao::all()->last();
         $this->authorize('view', $inscricao);
         $projeto = Projeto::findOrFail($id);
         $this->authorize('edit', $projeto);
@@ -129,7 +129,7 @@ class EscolaSuplenteController extends Controller
 
     public function update(Request $request, $id)
     {
-        $inscricao = \App\Inscricao::orderBy('id', 'desc')->first();
+        $inscricao = \App\Inscricao::all()->last();
         $this->authorize('view', $inscricao);
         try {
             $dataForm = $request->all();
@@ -142,7 +142,7 @@ class EscolaSuplenteController extends Controller
 
     public function destroy($id)
     {
-        $inscricao = \App\Inscricao::orderBy('id', 'desc')->first();
+        $inscricao = \App\Inscricao::all()->last();
         $this->authorize('view', $inscricao);
         $projeto = Projeto::findOrFail($id);
         $this->authorize('delete', $projeto);

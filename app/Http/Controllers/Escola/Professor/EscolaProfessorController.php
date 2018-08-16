@@ -36,7 +36,7 @@ class EscolaProfessorController extends Controller
 
     public function create()
     {
-        $inscricao = \App\Inscricao::orderBy('id', 'desc')->first();
+        $inscricao = \App\Inscricao::all()->last();
         $this->authorize('view', $inscricao);
         try {
             $escola = Escola::findOrFail(Auth::user()->escola->id);
@@ -48,7 +48,7 @@ class EscolaProfessorController extends Controller
 
     public function store(ProfessorCreateFormRequest $request)
     {
-        $inscricao = \App\Inscricao::orderBy('id', 'desc')->first();
+        $inscricao = \App\Inscricao::all()->last();
         $this->authorize('view', $inscricao);
         try {
             $dataForm = $request->all() + ['tipoUser' => 'professor'] + ['escola_id' => Auth::user()->escola->id];
@@ -61,7 +61,7 @@ class EscolaProfessorController extends Controller
 
     public function show($id)
     {
-        $inscricao = \App\Inscricao::orderBy('id', 'desc')->first();
+        $inscricao = \App\Inscricao::all()->last();
         $professor = Professor::findOrFail($id);
         $this->authorize('view', $inscricao);
         $this->authorize('show', $professor);
@@ -74,7 +74,7 @@ class EscolaProfessorController extends Controller
 
     public function edit($id)
     {
-        $inscricao = \App\Inscricao::orderBy('id', 'desc')->first();
+        $inscricao = \App\Inscricao::all()->last();
         $professor = Professor::findOrFail($id);
         $this->authorize('view', $inscricao);
         $this->authorize('edit', $professor);
@@ -99,7 +99,7 @@ class EscolaProfessorController extends Controller
 
     public function update(ProfessorUpdateFormRequest $request, $id)
     {
-        $inscricao = \App\Inscricao::orderBy('id', 'desc')->first();
+        $inscricao = \App\Inscricao::all()->last();
         $this->authorize('view', $inscricao);
         try {
             $dataForm = $request->all() + ['tipoUser' => 'professor'] + ['escola_id' => Auth::user()->escola->id];
@@ -112,7 +112,7 @@ class EscolaProfessorController extends Controller
 
     public function destroy($id)
     {
-        $inscricao = \App\Inscricao::orderBy('id', 'desc')->first();
+        $inscricao = \App\Inscricao::all()->last();
         $this->authorize('view', $inscricao);
         $professor = Professor::findOrFail($id);
         $this->authorize('delete', $professor);

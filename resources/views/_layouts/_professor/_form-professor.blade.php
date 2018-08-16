@@ -198,7 +198,14 @@
 
                     <h5>Usuário</h5>
                     <div class="row">
-
+                    <blockquote>
+                        Ao escolher um usuário, se atente aos seguintes padrões:
+                        <br>-Digite um usuário em letras minúsculas.
+                        <br>-Digite um usuário sem caracteres especiais.
+                        <br>-Preferencialmente digite o seu usuário com o seu nome.sobrenome, exemplo:
+                        <br>Nome: João da Silva
+                        <br>Usuário: joao.silva
+                    </blockquote>
                         <div class="input-field col s12 m12 l12">
                             <i class="material-icons prefix">person</i>
                             <label for="username">Usuário *</label>

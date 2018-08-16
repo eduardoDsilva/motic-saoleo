@@ -25,14 +25,14 @@
 @section('campo-etapa')
     <div class="input-field col s12 m6 l6">
         <i class="material-icons prefix">book</i>
-        <select name="etapa">
-            <option value="" disabled selected>Ano Letivo</option>
-            @foreach($ano as $a)
-                <option value="{{$a}}"
-                        @if(isset($aluno)) @if($aluno->etapa == $a) selected @endif @endif>{{$a}}</option>
+        <select name="categoria_id">
+            <option value="" disabled selected>Ano/Etapa</option>
+            @foreach($ano as $etapa)
+                <option value="{{$etapa->id}}"
+                        @if(isset($aluno)) @if($aluno->etapa == $etapa->etapa) selected @endif @endif>{{$etapa->etapa}}</option>
             @endforeach
         </select>
-        <label>Ano Letivo *</label>
+        <label><Ano>Ano/Etapa *</label>
     </div>
 @endsection
 
@@ -49,7 +49,7 @@
         <div class="row">
             <form class="col s12" method="post" enctype="multipart/form-data"
                   action="@if(isset($aluno)){{ route('escola.aluno.update', $aluno->id) }}
-                  @else {{ route('escola.aluno.store') }}@endif">
+                  @else {{ route('escola.aluno.store') }}@endif ">
                 {{csrf_field()}}
                 @include('_layouts._aluno._form-aluno')
             </form>

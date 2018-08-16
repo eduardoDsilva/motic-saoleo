@@ -39,14 +39,14 @@ class EscolaAlunoController extends Controller
 
     public function create()
     {
-        $inscricao = \App\Inscricao::orderBy('id', 'desc')->first();
+        $inscricao = \App\Inscricao::all()->last();
         $this->authorize('view', $inscricao);
         try {
             $escola = Escola::findOrFail(Auth::user()->escola->id);
             $ano = [];
             foreach($escola->categoria as $categoria){
                 foreach($categoria->etapa as $etapa){
-                    $ano[] = $etapa->etapa;
+                    $ano[] = $etapa;
                 }
             }
             return view('escola.aluno.cadastro', compact('escola', 'ano'));
@@ -57,7 +57,7 @@ class EscolaAlunoController extends Controller
 
     public function store(AlunoCreateFormRequest $request)
     {
-        $inscricao = \App\Inscricao::orderBy('id', 'desc')->first();
+        $inscricao = \App\Inscricao::all()->last();
         $this->authorize('view', $inscricao);
         try {
             $dataForm = $request->all() + ['escola_id' => Auth::user()->escola->id];
@@ -82,30 +82,16 @@ class EscolaAlunoController extends Controller
     public function edit($id)
     {
         $aluno = Aluno::findOrFail($id);
-        $inscricao = \App\Inscricao::orderBy('id', 'desc')->first();
+        $inscricao = \App\Inscricao::all()->last();
         $this->authorize('view', $inscricao);
         $this->authorize('edit', $aluno);
         try {
             $aluno = Aluno::findOrFail($id);
             $escola = Escola::findOrFail(Auth::user()->escola->id);
-            $categorias = $escola->categoria;
-            foreach ($categorias as $categoria) {
-                if ($categoria->id == 1) {
-                    $ano[] = 'Educação Infantil';
-                } else if ($categoria->id == 2) {
-                    $ano[] = '1° ANO';
-                    $ano[] = '2° ANO';
-                    $ano[] = '3° ANO';
-                } else if ($categoria->id == 3) {
-                    $ano[] = '4° ANO';
-                    $ano[] = '5° ANO';
-                    $ano[] = '6° ANO';
-                } else if ($categoria->id == 4) {
-                    $ano[] = '7° ANO';
-                    $ano[] = '8° ANO';
-                    $ano[] = '9° ANO';
-                } else if ($categoria->id == 5) {
-                    $ano[] = 'EJA';
+            $ano = [];
+            foreach($escola->categoria as $categoria){
+                foreach($categoria->etapa as $etapa){
+                    $ano[] = $etapa;
                 }
             }
             return view('escola.aluno.cadastro', compact('escola', 'ano', 'aluno'));
@@ -116,7 +102,7 @@ class EscolaAlunoController extends Controller
 
     public function update(AlunoUpdateFormRequest $request, $id)
     {
-        $inscricao = \App\Inscricao::orderBy('id', 'desc')->first();
+        $inscricao = \App\Inscricao::all()->last();
         $this->authorize('view', $inscricao);
         try {
             $dataForm = $request->all() + ['tipoUser' => 'aluno'] + ['escola_id' => Auth::user()->escola->id];
@@ -140,45 +126,12 @@ class EscolaAlunoController extends Controller
 
     public function destroy($id)
     {
-        $inscricao = \App\Inscricao::orderBy('id', 'desc')->first();
+        $inscricao = \App\Inscricao::all()->last();
         $aluno = Aluno::findOrFail($id);
         $this->authorize('view', $inscricao);
         $this->authorize('delete', $aluno);
         try {
             $this->alunoController->destroy($id);
-        } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-        }
-    }
-
-    public function escolaCategoria()
-    {
-        try {
-            $escola_id = Input::get('escola_id');
-            $escola = Escola::findOrFail($escola_id);
-            $categorias = $escola->categoria;
-            $ano = [];
-            foreach ($categorias as $categoria) {
-                if ($categoria->id == 1) {
-                    $ano[] = 'Educação Infantil';
-                } else if ($categoria->id == 2) {
-                    $ano[] = '1° ANO';
-                    $ano[] = '2° ANO';
-                    $ano[] = '3° ANO';
-                } else if ($categoria->id == 3) {
-                    $ano[] = '4° ANO';
-                    $ano[] = '5° ANO';
-                    $ano[] = '6° ANO';
-                } else if ($categoria->id == 4) {
-                    $ano[] = '7° ANO';
-                    $ano[] = '8° ANO';
-                    $ano[] = '9° ANO';
-                } else if ($categoria->id == 5) {
-                    $ano[] = 'EJA';
-                } else {
-                }
-            }
-            return response()->json($ano);
         } catch (\Exception $e) {
             return abort(403, '' . $e->getMessage());
         }

@@ -253,10 +253,10 @@
                             class="material-icons right" style="margin-right:0;">arrow_drop_down</i></a>
                 <div class="collapsible-body">
                     <ul>
-                        <li><a class="waves-effect waves-blue" href="{{url('admin/logs')}}"><i
+                        <li><a class="waves-effect waves-blue" target="_blank" href="{{url('admin/logs')}}"><i
                                         class="material-icons">info_outline
                                 </i>Logs</a></li>
-                        <li><a class="waves-effect waves-blue" href="{{url('admin/decomposer')}}"><i
+                        <li><a class="waves-effect waves-blue" target="_blank" href="{{url('admin/decomposer')}}"><i
                                         class="material-icons">info_outline
                                 </i>Decomposer</a></li>
                         <div class="divider"></div>

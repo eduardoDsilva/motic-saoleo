@@ -29,7 +29,7 @@ class AlunoCreateFormRequest extends FormRequest
             'nascimento'            => 'nullable|date_format:d-m-Y',
             'sexo'                  => ['required', Rule::in(['masculino', 'feminino']),],
             'escola_id'             => 'required|integer|exists:escolas,id',
-            'etapa'                 => 'required',
+            'categoria_id'          => 'required',
             'turma'                 => 'required',
             'cpf'                   => 'sometimes|nullable|digits:11|unique:alunos|unique:professores|unique:avaliadores',
             'email'                 => 'sometimes|nullable|email|unique:users|unique:alunos',
@@ -57,7 +57,7 @@ class AlunoCreateFormRequest extends FormRequest
 
             'sexo.required' => 'O campo sexo é de preencimento obrigatório',
 
-            'etapa.required' => 'O campo etapa é de preencimento obrigatório',
+            'categoria_id.required' => 'O campo etapa é de preencimento obrigatório',
 
             'turma.required' => 'O campo turma é de preencimento obrigatório',
 

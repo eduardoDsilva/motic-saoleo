@@ -4,12 +4,12 @@ $('#escolaAluno').on('change', function(e) {
 
     $.get('/json-ano?escola_id=' + escola_id, function (data) {
         console.log(data);
-        $('#anoLetivo').empty()
+        $('#anoLetivo').empty();
         $('#anoLetivo').append('<option disabled selected>Ano letivo</option>');
         $('select').material_select();
         $.each(data, function (index, anoObj) {
             console.log(anoObj);
-            $('#anoLetivo').append('<option value="' + anoObj + '">' + anoObj + '</option>');
+            $('#anoLetivo').append('<option value="' + anoObj.id + '">' + anoObj.etapa + '</option>');
             $('select').material_select();
         })
     });
