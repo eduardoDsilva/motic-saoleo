@@ -126,7 +126,7 @@
                     </div>
                 </div>
             </a>
-            <a href="{{url('admin/logs')}}">
+            <a target="_blank" href="{{url('admin/logs')}}">
                 <div class="col s12 m6 l4">
                     <div class="card hoverable light-blue darken-4">
                         <div class="card-content black-text center-align">
@@ -138,7 +138,7 @@
                     </div>
                 </div>
             </a>
-            <a href="{{url('admin/decomposer')}}">
+            <a target="_blank" href="{{url('admin/decomposer')}}">
                 <div class="col s12 m6 l4">
                     <div class="card hoverable light-green darken-4">
                         <div class="card-content black-text center-align">

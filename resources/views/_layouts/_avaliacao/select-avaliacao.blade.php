@@ -2,7 +2,7 @@
 <optgroup label="Ótimo">
     <option value="10">10 pontos</option>
 </optgroup>
-<optgroup label="Ótimo">
+<optgroup label="Muito Bom">
     <option value="9">9 pontos</option>
     <option value="8">8 pontos</option>
 </optgroup>

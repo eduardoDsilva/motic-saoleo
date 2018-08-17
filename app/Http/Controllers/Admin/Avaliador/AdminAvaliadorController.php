@@ -109,13 +109,6 @@ class AdminAvaliadorController extends Controller
         $dataForm = $request->all() + ['tipoUser' => 'avaliador'];
         try {
             $user = User::findOrFail($id);
-            $user->update([
-                'name' => $dataForm['name'],
-                'username' => $dataForm['username'],
-                'email' => $dataForm['email'],
-                'password' => bcrypt($dataForm['password']),
-                'tipoUser' => $dataForm['tipoUser'],
-            ]);
 
             $avaliador = $user->avaliador;
             $avaliador->update($dataForm);

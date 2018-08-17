@@ -42,8 +42,6 @@ class ProfessorUpdateFormRequest extends FormRequest
             'cidade'                => 'regex:/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/',
             'estado'                => 'regex:/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/',
             'pais'                  => 'regex:/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/',
-            'username'              => 'required|string|between:5,30',
-            'password'              => 'required|alpha_num|min:6|confirmed',
             'camisa'                => ['required', Rule::in(['P', 'PP', 'M', 'G', 'GG']),],
         ];
     }
@@ -95,20 +93,6 @@ class ProfessorUpdateFormRequest extends FormRequest
             'estado.regex' => 'Insira um estado sem caracteres especiais!',
 
             'pais.regex' => 'Insira um país sem caracteres especiais!',
-
-            'username.required' => 'O campo usuário é de preenchimento obrigatório!',
-            'username.string' => 'Insira um usuário sem números!',
-            'username.between' => 'Insira um usuário entre 5 e 20 caracteres!',
-
-            'password.required' => 'O campo senha é de preenchimento obrigatório!',
-            'password.min' => 'A senha deve ter no mínimo 6 caractéres',
-            'password.confirmed' => 'As senhas devem ser iguais!',
-            'password.alpha_num' => 'Insira uma senha sem caracteres especiais!',
-
-            'password_confirmed.required' => 'O campo senha é de preenchimento obrigatório!',
-            'password_confirmed.min' => 'A senha deve ter no mínimo 6 caractéres',
-            'password_confirmed.alpha_num' => 'Insira uma senha sem caracteres especiais',
-            'password_confirmed.confirmed' => 'As senhas devem ser iguais',
 
             'camisa.required' => 'Selecione um tamanho de camisa para o professor',
         ];

@@ -40,8 +40,14 @@ class AdminUserController extends Controller
     {
         try {
             $dataForm = $request->all();
-            User::create($dataForm);
-            return redirect()->route("admin.user.home");
+            User::create([
+                'name' => $dataForm['name'],
+                'username' => strtolower($dataForm['username']),
+                'email' => strtolower($dataForm['email']),
+                'password' => bcrypt($dataForm['password']),
+                'tipoUser' => 'admin',
+            ]);
+            return redirect()->route("admin.user");
         } catch (\Exception $e) {
             return abort(403, '' . $e->getMessage());
         }
@@ -84,9 +90,9 @@ class AdminUserController extends Controller
     public function edit($id)
     {
         try {
-            $user = User::findOrFail($id);
-            $titulo = "Editar usuário: " . $user->name;
-            return view("admin.user.home", compact('aluno', 'titulo', 'escolas'));
+            $usuario = User::findOrFail($id);
+            $titulo = "Editar usuário: " . $usuario->name;
+            return view("admin.user.cadastro", compact('usuario', 'titulo'));
         } catch (\Exception $e) {
             return abort(403, '' . $e->getMessage());
 
@@ -100,7 +106,7 @@ class AdminUserController extends Controller
             $user = User::find($id);
             $user->update($dataForm);
             Session::put('mensagem', "O usuário " . $user->name . " foi editado com sucesso!");
-            return redirect()->route("admin.user.home", compact('alunos'));
+            return redirect()->route("admin.user", compact('alunos'));
         } catch (\Exception $e) {
             return abort(403, '' . $e->getMessage());
         }

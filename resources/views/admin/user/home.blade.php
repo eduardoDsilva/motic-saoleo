@@ -37,13 +37,13 @@
         <div class="fixed-action-btn">
             <a class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="top"
                data-delay="50" data-tooltip="Adicionar aluno"
-               href="{{route ('admin.aluno.create')}}">
+               href="{{route ('admin.user.create')}}">
                 <i class="material-icons">add</i></a>
         </div>
     </div>
 </div>
 
-@section('conteudo-deletar', "Você tem certeza que deseja deletar o aluno abaixo?")
+@section('conteudo-deletar', "Você tem certeza que deseja deletar o usuário abaixo?")
 @includeIf('_layouts._modal-delete')
 
 @endsection

@@ -10,14 +10,13 @@ namespace App\Exports;
 
 use App\Audit;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class InvoicesExport implements FromCollection, WithHeadings
 {
     public function collection()
     {
-        return Audit::latest();
+        return Audit::all();
     }
 
     public function headings(): array

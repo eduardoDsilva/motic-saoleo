@@ -41,8 +41,6 @@ class AvaliadorUpdateFormRequest extends FormRequest
             'cidade'                => 'sometimes|nullable|regex:/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/',
             'estado'                => 'sometimes|nullable|regex:/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/',
             'pais'                  => 'sometimes|nullable|regex:/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/',
-            'username'              => 'required|string|between:5,30',
-            'password'              => 'required|string|min:6|confirmed',
         ];
     }
 
@@ -89,20 +87,6 @@ class AvaliadorUpdateFormRequest extends FormRequest
             'estado.regex' => 'Insira um estado sem caracteres especiais!',
 
             'pais.regex' => 'Insira um país sem caracteres especiais!',
-
-            'username.required' => 'O campo usuário é de preenchimento obrigatório!',
-            'username.string' => 'Insira um usuário sem números!',
-            'username.between' => 'Insira um usuário entre 5 e 20 caracteres!',
-
-            'password.required' => 'O campo senha é de preenchimento obrigatório!',
-            'password.min' => 'A senha deve ter no mínimo 6 caractéres',
-            'password.confirmed' => 'As senhas devem ser iguais!',
-            'password.string' => 'Insira uma senha sem caracteres especiais!',
-
-            'password_confirmed.required' => 'O campo senha é de preenchimento obrigatório!',
-            'password_confirmed.min' => 'A senha deve ter no mínimo 6 caractéres',
-            'password_confirmed.string' => 'Insira uma senha sem caracteres especiais',
-            'password_confirmed.confirmed' => 'As senhas devem ser iguais',
         ];
     }
 }

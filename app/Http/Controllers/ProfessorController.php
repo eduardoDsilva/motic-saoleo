@@ -96,14 +96,6 @@ class ProfessorController extends Controller
     {
         try {
             $user = User::findOrFail($id);
-            $user->update([
-                'name' => $dataForm['name'],
-                'username' => strtolower($dataForm['username']),
-                'email' => strtolower($dataForm['email']),
-                'password' => bcrypt($dataForm['password']),
-                'tipoUser' => $dataForm['tipoUser'],
-            ]);
-
 
             $professor = $user->professor;
             $professor->update($dataForm);

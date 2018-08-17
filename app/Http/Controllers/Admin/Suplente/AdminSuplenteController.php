@@ -49,7 +49,7 @@ class AdminSuplenteController extends Controller
     {
         try {
             $disciplinas = Disciplina::all();
-            $escolas = Escola::all();
+            $escolas = Escola::orderBy('name', 'asc')->get();
             return view("admin.suplente.cadastro", compact('disciplinas', 'escolas', 'categorias'));
         } catch (\Exception $e) {
             return abort(403, '' . $e->getMessage());

@@ -159,7 +159,7 @@
         } else if (tipo == 'suplente') {
             $.ajax({
                 type: 'GET',
-                url: 'destroy/' + id,
+                url: 'projeto/destroy/' + id,
                 success: function (data) {
                     location.reload();
                 }
@@ -168,6 +168,14 @@
             $.ajax({
                 type: 'GET',
                 url: 'avaliador/destroy/' + id,
+                success: function (data) {
+                    location.reload();
+                }
+            });
+        } else if (tipo == 'user') {
+            $.ajax({
+                type: 'GET',
+                url: 'user/destroy/' + id,
                 success: function (data) {
                     location.reload();
                 }

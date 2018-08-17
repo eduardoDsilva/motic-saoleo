@@ -12,12 +12,6 @@
 
 @section('titulo','Motic Escola')
 
-@section('breadcrumb')
-    <a href="{{route ('escola')}}" class="breadcrumb">Home</a>
-    <a href="{{route ('escola.projeto')}}" class="breadcrumb">Projetos</a>
-    <a href="" class="breadcrumb">{{$projeto->titulo}}</a>
-@endsection
-
 @section('content')
 
     @if(Session::get('mensagem'))
