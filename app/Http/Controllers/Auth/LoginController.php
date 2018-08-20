@@ -30,7 +30,9 @@ class LoginController extends Controller
      */
     protected function redirectTo()
     {
+        //verifico o tipo do usuario logado
         $tipo = Auth::user()->tipoUser;
+        //dependendo do tipo de usuario, ele é encaminhado para uma view inicial;
         if ($tipo == "admin") {
             return 'admin/home';
         } else if ($tipo == "escola") {
