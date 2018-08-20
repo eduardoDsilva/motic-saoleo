@@ -25,7 +25,8 @@ class ProfessorController extends Controller
     public function index()
     {
         try {
-            return view('professor/home');
+            //encaminho para a view professor.home
+            return view('professor.home');
         } catch (\Exception $e) {
             return abort(403, '' . $e->getMessage());
         }

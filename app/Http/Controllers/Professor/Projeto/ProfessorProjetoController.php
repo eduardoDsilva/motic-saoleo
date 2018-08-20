@@ -18,7 +18,9 @@ class ProfessorProjetoController extends Controller
     public function index()
     {
         try {
+            //procuro o projeto vinculado ao professor logado no sistema
             $projeto = Projeto::find(Auth::user()->professor->projeto);
+            //encaminho para a view professor.projeto.home com o projeto encontrado
             return view('professor.projeto.home', compact('projeto'));
         } catch (\Exception $e) {
             return abort(403, '' . $e->getMessage());
