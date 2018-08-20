@@ -96,7 +96,7 @@ class AdminAlunoController extends Controller
         try {
             $dataForm = $request->all() + ['tipoUser' => 'aluno'];
             $alunos = $this->alunoController->update($dataForm, $id);
-            return redirect()->route("admin.aluno", compact('alunos'));
+            return redirect()->route("admin.aluno");
         } catch (\Exception $e) {
             return abort(403,  ''.$e->getMessage());
         }

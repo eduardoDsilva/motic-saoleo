@@ -21,7 +21,9 @@ class AuditController
 
     public function index(){
         try {
+            //carrego os registros de auditoria do sistema em ordem da mais recente pra mais atual.
             $auditorias = Audit::latest()->paginate(10);
+            //retorno para a view 'admin.auditoria.home'.
             return view('admin.auditoria.home', compact('auditorias'));
         } catch (\Exception $e) {
             return abort(403, '' . $e->getMessage());
@@ -30,7 +32,9 @@ class AuditController
 
     public function usuarios(){
         try {
+            //carrego os registros dos acessos do sistema em ordem da mais recente pra mais atual.
             $accesses = Access::latest()->paginate(10);
+            //retorno para a view 'admin.auditoria.usuarios'
             return view('admin.auditoria.usuarios', compact('accesses'));
         } catch (\Exception $e) {
             return abort(403, '' . $e->getMessage());
@@ -39,6 +43,7 @@ class AuditController
 
     public function usuariosFiltrar(Request $request){
         try {
+            //recebo o filtro por request
             $dataForm = $request->all();
             $usuario = User::where('username', '=', $dataForm['search'])->first();
             $accesses = Access::where('user_id', '=', $usuario->id)->paginate(10);
@@ -50,7 +55,9 @@ class AuditController
 
     public function relatorios(){
         try {
+            //retorno os usuarios do sistema
             $usuarios = User::paginate(10);
+            //encaminho para a view admin.auditoria.relatorios
             return view('admin.auditoria.relatorios', compact('usuarios'));
         } catch (\Exception $e) {
             return abort(403, '' . $e->getMessage());
@@ -60,6 +67,7 @@ class AuditController
     public function export()
     {
         try {
+            //chamo o metodo download do Excel com base na classe InvoicesExport
             return Excel::download(new InvoicesExport, 'audit.xlsx');
         } catch (\Exception $e) {
             return abort(403, '' . $e->getMessage());
@@ -69,6 +77,7 @@ class AuditController
     public function exportByUser($id)
     {
         try {
+            //chamo o metodo download do Excel com base na classe InvoicesExportByUser
             return Excel::download(new InvoicesExportByUser($id), 'audit-user:'.$id.'.xlsx');
         } catch (\Exception $e) {
             return abort(403, '' . $e->getMessage());

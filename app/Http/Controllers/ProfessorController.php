@@ -73,6 +73,7 @@ class ProfessorController extends Controller
     public function store($dataForm)
     {
         try {
+            //rodar o comando de create para criar um usuario
             $user = User::create([
                 'name' => $dataForm['name'],
                 'username' => strtolower($dataForm['username']),
@@ -80,11 +81,11 @@ class ProfessorController extends Controller
                 'password' => bcrypt($dataForm['password']),
                 'tipoUser' => $dataForm['tipoUser'],
             ]);
-
+            //rodar o comando de create para criar um professor
             Professor::create($dataForm + ['user_id' => $user->id]);
-
+            //rodar o comando de create para criar um endereco
             Endereco::create($dataForm + ['user_id' => $user->id]);
-
+            //insere uma mensagem de sucesso
             Session::put('mensagem', "O professor " . $user->name . " foi criado com sucesso!");
 
         } catch (\Exception $e) {
@@ -95,16 +96,18 @@ class ProfessorController extends Controller
     public function update($dataForm, $id)
     {
         try {
+            //busca o usuario pelo ID recebido por paremetro
             $user = User::findOrFail($id);
-
+            //busca o professor deste usuario
             $professor = $user->professor;
+            //atualiza o professor com base no dataForm
             $professor->update($dataForm);
-
+            //busca o endereco deste usuario
             $endereco = $user->endereco;
+            //atualiza o professor com base no dataForm
             $endereco->update($dataForm);
-
+            //insere uma mensagem de sucesso
             Session::put('mensagem', "O professor " . $user->name . " foi editado com sucesso!");
-
         } catch (\Exception $e) {
             return "ERRO: " . $e->getMessage();
         }
@@ -113,8 +116,11 @@ class ProfessorController extends Controller
     public function destroy($id)
     {
         try {
+            //busca o professor com base no ID recebido por parametro
             $professor = Professor::findOrFail($id);
+            //roda o comando delete no professor
             $professor->user()->delete($id);
+            //insere uma mensagem de sucesso
             Session::put('mensagem', "O professor ".$professor->name." foi deletado com sucesso!");
         } catch (\Exception $e) {
             return "ERRO: " . $e->getMessage();

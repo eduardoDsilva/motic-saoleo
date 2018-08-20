@@ -134,7 +134,7 @@ class EscolaAlunoController extends Controller
             //passo o $dataForm com os dados para o método "update" dentro da classe AlunoController com o ID do aluno a ser atualizado.
             $alunos = $this->alunoController->update($dataForm, $id);
             //redireciono para a rota "escola.aluno" com os alunos da escola.
-            return redirect()->route("escola.aluno", compact('alunos'));
+            return redirect()->route("escola.aluno");
         } catch (\Exception $e) {
             return abort(403, '' . $e->getMessage());
         }

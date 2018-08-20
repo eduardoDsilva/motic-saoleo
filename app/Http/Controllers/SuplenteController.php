@@ -17,6 +17,8 @@ class SuplenteController extends Controller
      * @return void
      */
 
+    //Os suplentes seguem o mesmo padrão dos projetos normais.
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -33,7 +35,8 @@ class SuplenteController extends Controller
         try {
             $escola = Escola::findOrFail($dataForm['escola_id']);
             $projeto = Projeto::all()
-                ->where('escola_id', '=', $escola->id);
+                ->where('escola_id', '=', $escola->id)
+                ->where('tipo', '=', "suplente");
             if (count($projeto) >= $escola->projetos) {
                 dd('não pode mais cadastrar suplentes');
             }
