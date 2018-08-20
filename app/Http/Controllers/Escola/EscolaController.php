@@ -26,7 +26,9 @@ class EscolaController extends Controller
     public function index()
     {
         try {
+            //buscando o dia limite da inscricao
             $dia = Inscricao::latest()->first();
+            //chamando a view 'escola.home' com a variavel 'dia'
             return view('escola.home', compact('dia'));
         } catch (\Exception $e) {
             return abort(403, '' . $e->getMessage());
