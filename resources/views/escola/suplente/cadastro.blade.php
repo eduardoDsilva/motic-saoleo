@@ -40,10 +40,15 @@
                             </div>
                         </div>
 
+                        <blockquote>
+                            ATENÇÃO!
+                            O resumo deve ter entre 50 e 3000 caracteres.
+                        </blockquote>
+
                         <div class='row'>
                             <div class="input-field col s12 m12 l12">
                                 <i class="material-icons prefix">assignment</i>
-                                <textarea name="resumo" id="textarea1" data-length="240"
+                                <textarea name="resumo" id="textarea1" data-length="3000"
                                           class="materialize-textarea"></textarea>
                                 <label for="textarea1">Resumo *</label>
                             </div>

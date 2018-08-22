@@ -8,10 +8,6 @@
     <a href="" class="breadcrumb">{{$projeto->titulo}}</a>
 @endsection
 
-@extends('_layouts._app')
-
-@section('titulo','Motic Escola')
-
 @section('content')
 
     @if(Session::get('mensagem'))
