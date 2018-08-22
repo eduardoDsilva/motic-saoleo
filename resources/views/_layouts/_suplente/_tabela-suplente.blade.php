@@ -5,6 +5,7 @@
         <th>Título</th>
         <th>Área</th>
         <th>Categoria</th>
+        <th>Tipo</th>
         @if(Auth::user()->tipoUser == 'admin')
         <th>Escola</th>
         @endif
@@ -15,10 +16,11 @@
     @forelse ($projetos as $projeto)
         <tr>
             <td>{{$projeto->id}}</td>
-            <td>{{$projeto->titulo}}</td>
+            <td>{{str_limit($projeto->titulo,30)}}</td>
             <td>{{$projeto->area}}</td>
             <td>{{$projeto->categoria->categoria}}</td>
-            @if(Auth::user()->tipoUser == 'admin')
+            <td>{{$projeto->tipo}}</td>
+        @if(Auth::user()->tipoUser == 'admin')
             <td>{{$projeto->escola->name}}</td>
             @endif
             <td>

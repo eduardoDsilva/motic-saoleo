@@ -32,7 +32,7 @@ class AdminAlunoController extends Controller
             $quantidade = count(Aluno::all());
             return view('admin.aluno.home', compact('alunos', 'quantidade'));
         } catch (\Exception $e) {
-            return abort(403,  ''.$e->getMessage());
+            return abort(100,  '110');
         }
     }
 
@@ -42,7 +42,7 @@ class AdminAlunoController extends Controller
             $escolas = Escola::all();
             return view('admin.aluno.cadastro', compact('escolas'));
         } catch (\Exception $e) {
-            return abort(403,  ''.$e->getMessage());
+            return abort(100,  '111');
         }
     }
 
@@ -53,7 +53,7 @@ class AdminAlunoController extends Controller
             $this->alunoController->store($dataForm);
             return redirect()->route("admin.aluno");
         } catch (\Exception $e) {
-            return abort(403,  ''.$e->getMessage());
+            return abort(100,  '112');
         }
     }
 
@@ -63,7 +63,7 @@ class AdminAlunoController extends Controller
             $aluno = Aluno::findOrFail($id);
             return view('admin.aluno.show', compact('aluno'));
         } catch (\Exception $e) {
-            return abort(403,  ''.$e->getMessage());
+            return abort(100,  '113');
         }
     }
 
@@ -75,7 +75,7 @@ class AdminAlunoController extends Controller
             $quantidade = count(Aluno::all());
             return view('admin.aluno.home', compact('alunos', 'quantidade'));
         } catch (\Exception $e) {
-            return abort(403,  ''.$e->getMessage());
+            return abort(100,  '114');
         }
     }
 
@@ -87,7 +87,7 @@ class AdminAlunoController extends Controller
             $escolas = Escola::all();
             return view("admin.aluno.cadastro", compact('aluno', 'titulo', 'escolas'));
         } catch (\Exception $e) {
-            return abort(403,  ''.$e->getMessage());
+            return abort(100,  '115');
         }
     }
 
@@ -98,7 +98,7 @@ class AdminAlunoController extends Controller
             $alunos = $this->alunoController->update($dataForm, $id);
             return redirect()->route("admin.aluno");
         } catch (\Exception $e) {
-            return abort(403,  ''.$e->getMessage());
+            return abort(100,  '116');
         }
     }
 
@@ -107,7 +107,7 @@ class AdminAlunoController extends Controller
         try {
             $this->alunoController->destroy($id);
         } catch (\Exception $e) {
-            return abort(403,  ''.$e->getMessage());
+            return abort(100,  '117');
         }
     }
 
@@ -124,7 +124,7 @@ class AdminAlunoController extends Controller
             }
             return response()->json($ano);
         } catch (\Exception $e) {
-            return abort(403,  ''.$e->getMessage());
+            return abort(100,  '118');
         }
     }
 }

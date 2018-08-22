@@ -29,7 +29,7 @@ class AdminAlunoRelatorioController
             $alunos = Aluno::orderBy('name', 'asc')->paginate();
             return view('admin.aluno.relatorios', compact('alunos'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '119.1');
         }
     }
 
@@ -41,7 +41,7 @@ class AdminAlunoRelatorioController
             $modal = true;
             return view('admin.aluno.relatorios', compact('alunos', 'modal'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '119.2');
         }
     }
 
@@ -53,7 +53,7 @@ class AdminAlunoRelatorioController
                 ->loadView('pdf.aluno.todos-alunos', compact('alunos'))
                 ->stream('todos-alunos-motic' . date('Y') . '.pdf');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '119.3');
         }
     }
 
@@ -65,7 +65,7 @@ class AdminAlunoRelatorioController
                 ->loadView('pdf.aluno.escola-alunos', compact('escolas'))
                 ->stream('todos-alunos-por-escola-motic' . date('Y') . '.pdf');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '119.4');
         }
     }
 
@@ -77,7 +77,7 @@ class AdminAlunoRelatorioController
                 ->loadView('pdf.aluno.aluno-individual', compact('aluno'))
                 ->stream('aluno-' . $aluno->name . '-' . date('Y') . '.pdf');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '119.5');
         }
     }
 
@@ -89,7 +89,7 @@ class AdminAlunoRelatorioController
                 ->loadView('pdf.aluno.todos-alunos-completo', compact('alunos'))
                 ->stream('alunos-completo-' . date('Y') . '.pdf');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '119.6');
         }
     }
 }

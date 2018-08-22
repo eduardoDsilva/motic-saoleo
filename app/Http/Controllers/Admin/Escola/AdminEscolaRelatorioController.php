@@ -19,7 +19,7 @@ class AdminEscolaRelatorioController
             $escolas = Escola::all();
             return view('admin.escola.relatorios', compact('escolas'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '168');
         }
     }
 
@@ -32,7 +32,7 @@ class AdminEscolaRelatorioController
                 ->loadView('pdf.escola.todas-escolas', compact('escolas'))
                 ->stream('todas-escolas-motic' . date('Y') . '.pdf');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '169');
         }
     }
 

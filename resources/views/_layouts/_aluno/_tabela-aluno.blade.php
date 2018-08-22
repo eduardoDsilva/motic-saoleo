@@ -23,7 +23,7 @@
                 <td>{{$aluno->escola->name}}</td>
             @endif
             <td>{{$aluno->turma}}</td>
-            <td>{{($aluno->projeto_id == null ? ($aluno->suplente_id == null ? "Aluno sem projeto" : $aluno->suplente->titulo) : $aluno->projeto->titulo)}}</td>
+            <td>{{($aluno->projeto_id == null ? ($aluno->projeto_id == null ? "Aluno sem projeto" : $aluno->projeto->titulo) : $aluno->projeto->titulo)}}</td>
             <td width="20%">
                 @can('view', $inscricao = \App\Inscricao::orderBy('id', 'desc')->first())
                     <a class="modal-trigger tooltipped" data-position="top" data-delay="50"

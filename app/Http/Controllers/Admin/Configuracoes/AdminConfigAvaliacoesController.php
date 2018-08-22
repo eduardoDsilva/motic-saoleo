@@ -22,7 +22,7 @@ class AdminConfigAvaliacoesController extends Controller
             $datas = Avaliacao::latest()->first();
             return view('admin.config.avaliacoes', compact('datas'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '140');
         }
     }
 
@@ -35,7 +35,7 @@ class AdminConfigAvaliacoesController extends Controller
             Session::put('mensagem', "O período de avaliação foi salvo com sucesso!");
             return redirect()->route("admin.config.avaliacoes");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '141');
         }
     }
 
@@ -44,7 +44,7 @@ class AdminConfigAvaliacoesController extends Controller
         try {
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '142');
         }
     }
 
@@ -53,7 +53,7 @@ class AdminConfigAvaliacoesController extends Controller
         try {
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '143');
         }
     }
 
@@ -62,7 +62,7 @@ class AdminConfigAvaliacoesController extends Controller
         try {
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '144');
         }
     }
 }

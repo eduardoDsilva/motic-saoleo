@@ -26,7 +26,7 @@ class ConteudoController extends Controller
         try {
             return view('admin.config.pagina-inicial');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '149');
         }
     }
 
@@ -37,7 +37,7 @@ class ConteudoController extends Controller
 
             return view('admin.config.gerenciar-sobre', compact('conteudo'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '149.1');
         }
     }
 
@@ -48,7 +48,7 @@ class ConteudoController extends Controller
 
             return view('admin.config.gerenciar-contato', compact('conteudo'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '149.2');
         }
 
     }
@@ -68,7 +68,7 @@ class ConteudoController extends Controller
             return response()->json($response);
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '149.3');
         }
     }
 
@@ -87,7 +87,7 @@ class ConteudoController extends Controller
             return response()->json($response);
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '149.4');
         }
     }
 

@@ -125,10 +125,9 @@
                         <i class="material-icons prefix">perm_identity</i>
                         <input id="cpf" class="validate tooltipped" data-position="top" data-delay="50"
                                data-tooltip="Somente números" type="number" name="cpf"
-                               data-length="11" value="{{$avaliador->cpf or old('cpf')}}"
-                               required>
+                               data-length="11" value="{{$avaliador->cpf or old('cpf')}}">
                         <label data-error="Insira um cpf válido!" data-success="Ok"
-                               for="telefone">CPF *</label>
+                               for="telefone">CPF</label>
                     </div>
                 </div>
 

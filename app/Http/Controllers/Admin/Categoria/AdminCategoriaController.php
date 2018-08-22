@@ -20,7 +20,7 @@ class AdminCategoriaController extends Controller
             $categorias = Categoria::all();
             return view('admin.categoria.categoria', compact('categorias'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '130');
         }
     }
 
@@ -48,7 +48,7 @@ class AdminCategoriaController extends Controller
             Session::put('mensagem', "A categoria " . $categoria->categoria . " foi criada com sucesso!");
             return redirect()->route('admin.categoria');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '131');
         }
     }
 
@@ -63,7 +63,7 @@ class AdminCategoriaController extends Controller
         try {
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '132');
         }
     }
 
@@ -79,7 +79,7 @@ class AdminCategoriaController extends Controller
             $categoria = Categoria::find($id);
             return view('admin.categoria.editar', compact('categoria'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '133');
         }
     }
 
@@ -101,7 +101,7 @@ class AdminCategoriaController extends Controller
             Session::put('mensagem', "A categoria " . $categoria->categoria . " foi editada com sucesso!");
             return redirect()->route('admin.categoria');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '134');
         }
     }
 
@@ -119,7 +119,7 @@ class AdminCategoriaController extends Controller
             Session::put('mensagem', "A categoria " . $categoria->categoria . " foi deletada com sucesso!");
             return route('admin.categoria');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '135');
         }
     }
 }

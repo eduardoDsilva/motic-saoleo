@@ -23,7 +23,7 @@ class AdminUserController extends Controller
             $quantidade = count(User::all());
             return view('admin.user.home', compact('users', 'quantidade'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '100.1');
         }
     }
 
@@ -32,7 +32,7 @@ class AdminUserController extends Controller
         try {
             return view('admin.user.cadastro');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '100.2');
         }
     }
 
@@ -49,7 +49,7 @@ class AdminUserController extends Controller
             ]);
             return redirect()->route("admin.user");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '100.3');
         }
     }
 
@@ -71,7 +71,7 @@ class AdminUserController extends Controller
             Session::put('mensagem', "A senha do usuário " . $usuario->name . " foi resetada com sucesso!");
             return redirect()->route("admin.user");
         } catch (\Exception $e) {
-
+            return abort(100, '100.4');
         }
     }
 
@@ -83,7 +83,7 @@ class AdminUserController extends Controller
             //$quantidade = count(Aluno::all());
             //return view('admin.aluno.home', compact('alunos', 'quantidade'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '100.5');
         }
     }
 
@@ -94,8 +94,7 @@ class AdminUserController extends Controller
             $titulo = "Editar usuário: " . $usuario->name;
             return view("admin.user.cadastro", compact('usuario', 'titulo'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-
+            return abort(100, '100.6');
         }
     }
 
@@ -108,7 +107,7 @@ class AdminUserController extends Controller
             Session::put('mensagem', "O usuário " . $user->name . " foi editado com sucesso!");
             return redirect()->route("admin.user", compact('alunos'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '100.7');
         }
     }
 
@@ -120,7 +119,7 @@ class AdminUserController extends Controller
 
             Session::put('mensagem', "O aluno " . $user->name . " foi deletado com sucesso!");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '100.8');
         }
     }
 }

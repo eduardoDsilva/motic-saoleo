@@ -22,7 +22,7 @@ class AdminConfigInscricoesController extends Controller
             $datas = Inscricao::latest()->first();
             return view('admin.config.inscricoes', compact('datas'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '147');
         }
     }
 
@@ -35,7 +35,7 @@ class AdminConfigInscricoesController extends Controller
             Session::put('mensagem', "O período de inscrição foi salvo com sucesso!");
             return redirect()->route("admin.config.inscricoes");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '147.1');
         }
     }
 
@@ -44,7 +44,7 @@ class AdminConfigInscricoesController extends Controller
         try {
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '147.2');
         }
     }
 
@@ -53,7 +53,7 @@ class AdminConfigInscricoesController extends Controller
         try {
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '147.3');
         }
     }
 
@@ -62,7 +62,7 @@ class AdminConfigInscricoesController extends Controller
         try {
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '147.4');
         }
     }
 }

@@ -25,7 +25,7 @@ class AdminConfigController extends Controller
         try {
             return view('admin.config.mudar-senha');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '145');
         }
     }
 
@@ -64,7 +64,7 @@ class AdminConfigController extends Controller
             Session::put('mensagem', "Senha atualizada!");
             return redirect()->route('admin.config.alterarr-senha');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '146');
         }
     }
 

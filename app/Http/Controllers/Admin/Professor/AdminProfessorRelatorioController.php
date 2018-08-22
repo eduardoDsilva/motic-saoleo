@@ -20,7 +20,7 @@ class AdminProfessorRelatorioController
             $professores = Professor::paginate(10);
             return view('admin.professor.relatorios', compact('professores'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '178');
         }
     }
 

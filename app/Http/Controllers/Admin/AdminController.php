@@ -27,7 +27,7 @@ class AdminController extends Controller
         try {
             return view('admin.home');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '100');
         }
     }
 }

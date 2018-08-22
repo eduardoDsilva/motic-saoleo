@@ -34,7 +34,7 @@ class AdminDisciplinaController extends Controller
             $quantidade = count(Disciplina::all());
             return view('admin.disciplinas.home', compact('disciplinas', 'quantidade'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '150');
         }
     }
 
@@ -47,7 +47,7 @@ class AdminDisciplinaController extends Controller
             return redirect()
                 ->route("admin.disciplina");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '151');
         }
     }
 
@@ -64,7 +64,7 @@ class AdminDisciplinaController extends Controller
             $quantidade = count(Disciplina::all());
             return view("admin.disciplinas.home", compact('disciplinas', 'quantidade'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '152');
         }
     }
 
@@ -74,7 +74,7 @@ class AdminDisciplinaController extends Controller
             $disciplina = disciplina::findOrFail($id);
             return view("admin.disciplinas.editar", compact('disciplina'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '153');
         }
     }
 
@@ -89,7 +89,7 @@ class AdminDisciplinaController extends Controller
             $disciplinas = Disciplina::all();
             return view('admin.disciplinas.home', compact('disciplinas'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '154');
         }
     }
 
@@ -101,7 +101,7 @@ class AdminDisciplinaController extends Controller
             Session::put('mensagem', 'A disciplina ' . $disciplina->name . ' foi deletada com sucesso!');
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '155');
         }
     }
 

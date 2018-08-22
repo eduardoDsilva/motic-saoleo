@@ -30,7 +30,7 @@ class AlunoUpdateFormRequest extends FormRequest
             'sexo'                  => ['required', Rule::in(['masculino', 'feminino']),],
             'escola_id'             => 'required|integer|exists:escolas,id',
             'categoria_id'          => 'required',
-            'turma'                 => 'required|alpha_num',
+            'turma'                 => 'required',
             'cpf'                   => 'sometimes|nullable|digits:11',
             'email'                 => 'sometimes|nullable|email',
             'telefone'              => 'sometimes|nullable|digits_between:8, 16',

@@ -184,7 +184,7 @@
                 <div class='row'>
                     <div class="input-field col s12 m12 l12">
                         <i class="material-icons prefix">assignment</i>
-                        <textarea name="observacao" id="textarea1" data-length="240"
+                        <textarea name="observacao" id="textarea1" data-length="480"
                                   class="materialize-textarea"></textarea>
                         <label for="textarea1">Observação</label>
                     </div>

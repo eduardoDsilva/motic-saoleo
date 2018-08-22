@@ -34,7 +34,7 @@ class AdminAvaliadorController extends Controller
             $quantidade = count(Avaliador::all());
             return view("admin.avaliador.home", compact('avaliadores', 'quantidade'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '120');
         }
     }
 
@@ -44,7 +44,7 @@ class AdminAvaliadorController extends Controller
             $titulo = 'Cadastrar avaliador';
             return view('admin.avaliador.cadastro', compact('titulo'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '121');
         }
     }
 
@@ -68,7 +68,7 @@ class AdminAvaliadorController extends Controller
 
             return redirect()->route("admin.avaliador");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '122');
         }
     }
 
@@ -78,17 +78,7 @@ class AdminAvaliadorController extends Controller
             $avaliador = Avaliador::findOrFail($id);
             return view("admin.avaliador.show", compact('avaliador'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-        }
-    }
-
-    public function showAvaliadorDisponivel()
-    {
-        try {
-            $avaliadores = Avaliador::all()->where('projetos', '<', '3');
-            return view("admin.avaliador.avaliador-disponivel", compact('avaliadores'));
-        } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '123');
         }
     }
 
@@ -100,7 +90,7 @@ class AdminAvaliadorController extends Controller
 
             return view("admin.avaliador.cadastro", compact('avaliador', 'titulo'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '124');
         }
     }
 
@@ -121,7 +111,7 @@ class AdminAvaliadorController extends Controller
             $avaliadores = $this->avaliador->all();
             return redirect()->route("admin.avaliador", compact('avaliadores'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '125');
         }
     }
 
@@ -146,7 +136,7 @@ class AdminAvaliadorController extends Controller
             $quantidade = count(Avaliador::all());
             return view('admin.avaliador.home', compact('avaliadores', 'quantidade'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '126');
         }
     }
 
@@ -158,7 +148,7 @@ class AdminAvaliadorController extends Controller
 
             Session::put('mensagem', "O avaliador " . $avaliador->name . " foi deletado com sucesso!");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '127');
         }
     }
 
@@ -173,7 +163,7 @@ class AdminAvaliadorController extends Controller
 
             return view('admin.avaliador.atribuir', compact('projetos', 'avaliador'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '128');
         }
     }
 
@@ -189,7 +179,7 @@ class AdminAvaliadorController extends Controller
 
             return view('admin.avaliador.atribuir');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '128.1');
         }
     }
 
@@ -219,7 +209,7 @@ class AdminAvaliadorController extends Controller
                 ->where('tipo', '=', 'normal');
             return view('admin.avaliador.vincular-projetos', compact('avaliador', 'educacao_infantil', 'emef1', 'emef2', 'emef3', 'eja'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '128.2');
         }
     }
 
@@ -229,7 +219,7 @@ class AdminAvaliadorController extends Controller
             $avaliador = Avaliador::findOrFail($id);
             return view('admin.avaliador.desvincular-projetos', compact('avaliador'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '128.3');
         }
     }
 
@@ -247,7 +237,7 @@ class AdminAvaliadorController extends Controller
             $projeto->save();
             return redirect()->route("admin.avaliador");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '128.4');
         }
     }
 
@@ -266,7 +256,7 @@ class AdminAvaliadorController extends Controller
             $projeto->save();
             return redirect()->route("admin.avaliador");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100,  '128.5');
         }
     }
 

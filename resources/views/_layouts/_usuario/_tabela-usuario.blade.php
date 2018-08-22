@@ -16,7 +16,7 @@
             <td>{{$user->id}}</td>
             <td>{{$user->name}}</td>
             <td>{{$user->username}}</td>
-            <td>{{$user->email}}</td>
+            <td>{{str_limit($user->email, 25)}}</td>
             <td>{{$user->tipoUser}}</td>
             <td width="20%">
                 <a class="modal-trigger tooltipped" data-position="top" data-delay="50"

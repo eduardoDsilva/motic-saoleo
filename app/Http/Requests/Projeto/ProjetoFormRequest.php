@@ -26,7 +26,7 @@ class ProjetoFormRequest extends FormRequest
         return [
             'titulo'            => 'required|alpha_num|between:5,100',
             'area'              => 'required|alpha_num|between:5,100',
-            'resumo'            => 'required|alpha_num|between:50,240',
+            'resumo'            => 'required|between:50,240',
             'disciplina_id'     => 'required|integer',
             'escola_id'         => 'required|integer|exists:escolas,id',
             'categoria_id'      => 'required|integer|size:1',

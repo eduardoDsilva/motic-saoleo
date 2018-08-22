@@ -62,7 +62,7 @@
                         <p>Para gerar um relatório de um aluno específico do sistema, insira o ID abaixo:</p>
                     </div>
                     <div class="card-action">
-                        <button class="modal-trigger btn" type="submit" data-target="modal1" href="#modal1">
+                        <button disabled class="modal-trigger btn" type="submit" data-target="modal1" href="#modal1">
                             Relatório
                         </button>
                     </div>

@@ -21,6 +21,8 @@
                         <li class="collection-item">Tipo: {{$projeto->tipo}}</li>
                         <li class="collection-item">Escola: {{$projeto->escola->name}}</li>
                         <li class="collection-item">Categoria: {{$projeto->categoria->categoria}}</li>
+                        <li class="collection-item">
+                            Disciplina: @foreach($projeto->disciplina as $disciplina){{$disciplina->name.', '}}@endforeach</li>
                     </ul>
                     <ul class="collection with-header col s12 m12 l6">
                         <li class="collection-header"><h4 class="center-align">Alunos</h4></li>

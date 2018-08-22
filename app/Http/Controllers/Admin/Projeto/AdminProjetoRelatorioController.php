@@ -19,7 +19,7 @@ class AdminProjetoRelatorioController
             $projetos = Projeto::where('tipo', '=', 'normal')->paginate(10);
             return view('admin.projeto.relatorios', compact('projetos'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '189.5');
         }
     }
 

@@ -14,7 +14,7 @@
         <div class="card-panel">
             <blockquote>
                 <p>Logo abaixo você encontra o regulamento da MOTIC São Leopolo e as Regras de exposição e segurança MOTIC
-                    São Leopoldo. Os ducumentos encontram-se disponíveis para download no formado de PDF.</p>
+                    São Leopoldo. Os documentos encontram-se disponíveis para download no formado de PDF.</p>
                 <p>Qualquer dúvida, entre em contato com a organização da feira.</p>
             </blockquote>
 

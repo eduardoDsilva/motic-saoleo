@@ -64,6 +64,10 @@
                         </div>
                     </div>
 
+                    <blockquote>
+                        Você pode escolher mais de uma disciplina.
+                    </blockquote>
+
                     <div class="row">
                         <div class="input-field col s12 m12 l12">
                             <i class="material-icons prefix">assignment</i>

@@ -22,7 +22,7 @@ class AdminEtapaController extends Controller
             $etapas = Etapa::all();
             return view('admin.etapa.etapa', compact('categorias', 'etapas'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '156');
         }
 
     }
@@ -55,7 +55,7 @@ class AdminEtapaController extends Controller
             Session::put('mensagem', "A etapa " . $etapa->etapa . " foi criada com sucesso!");
             return redirect()->route('admin.etapa');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '157');
         }
     }
 
@@ -86,7 +86,7 @@ class AdminEtapaController extends Controller
             $etapa = Etapa::find($id);
             return view('admin.etapa.editar', compact('etapa'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '158');
         }
     }
 
@@ -107,7 +107,7 @@ class AdminEtapaController extends Controller
             Session::put('mensagem', "A etapa " . $etapa->etapa . " foi editada com sucesso!");
             return redirect()->route('admin.etapa');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '159');
         }
     }
 
@@ -125,7 +125,7 @@ class AdminEtapaController extends Controller
             Session::put('mensagem', "A etapa " . $etapa->etapa . " foi deletada com sucesso!");
             return redirect()->route('admin.etapa');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '159.1');
         }
     }
 }

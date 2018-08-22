@@ -43,7 +43,7 @@ class AdminProjetoController extends Controller
             $quantidade = count(Projeto::all()->where('tipo', '=', 'normal'));
             return view('admin.projeto.home', compact('projetos', 'quantidade'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '180');
         }
     }
 
@@ -54,7 +54,7 @@ class AdminProjetoController extends Controller
             $escolas = Escola::all();
             return view("admin.projeto.cadastro", compact('disciplinas', 'escolas', 'categorias'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '181');
         }
     }
 
@@ -68,7 +68,7 @@ class AdminProjetoController extends Controller
             $this->projetoController->store($dataForm);
             return redirect()->route("admin.projeto");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '182');
         }
     }
 
@@ -81,7 +81,7 @@ class AdminProjetoController extends Controller
             $professores = Professor::all()->where('projeto_id', '=', $projeto->id);
             return view("admin.projeto.show", compact('projeto', 'alunos', 'professores'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '183');
         }
     }
 
@@ -93,7 +93,7 @@ class AdminProjetoController extends Controller
             $quantidade = count(Projeto::all()->where('tipo', '=', 'normal'));
             return view('admin.projeto.home', compact('projetos', 'quantidade'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '184');
         }
     }
 
@@ -105,7 +105,7 @@ class AdminProjetoController extends Controller
             $titulo = 'Editar projeto: ' . $projeto->titulo;
             return view("admin.projeto.editar", compact('projeto', 'titulo', 'disciplinas'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '185');
         }
     }
 
@@ -116,7 +116,7 @@ class AdminProjetoController extends Controller
             $this->projetoController->update($dataForm, $id);
             return redirect()->route("admin.projeto");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '186');
         }
     }
 
@@ -125,7 +125,7 @@ class AdminProjetoController extends Controller
         try {
             $this->projetoController->destroy($id);
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '187');
         }
     }
 
@@ -137,7 +137,7 @@ class AdminProjetoController extends Controller
             Session::put('mensagem', 'O projeto ' . $projeto->titulo . ' foi rebaixado para suplente com sucesso!');
             return redirect()->route("admin.projeto");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '188');
         }
     }
 
@@ -148,7 +148,7 @@ class AdminProjetoController extends Controller
             $projeto = Projeto::findOrFail($id);
             return view('admin.projeto.vincular-avaliador', compact('avaliadores', 'projeto'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '189');
         }
 
     }
@@ -170,7 +170,7 @@ class AdminProjetoController extends Controller
             $projeto->save();
             return redirect()->route("admin.projeto");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '189.1');
         }
     }
 
@@ -190,7 +190,7 @@ class AdminProjetoController extends Controller
 
             return response()->json($categoria);
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '189.2');
         }
 
     }
@@ -205,7 +205,7 @@ class AdminProjetoController extends Controller
                 ->get();
             return response()->json($alunos);
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '189.3');
         }
     }
 
@@ -218,7 +218,7 @@ class AdminProjetoController extends Controller
                 ->get();
             return response()->json($professores);
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(100, '189.4');
         }
     }
 
