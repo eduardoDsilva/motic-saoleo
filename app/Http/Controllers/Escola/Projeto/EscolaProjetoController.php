@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Validator;
 
 class EscolaProjetoController extends Controller
 {
@@ -47,7 +48,8 @@ class EscolaProjetoController extends Controller
             //retorno para a view escola.projeto.home com os projeos
             return view('escola.projeto.home', compact('projetos'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
         }
     }
 
@@ -89,7 +91,8 @@ class EscolaProjetoController extends Controller
             //retornando para a view escola.projeto.cadastro com as informações acima
             return view("escola.projeto.cadastro", compact('disciplinas', 'escola', 'categorias', 'professores'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
         }
     }
 
@@ -101,12 +104,29 @@ class EscolaProjetoController extends Controller
         try {
             //recebo os dados por request e insiro o escola_id artificialmente
             $dataForm = $request->all() + ['escola_id' => Auth::user()->escola->id];
+
+            $validator = Validator::make($request->all(), [
+                'resumo'            => 'required|between:50,3000',
+
+                'resumo.required'       => 'Insira um resumo',
+                'resumo.between'        => 'O resumo deve ter entre 50 e 3000 caracteres',
+            ]);
+
+            //se o validador falhar...
+            if ($validator->fails()) {
+                //retorna para a rota 'escola.config.alterar-senha'
+                return redirect()->route('escola.projeto.create')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
             //passo o dataForm para o store de projetoController
             $this->projetoController->store($dataForm);
             //redireciono para a rota de escola.projeto
             return redirect()->route("escola.projeto");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
         }
 
     }
@@ -126,7 +146,8 @@ class EscolaProjetoController extends Controller
             //retorno para a view escola.projeto.show
             return view("escola.projeto.show", compact('projeto', 'alunos', 'professores'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
         }
     }
 
@@ -145,7 +166,8 @@ class EscolaProjetoController extends Controller
             return view("escola.projeto.editar", compact('projeto', 'titulo', 'disciplinas'));
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
         }
     }
 
@@ -157,12 +179,28 @@ class EscolaProjetoController extends Controller
         try {
             //recebo os dados por request
             $dataForm = $request->all();
+            $validator = Validator::make($dataForm, [
+                'resumo'            => 'required|between:50,3000',
+
+                'resumo.required'       => 'Insira um resumo',
+                'resumo.between'        => 'O resumo deve ter entre 50 e 3000 caracteres',
+            ]);
+
+            //se o validador falhar...
+            if ($validator->fails()) {
+                //retorna para a rota 'escola.projeto.edit'
+                return redirect()->route('escola.projeto.edit', $id)
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
             //passo o dataForm e o id por parametro
             $this->projetoController->update($dataForm, $id);
             //redireciono para o escola.projeto
             return redirect()->route("escola.projeto");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
         }
     }
 
@@ -176,7 +214,8 @@ class EscolaProjetoController extends Controller
             //retornando para a vire escola.projeto.home
             return view('escola.projeto.home', compact('projetos'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
         }
     }
 
@@ -192,7 +231,8 @@ class EscolaProjetoController extends Controller
             $this->projetoController->destroy($id);
             //por ser uma requisição em AJAX, não preciso retornar para a tela. O JQuery irá atualizar a tela.
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
         }
     }
 
@@ -210,7 +250,8 @@ class EscolaProjetoController extends Controller
             //retorno as informações por ajax em json
             return response()->json($alunos);
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
         }
     }
 

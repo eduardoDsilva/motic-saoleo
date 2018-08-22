@@ -35,7 +35,8 @@ class EscolaAlunoController extends Controller
             //retorna os alunos para a view de "escola.aluno.home'.
             return view('escola.aluno.home', compact('alunos'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
         }
     }
 
@@ -50,9 +51,9 @@ class EscolaAlunoController extends Controller
             //inicializa um array chamado ano vazio.
             $ano = [];
             //no primeiro foreach, pego as categorias da escola.
-            foreach($escola->categoria as $categoria){
+            foreach ($escola->categoria as $categoria) {
                 //quando pega a primeira categoria, procuro a etapa dentro desta categoria da escola.
-                foreach($categoria->etapa as $etapa){
+                foreach ($categoria->etapa as $etapa) {
                     //pega o nome da etapa e guarda dentro do array 'ano'.
                     $ano[] = $etapa;
                 }
@@ -60,8 +61,8 @@ class EscolaAlunoController extends Controller
             //retorna para a view escola.aluno.cadastro a collection da escola e as etapadas da escola no array 'ano'
             return view('escola.aluno.cadastro', compact('escola', 'ano'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-        }
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');        }
     }
 
     public function store(AlunoCreateFormRequest $request)
@@ -77,8 +78,8 @@ class EscolaAlunoController extends Controller
             //se tudo estiver ok, é encaminhado para a rota "escola.aluno".
             return redirect()->route("escola.aluno");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-        }
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');        }
     }
 
     public function show($id)
@@ -90,8 +91,8 @@ class EscolaAlunoController extends Controller
             //retorna para a view "escola.aluno.show" com a collection de "aluno".
             return view('escola.aluno.show', compact('aluno'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-        }
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');        }
     }
 
     public function edit($id)
@@ -109,9 +110,9 @@ class EscolaAlunoController extends Controller
             //inicia um array de "ano".
             $ano = [];
             //no primeiro foreach, pego as categorias da escola.
-            foreach($escola->categoria as $categoria){
+            foreach ($escola->categoria as $categoria) {
                 //quando pega a primeira categoria, procuro a etapa dentro desta categoria da escola.
-                foreach($categoria->etapa as $etapa){
+                foreach ($categoria->etapa as $etapa) {
                     //pega o nome da etapa e guarda dentro do array 'ano'.
                     $ano[] = $etapa;
                 }
@@ -119,8 +120,8 @@ class EscolaAlunoController extends Controller
             //encaminha para a view "escola.aluno.cadastro" com a escola, ano e o aluno a ser editado.
             return view('escola.aluno.cadastro', compact('escola', 'ano', 'aluno'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-        }
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');        }
     }
 
     public function update(AlunoUpdateFormRequest $request, $id)
@@ -136,8 +137,8 @@ class EscolaAlunoController extends Controller
             //redireciono para a rota "escola.aluno" com os alunos da escola.
             return redirect()->route("escola.aluno");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-        }
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');        }
     }
 
     public function filtrar(Request $request)
@@ -166,8 +167,8 @@ class EscolaAlunoController extends Controller
             $this->alunoController->destroy($id);
             //por ser uma requisição em AJAX, não preciso retornar para a tela. O JQuery irá atualizar a tela.
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-        }
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');        }
     }
 
 }

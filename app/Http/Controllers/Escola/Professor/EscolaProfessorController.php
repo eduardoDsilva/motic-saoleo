@@ -35,8 +35,8 @@ class EscolaProfessorController extends Controller
             //retorno para a view escola.professor.home com os professores
             return view("escola.professor.home", compact('professores'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-        }
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');         }
     }
 
     public function create()
@@ -50,8 +50,8 @@ class EscolaProfessorController extends Controller
             //retorno para a view escola.professor.cadastro com a escola logada
             return view('escola.professor.cadastro', compact('escola'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-        }
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');         }
     }
 
     public function store(ProfessorCreateFormRequest $request)
@@ -67,8 +67,8 @@ class EscolaProfessorController extends Controller
             //redireciono para a rota escola.professor
             return redirect()->route("escola.professor");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-        }
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');         }
     }
 
     public function show($id)
@@ -80,7 +80,8 @@ class EscolaProfessorController extends Controller
             //retorno para a view escola.professor.show com o professor recebido por paremetro
             return view("escola.professor.show", compact('professor'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
         }
     }
 
@@ -98,7 +99,8 @@ class EscolaProfessorController extends Controller
             //retorno para a view escola.professor.cadastro com as seguintes informações
             return view("escola.professor.cadastro", compact('professor', 'titulo', 'escola'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
         }
     }
 
@@ -112,7 +114,9 @@ class EscolaProfessorController extends Controller
             //retorno o resultado o filtro para a view escola.professor.home
             return view('escola.professor.home', compact('professores'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());        }
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+        }
     }
 
     public function update(ProfessorUpdateFormRequest $request, $id)
@@ -130,7 +134,8 @@ class EscolaProfessorController extends Controller
             //redireciono para a rota escola.professor
             return redirect()->route("escola.professor");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
         }
     }
 
@@ -146,7 +151,8 @@ class EscolaProfessorController extends Controller
             $this->professorController->destroy($id);
             //nao passo nenhuma rota ou view pois o metodo de destroy é por meio de AJAX, logo a pagina é atualizada dinamicamente pelo JS
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
+            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
         }
     }
 
