@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Aluno;
+use App\Categoria;
 use App\Escola;
 use App\Professor;
 use App\Projeto;
@@ -85,8 +86,7 @@ class ProjetoController extends Controller
             //defino uam mensagem de sucesso
             Session::put('mensagem', "O projeto " . $projeto->titulo . " foi salvo com sucesso!");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-
+            return abort(1000, '1400');
         }
     }
 
@@ -115,8 +115,7 @@ class ProjetoController extends Controller
             }
             return $projetos;
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-
+            return abort(1000, '1410');
         }
     }
 
@@ -137,7 +136,7 @@ class ProjetoController extends Controller
             //insiro uma mensagem de sucesso
             Session::put('mensagem', "O projeto " . $projeto->titulo . " foi editado com sucesso!");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(1000, '1420');
         }
     }
 
@@ -155,8 +154,7 @@ class ProjetoController extends Controller
             Session::put('mensagem', "O projeto " . $projeto->titulo . " foi deletado com sucesso!");
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-
+            return abort(1000, '1430');
         }
     }
 

@@ -27,7 +27,7 @@ class AvaliadorController extends Controller
             //retorno para a view avaliador.home
             return view('avaliador.home');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(400, '400');
         }
     }
 }

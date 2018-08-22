@@ -48,8 +48,7 @@ class EscolaProjetoController extends Controller
             //retorno para a view escola.projeto.home com os projeos
             return view('escola.projeto.home', compact('projetos'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '250');
         }
     }
 
@@ -91,8 +90,7 @@ class EscolaProjetoController extends Controller
             //retornando para a view escola.projeto.cadastro com as informações acima
             return view("escola.projeto.cadastro", compact('disciplinas', 'escola', 'categorias', 'professores'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '251');
         }
     }
 
@@ -125,8 +123,7 @@ class EscolaProjetoController extends Controller
             //redireciono para a rota de escola.projeto
             return redirect()->route("escola.projeto");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '252');
         }
 
     }
@@ -146,8 +143,7 @@ class EscolaProjetoController extends Controller
             //retorno para a view escola.projeto.show
             return view("escola.projeto.show", compact('projeto', 'alunos', 'professores'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '253');
         }
     }
 
@@ -166,8 +162,7 @@ class EscolaProjetoController extends Controller
             return view("escola.projeto.editar", compact('projeto', 'titulo', 'disciplinas'));
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '254');
         }
     }
 
@@ -199,8 +194,7 @@ class EscolaProjetoController extends Controller
             //redireciono para o escola.projeto
             return redirect()->route("escola.projeto");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '255');
         }
     }
 
@@ -214,8 +208,7 @@ class EscolaProjetoController extends Controller
             //retornando para a vire escola.projeto.home
             return view('escola.projeto.home', compact('projetos'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '256');
         }
     }
 
@@ -231,8 +224,7 @@ class EscolaProjetoController extends Controller
             $this->projetoController->destroy($id);
             //por ser uma requisição em AJAX, não preciso retornar para a tela. O JQuery irá atualizar a tela.
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '257');
         }
     }
 
@@ -250,8 +242,7 @@ class EscolaProjetoController extends Controller
             //retorno as informações por ajax em json
             return response()->json($alunos);
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '258');
         }
     }
 

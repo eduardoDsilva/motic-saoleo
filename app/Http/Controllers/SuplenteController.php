@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Aluno;
+use App\Categoria;
 use App\Escola;
 use App\Professor;
 use App\Projeto;
@@ -70,8 +71,7 @@ class SuplenteController extends Controller
 
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-
+            return abort(1000, '1500');
         }
     }
 
@@ -100,8 +100,7 @@ class SuplenteController extends Controller
             }
             return $projetos;
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-
+            return abort(1000, '1510');
         }
     }
 
@@ -118,8 +117,7 @@ class SuplenteController extends Controller
             Session::put('mensagem', "O projeto suplente " . $projeto->titulo . " foi editado com sucesso!");
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-
+            return abort(1000, '1520');
         }
     }
 
@@ -133,8 +131,7 @@ class SuplenteController extends Controller
             Session::put('mensagem', "O projeto suplente " . $projeto->titulo . " foi deletado com sucesso!");
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-
+            return abort(1000, '1530');
         }
     }
 

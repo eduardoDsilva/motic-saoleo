@@ -35,8 +35,7 @@ class EscolaAlunoController extends Controller
             //retorna os alunos para a view de "escola.aluno.home'.
             return view('escola.aluno.home', compact('alunos'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '210');
         }
     }
 
@@ -61,8 +60,8 @@ class EscolaAlunoController extends Controller
             //retorna para a view escola.aluno.cadastro a collection da escola e as etapadas da escola no array 'ano'
             return view('escola.aluno.cadastro', compact('escola', 'ano'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');        }
+            return abort(200, '211');
+        }
     }
 
     public function store(AlunoCreateFormRequest $request)
@@ -78,8 +77,8 @@ class EscolaAlunoController extends Controller
             //se tudo estiver ok, é encaminhado para a rota "escola.aluno".
             return redirect()->route("escola.aluno");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');        }
+            return abort(200, '212');
+        }
     }
 
     public function show($id)
@@ -91,8 +90,8 @@ class EscolaAlunoController extends Controller
             //retorna para a view "escola.aluno.show" com a collection de "aluno".
             return view('escola.aluno.show', compact('aluno'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');        }
+            return abort(200, '213');
+        }
     }
 
     public function edit($id)
@@ -120,8 +119,8 @@ class EscolaAlunoController extends Controller
             //encaminha para a view "escola.aluno.cadastro" com a escola, ano e o aluno a ser editado.
             return view('escola.aluno.cadastro', compact('escola', 'ano', 'aluno'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');        }
+            return abort(200, '214');
+        }
     }
 
     public function update(AlunoUpdateFormRequest $request, $id)
@@ -137,8 +136,8 @@ class EscolaAlunoController extends Controller
             //redireciono para a rota "escola.aluno" com os alunos da escola.
             return redirect()->route("escola.aluno");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');        }
+            return abort(200, '215');
+        }
     }
 
     public function filtrar(Request $request)
@@ -151,7 +150,8 @@ class EscolaAlunoController extends Controller
             //retorno para a view "escola.aluno.home" com os alunos retornados do filtro.
             return view('escola.aluno.home', compact('alunos'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(200, '216');
+
         }
     }
 
@@ -167,8 +167,8 @@ class EscolaAlunoController extends Controller
             $this->alunoController->destroy($id);
             //por ser uma requisição em AJAX, não preciso retornar para a tela. O JQuery irá atualizar a tela.
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');        }
+            return abort(200, '217');
+        }
     }
 
 }

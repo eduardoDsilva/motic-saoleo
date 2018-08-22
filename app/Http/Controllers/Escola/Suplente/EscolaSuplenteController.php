@@ -48,8 +48,7 @@ class EscolaSuplenteController extends Controller
 
             return view('escola.suplente.home', compact('projetos'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '260');
         }
     }
 
@@ -90,10 +89,10 @@ class EscolaSuplenteController extends Controller
             //retornando para a view escola.suplente.cadastro com as informações acima
             return view("escola.suplente.cadastro", compact('disciplinas', 'escola', 'categorias', 'professores'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '261');
         }
     }
+
 
     public function store(Request $request)
     {
@@ -105,10 +104,10 @@ class EscolaSuplenteController extends Controller
             $dataForm = $request->all() + ['escola_id' => Auth::user()->escola->id] + ['tipo' => 'suplente'];
 
             $validator = Validator::make($request->all(), [
-                'resumo'            => 'required|between:50,3000',
+                'resumo' => 'required|between:50,3000',
 
-                'resumo.required'       => 'Insira um resumo',
-                'resumo.between'        => 'O resumo deve ter entre 50 e 3000 caracteres',
+                'resumo.required' => 'Insira um resumo',
+                'resumo.between' => 'O resumo deve ter entre 50 e 3000 caracteres',
             ]);
 
             //se o validador falhar...
@@ -124,11 +123,10 @@ class EscolaSuplenteController extends Controller
             //redireciono para a rota de escola.projeto
             return redirect()->route("escola.suplente");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '262');
         }
-
     }
+
 
     public function show($id)
     {
@@ -145,10 +143,10 @@ class EscolaSuplenteController extends Controller
             //retorno para a view escola.projeto.show
             return view("escola.suplente.show", compact('projeto', 'alunos', 'professores'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '263');
         }
     }
+
 
     public function edit($id)
     {
@@ -164,10 +162,10 @@ class EscolaSuplenteController extends Controller
             //retornando para a view escola.suplente.editar
             return view("escola.suplente.editar", compact('projeto', 'titulo', 'disciplinas'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '264');
         }
     }
+
 
     public function filtrar(Request $request)
     {
@@ -179,10 +177,10 @@ class EscolaSuplenteController extends Controller
             //retornando para a vire escola.projeto.home
             return view('escola.suplente.home', compact('projetos'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '265');
         }
     }
+
 
     public function update(Request $request, $id)
     {
@@ -193,10 +191,10 @@ class EscolaSuplenteController extends Controller
             //recebo os dados por request
             $dataForm = $request->all();
             $validator = Validator::make($dataForm, [
-                'resumo'            => 'required|between:50,3000',
+                'resumo' => 'required|between:50,3000',
 
-                'resumo.required'       => 'Insira um resumo',
-                'resumo.between'        => 'O resumo deve ter entre 50 e 3000 caracteres',
+                'resumo.required' => 'Insira um resumo',
+                'resumo.between' => 'O resumo deve ter entre 50 e 3000 caracteres',
             ]);
 
             //se o validador falhar...
@@ -211,10 +209,10 @@ class EscolaSuplenteController extends Controller
             //redireciono para o escola.projeto
             return redirect()->route("escola.suplente");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '266');
         }
     }
+
 
     public function destroy($id)
     {
@@ -228,10 +226,10 @@ class EscolaSuplenteController extends Controller
             $this->projetoController->destroy($id);
             //por ser uma requisição em AJAX, não preciso retornar para a tela. O JQuery irá atualizar a tela.
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '267');
         }
     }
+
 
     public function alunos()
     {
@@ -247,9 +245,9 @@ class EscolaSuplenteController extends Controller
             //retorno as informações por ajax em json
             return response()->json($alunos);
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(200, '268');
         }
     }
+
 
 }

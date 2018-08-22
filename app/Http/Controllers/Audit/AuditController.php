@@ -26,7 +26,7 @@ class AuditController
             //retorno para a view 'admin.auditoria.home'.
             return view('admin.auditoria.home', compact('auditorias'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(1000, '1600');
         }
     }
 
@@ -37,7 +37,7 @@ class AuditController
             //retorno para a view 'admin.auditoria.usuarios'
             return view('admin.auditoria.usuarios', compact('accesses'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(1000, '1610');
         }
     }
 
@@ -49,7 +49,7 @@ class AuditController
             $accesses = Access::where('user_id', '=', $usuario->id)->paginate(10);
             return view('admin.auditoria.usuarios', compact('accesses'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(1000, '1620');
         }
     }
 
@@ -60,17 +60,16 @@ class AuditController
             //encaminho para a view admin.auditoria.relatorios
             return view('admin.auditoria.relatorios', compact('usuarios'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(1000, '1630');
         }
     }
-
     public function export()
     {
         try {
             //chamo o metodo download do Excel com base na classe InvoicesExport
             return Excel::download(new InvoicesExport, 'audit.xlsx');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(1000, '1640');
         }
     }
 
@@ -80,7 +79,7 @@ class AuditController
             //chamo o metodo download do Excel com base na classe InvoicesExportByUser
             return Excel::download(new InvoicesExportByUser($id), 'audit-user:'.$id.'.xlsx');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(1000, '1650');
         }
     }
 
@@ -100,7 +99,7 @@ class AuditController
             }
             return view('admin.auditoria.relatorios', compact('usuarios', 'modal2'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(1000, '1660');
         }
     }
 
@@ -123,7 +122,7 @@ class AuditController
             }
             return view('admin.auditoria.home', compact('auditorias'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(1000, '1670');
         }
     }
 

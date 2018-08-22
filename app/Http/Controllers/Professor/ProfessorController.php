@@ -28,7 +28,8 @@ class ProfessorController extends Controller
             //encaminho para a view professor.home
             return view('professor.home');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(300, '300');
         }
     }
+
 }

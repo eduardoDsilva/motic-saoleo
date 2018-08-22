@@ -24,10 +24,8 @@ class ProfessorProjetoController extends Controller
             //encaminho para a view professor.projeto.home com o projeto encontrado
             return view('professor.projeto.home', compact('projeto'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');
+            return abort(300, '320');
         }
-
     }
 
 }

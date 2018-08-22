@@ -27,7 +27,7 @@ class AvaliadorContaController extends Controller
             //retorna para a vire professor.conta.home
             return view('avaliador/conta/mudar-senha');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(400, '410');
         }
     }
 
@@ -37,7 +37,7 @@ class AvaliadorContaController extends Controller
             //retorna para a view professor.config.mudar-senha
             return view('avaliador/conta/mudar-senha');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(400, '411');
         }
     }
 
@@ -88,7 +88,7 @@ class AvaliadorContaController extends Controller
             //retorna pra rota 'escola.config.alterar-senha
             return redirect()->route('avaliador.config.alterar-senha');
         } catch(\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(400, '412');
         }
     }
 

@@ -31,7 +31,8 @@ class EscolaController extends Controller
             //chamando a view 'escola.home' com a variavel 'dia'
             return view('escola.home', compact('dia'));
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');         }
+            return abort(200, '200');
+        }
     }
 }
+

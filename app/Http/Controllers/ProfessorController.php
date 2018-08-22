@@ -66,7 +66,7 @@ class ProfessorController extends Controller
 
             return $professores;
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(1000, '1300');
         }
     }
 
@@ -89,9 +89,10 @@ class ProfessorController extends Controller
             Session::put('mensagem', "O professor " . $user->name . " foi criado com sucesso!");
 
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(1000, '1310');
         }
     }
+
 
     public function update($dataForm, $id)
     {
@@ -109,9 +110,10 @@ class ProfessorController extends Controller
             //insere uma mensagem de sucesso
             Session::put('mensagem', "O professor " . $user->name . " foi editado com sucesso!");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(1000, '1320');
         }
     }
+
 
     public function destroy($id)
     {
@@ -123,8 +125,9 @@ class ProfessorController extends Controller
             //insere uma mensagem de sucesso
             Session::put('mensagem', "O professor ".$professor->name." foi deletado com sucesso!");
         } catch (\Exception $e) {
-            return "ERRO: " . $e->getMessage();
+            return abort(1000, '1330');
         }
     }
+
 
 }

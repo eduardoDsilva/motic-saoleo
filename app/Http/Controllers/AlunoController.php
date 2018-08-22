@@ -55,7 +55,7 @@ class AlunoController extends Controller
             }
             return $alunos;
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(1000, '1100');
         }
     }
 
@@ -69,14 +69,14 @@ class AlunoController extends Controller
             //retiro o 'categoria_id' do dataForm
             unset($dataForm['categoria_id']);
             //adiciono novamente um 'categoria_id' ao dataForm, porém, desta vez com o ID da categoria.
-            $dataForm['categoria_id'] = ['categoria_id' => $etapa->categoria->id];
+            $dataForm += ['categoria_id' => $etapa->categoria->id];
             //rodo o comando Aluno::create com base no $dataForm
             $aluno = Aluno::create($dataForm);
 
             //insiro uma mensagem de sucesso
             Session::put('mensagem', "O aluno " . $aluno->name . " foi cadastrado com sucesso!");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(1000, '1110');
         }
     }
 
@@ -99,7 +99,7 @@ class AlunoController extends Controller
             Session::put('mensagem', "O aluno " . $aluno->name . " foi editado com sucesso!");
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(1000, '1120');
         }
     }
 
@@ -113,7 +113,7 @@ class AlunoController extends Controller
             //insiro uma mensagem de sucesso
             Session::put('mensagem', "O aluno " . $aluno->name . " foi deletado com sucesso!");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(1000, '1130');
         }
     }
 

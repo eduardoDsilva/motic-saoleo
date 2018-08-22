@@ -27,7 +27,7 @@ class ProfessorContaController extends Controller
             //retorna para a vire professor.conta.home
             return view('professor.conta.home');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(300, '310');
         }
     }
 
@@ -37,7 +37,7 @@ class ProfessorContaController extends Controller
             //retorna para a view professor.config.mudar-senha
             return view('professor.config.mudar-senha');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());return abort(403, '' . $e->getMessage());
+            return abort(300, '311');
         }
     }
 
@@ -89,8 +89,7 @@ class ProfessorContaController extends Controller
             //retorna pra rota 'escola.config.alterar-senha
             return redirect()->route('professor.config.alterar-senha');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-
+            return abort(300, '312');
         }
     }
 

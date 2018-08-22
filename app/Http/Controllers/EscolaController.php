@@ -46,8 +46,7 @@ class EscolaController extends Controller
             }
             return $escolas;
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-
+            return abort(1000, '1200');
         }
     }
 
@@ -77,10 +76,8 @@ class EscolaController extends Controller
             //mensagem de sucesso
             Session::put('mensagem', "A escola " . $escola->name . " foi cadastrada com sucesso!");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-
+            return abort(1000, '1210');
         }
-
     }
 
     public function update($dataForm, $id)
@@ -109,7 +106,7 @@ class EscolaController extends Controller
             Session::put('mensagem', "A escola " . $escola->name . " foi editada com sucesso!");
 
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(1000, '1220');
         }
     }
 
@@ -123,7 +120,7 @@ class EscolaController extends Controller
             //insiro uma mensagem de sucesso
             Session::put('mensagem', "A escola " . $escola->name . " foi deletada com sucesso!");
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
+            return abort(1000, '1230');
         }
     }
 

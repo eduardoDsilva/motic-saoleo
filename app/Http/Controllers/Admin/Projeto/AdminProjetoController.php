@@ -60,8 +60,11 @@ class AdminProjetoController extends Controller
 
     public function store(Request $request)
     {
-        $dataForm = $request->all();
         try {
+            $dataForm = $request->all();
+            if(!(isset($dataForm['orientador']))){
+                return redirect()->route('escola.projeto.cadastro');
+            }
             $this->projetoController->store($dataForm);
             return redirect()->route("admin.projeto");
         } catch (\Exception $e) {

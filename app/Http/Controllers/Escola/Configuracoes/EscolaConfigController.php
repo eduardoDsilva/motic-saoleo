@@ -28,8 +28,8 @@ class EscolaConfigController extends Controller
             //retorna a view "escola.config.mudar-senha"
             return view('escola.config.mudar-senha');
         } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');         }
+            return abort(200, '220');
+        }
     }
 
     public function alteraSenha(Request $request){
@@ -82,8 +82,8 @@ class EscolaConfigController extends Controller
             //retorna pra rota 'escola.config.alterar-senha
             return redirect()->route('escola.config.alterar-senha');
         } catch(\Exception $e) {
-            return abort(403, '' . $e->getMessage() . ' - Você não deveria estar aqui. Entre em contato com
-            a administração da MOTIC informando este problema, preferencialmente com uma foto. Desculpem-nos o incômodo.');         }
+            return abort(200, '221');
+         }
     }
 
 }
