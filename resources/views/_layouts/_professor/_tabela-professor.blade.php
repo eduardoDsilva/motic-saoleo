@@ -60,4 +60,4 @@
     @endforelse
     </tbody>
 </table>
-{{$professores->links()}}
+{{ $professores->appends(request()->input())->links() }}

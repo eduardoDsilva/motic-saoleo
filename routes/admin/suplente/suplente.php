@@ -16,7 +16,7 @@ Route::group(['prefix' => 'admin/suplente', 'namespace' => 'Admin\Suplente'], fu
 
     Route::post('update/{id}', ['as' => 'admin.suplente.update', 'uses' => 'AdminSuplenteController@update']);
 
-    Route::post('filtrar', ['as' => 'admin.suplente.filtrar', 'uses' => 'AdminSuplenteController@filtrar']);
+    Route::any('filtrar', ['as' => 'admin.suplente.filtrar', 'uses' => 'AdminSuplenteController@filtrar']);
 
     Route::post('store', ['as' => 'admin.suplente.store', 'uses' => 'AdminSuplenteController@store']);
 

@@ -14,7 +14,7 @@ Route::group(['prefix' => 'admin/aluno', 'namespace' => 'Admin\Aluno'], function
 
     Route::post('update/{id}', ['as' => 'admin.aluno.update', 'uses' => 'AdminAlunoController@update']);
 
-    Route::post('filtrar', ['as' => 'admin.aluno.filtrar', 'uses' => 'AdminAlunoController@filtrar']);
+    Route::any('filtrar', ['as' => 'admin.aluno.filtrar', 'uses' => 'AdminAlunoController@filtrar']);
 
     Route::post('relatorio-filtrar', ['as' => 'admin.aluno.relatorios.filtrar', 'uses' => 'AdminAlunoRelatorioController@filtrar']);
 

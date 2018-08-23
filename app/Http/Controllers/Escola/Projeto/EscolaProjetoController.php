@@ -62,7 +62,6 @@ class EscolaProjetoController extends Controller
             $disciplinas = Disciplina::all();
             //procuro a escola atual logada no sistema
             $escola = Escola::findOrFail(Auth::user()->escola->id);
-
             /* os projetos que:
              *sejam de 2018
              *sejam da escola atual logada no sistema

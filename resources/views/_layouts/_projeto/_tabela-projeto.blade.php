@@ -64,4 +64,4 @@
     @endforelse
     </tbody>
 </table>
-{{$projetos->links()}}
+{{ $projetos->appends(request()->input())->links() }}

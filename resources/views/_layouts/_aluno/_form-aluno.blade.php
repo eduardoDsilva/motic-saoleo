@@ -13,8 +13,8 @@
         <div class="input-field col s12 m6 l6">
             <i class="material-icons prefix">today</i>
             <input type="text" class="datepicker" name="nascimento"
-                   value="{{$aluno->nascimento or old('nascimento')}}">
-            <label for="nascimento">Nascimento</label>
+                   value="{{$aluno->nascimento or old('nascimento')}}" required>
+            <label for="nascimento">Nascimento *</label>
         </div>
 
     </div>

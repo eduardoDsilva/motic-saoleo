@@ -14,7 +14,7 @@ Route::group(['prefix' => 'escola/suplente', 'namespace' => 'Escola\Suplente'], 
 
     Route::post('update/{id}', ['as' => 'escola.suplente.update', 'uses' => 'EscolaSuplenteController@update']);
 
-    Route::post('filtrar', ['as' => 'escola.suplente.filtrar', 'uses' => 'EscolaSuplenteController@filtrar']);
+    Route::any('filtrar', ['as' => 'escola.suplente.filtrar', 'uses' => 'EscolaSuplenteController@filtrar']);
 
     Route::post('store', ['as' => 'escola.suplente.store', 'uses' => 'EscolaSuplenteController@store']);
 

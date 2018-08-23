@@ -66,7 +66,7 @@ class ProfessorPolicy
      */
     public function update(User $user, Professor $professor)
     {
-        return $professor->escola_id == $user->escola->id;
+        //
     }
 
     /**

@@ -46,4 +46,4 @@
     @endforelse
     </tbody>
 </table>
-{{$avaliadores->links()}}
+{{ $avaliadores->appends(request()->input())->links() }}

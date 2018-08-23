@@ -40,4 +40,4 @@
     @endforelse
     </tbody>
 </table>
-{{$escolas->links()}}
+{{ $escolas->appends(request()->input())->links() }}

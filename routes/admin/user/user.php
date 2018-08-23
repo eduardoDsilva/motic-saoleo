@@ -16,7 +16,7 @@ Route::group(['prefix' => 'admin/user', 'namespace' => 'Admin\Usuario'], functio
 
     Route::post('update/{id}', ['as' => 'admin.user.update', 'uses' => 'AdminUserController@update']);
 
-    Route::post('filtrar', ['as' => 'admin.user.filtrar', 'uses' => 'AdminUserController@filtrar']);
+    Route::any('filtrar', ['as' => 'admin.user.filtrar', 'uses' => 'AdminUserController@filtrar']);
 
     Route::post('store', ['as' => 'admin.user.store', 'uses' => 'AdminUserController@store']);
 

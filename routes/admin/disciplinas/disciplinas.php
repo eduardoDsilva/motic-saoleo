@@ -13,7 +13,7 @@ Route::group(['prefix' => 'admin/disciplina', 'namespace' => 'Admin\Disciplina']
 
     Route::post('update/{id}', ['as' => 'admin.disciplina.update', 'uses' => 'AdminDisciplinaController@update']);
 
-    Route::post('filtrar', ['as' => 'admin.disciplina.filtrar', 'uses' => 'AdminDisciplinaController@filtrar']);
+    Route::any('filtrar', ['as' => 'admin.disciplina.filtrar', 'uses' => 'AdminDisciplinaController@filtrar']);
 
     Route::post('store', ['as' => 'admin.disciplina.store', 'uses' => 'AdminDisciplinaController@store']);
 

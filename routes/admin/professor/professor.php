@@ -14,7 +14,7 @@ Route::group(['prefix' => 'admin/professor', 'namespace' => 'Admin\Professor'], 
 
     Route::post('update/{id}', ['as' => 'admin.professor.update', 'uses' => 'AdminProfessorController@update']);
 
-    Route::post('filtrar', ['as' => 'admin.professor.filtrar', 'uses' => 'AdminProfessorController@filtrar']);
+    Route::any('filtrar', ['as' => 'admin.professor.filtrar', 'uses' => 'AdminProfessorController@filtrar']);
 
     Route::post('store', ['as' => 'admin.professor.store', 'uses' => 'AdminProfessorController@store']);
 

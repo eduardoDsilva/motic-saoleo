@@ -25,7 +25,6 @@
             <div class="row">
                 @includeIf('_layouts._auditoria._tabela-auditoria')
             </div>
-            {{$auditorias->links()}}
         </div>
     </div>
 

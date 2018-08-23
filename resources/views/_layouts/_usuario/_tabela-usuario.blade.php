@@ -45,4 +45,4 @@
     @endforelse
     </tbody>
 </table>
-{{$users->links()}}
+{{ $users->appends(request()->input())->links() }}

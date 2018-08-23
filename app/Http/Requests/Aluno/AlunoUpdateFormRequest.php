@@ -26,7 +26,7 @@ class AlunoUpdateFormRequest extends FormRequest
     {
         return [
             'name'                  => 'required|regex:/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/|between:3,100',
-            'nascimento'            => 'nullable|date_format:d-m-Y',
+            'nascimento'            => 'required|date_format:d-m-Y',
             'sexo'                  => ['required', Rule::in(['masculino', 'feminino']),],
             'escola_id'             => 'required|integer|exists:escolas,id',
             'categoria_id'          => 'required',
@@ -53,6 +53,7 @@ class AlunoUpdateFormRequest extends FormRequest
             'name.regex' => 'Insira um nome sem números!',
             'name.between' => 'Insira um nome entre entre 3 ou 100 caracteres!',
 
+            'nascimento.required' => 'O campo nascimento é de preenchimento obrigatório',
             'nascimento.date' => 'Insira uma data sem letras',
 
             'sexo.required' => 'O campo sexo é de preencimento obrigatório',

@@ -42,3 +42,5 @@
     @endforelse
     </tbody>
 </table>
+{{ $auditorias->appends(request()->input())->links() }}
+

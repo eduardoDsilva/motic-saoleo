@@ -82,6 +82,9 @@ class ProfessorController extends Controller
                 'tipoUser' => $dataForm['tipoUser'],
             ]);
             //rodar o comando de create para criar um professor
+            $nome = $dataForm['name'];
+            unset($dataForm['name']);
+            $dataForm += ['name' => ucwords(strtolower($nome))];
             Professor::create($dataForm + ['user_id' => $user->id]);
             //rodar o comando de create para criar um endereco
             Endereco::create($dataForm + ['user_id' => $user->id]);
@@ -101,6 +104,9 @@ class ProfessorController extends Controller
             $user = User::findOrFail($id);
             //busca o professor deste usuario
             $professor = $user->professor;
+            $nome = $dataForm['name'];
+            unset($dataForm['name']);
+            $dataForm += ['name' => ucwords(strtolower($nome))];
             //atualiza o professor com base no dataForm
             $professor->update($dataForm);
             //busca o endereco deste usuario

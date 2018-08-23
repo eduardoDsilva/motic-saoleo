@@ -14,7 +14,7 @@ Route::group(['prefix' => 'admin/avaliador', 'namespace' => 'Admin\Avaliador'], 
 
     Route::post('update/{id}', ['as' => 'admin.avaliador.update', 'uses' => 'AdminAvaliadorController@update']);
 
-    Route::post('filtrar', ['as' => 'admin.avaliador.filtrar', 'uses' => 'AdminAvaliadorController@filtrar']);
+    Route::any('filtrar', ['as' => 'admin.avaliador.filtrar', 'uses' => 'AdminAvaliadorController@filtrar']);
 
     Route::post('store', ['as' => 'admin.avaliador.store', 'uses' => 'AdminAvaliadorController@store']);
 

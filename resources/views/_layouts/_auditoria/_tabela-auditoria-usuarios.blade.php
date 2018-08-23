@@ -25,4 +25,4 @@
     @endforelse
     </tbody>
 </table>
-{{$accesses->links()}}
+{{ $accesses->appends(request()->input())->links() }}

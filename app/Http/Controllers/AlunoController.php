@@ -70,6 +70,9 @@ class AlunoController extends Controller
             unset($dataForm['categoria_id']);
             //adiciono novamente um 'categoria_id' ao dataForm, porém, desta vez com o ID da categoria.
             $dataForm += ['categoria_id' => $etapa->categoria->id];
+            $nome = $dataForm['name'];
+            unset($dataForm['name']);
+            $dataForm += ['name' => ucwords(strtolower($nome))];
             //rodo o comando Aluno::create com base no $dataForm
             $aluno = Aluno::create($dataForm);
 
@@ -93,6 +96,9 @@ class AlunoController extends Controller
             $dataForm += ['categoria_id' => $etapa->categoria->id];
             //procuro o Aluno baseado no id recebido por parametro
             $aluno = Aluno::findOrFail($id);
+            $nome = $dataForm['name'];
+            unset($dataForm['name']);
+            $dataForm += ['name' => ucwords(strtolower($nome))];
             //rodo o comando Aluno::update com base no $dataForm
             $aluno->update($dataForm);
             //insiro uma mensagem de sucesso

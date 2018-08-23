@@ -16,7 +16,7 @@ Route::group(['prefix' => 'admin/projeto', 'namespace' => 'Admin\Projeto'], func
 
     Route::post('update/{id}', ['as' => 'admin.projeto.update', 'uses' => 'AdminProjetoController@update']);
 
-    Route::post('filtrar', ['as' => 'admin.projeto.filtrar', 'uses' => 'AdminProjetoController@filtrar']);
+    Route::any('filtrar', ['as' => 'admin.projeto.filtrar', 'uses' => 'AdminProjetoController@filtrar']);
 
     Route::post('store', ['as' => 'admin.projeto.store', 'uses' => 'AdminProjetoController@store']);
 

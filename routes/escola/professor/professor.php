@@ -14,7 +14,7 @@ Route::group(['prefix' => 'escola/professor', 'namespace' => 'Escola\Professor']
 
     Route::post('update/{id}', ['as' => 'escola.professor.update', 'uses' => 'EscolaProfessorController@update']);
 
-    Route::post('filtrar', ['as' => 'escola.professor.filtrar', 'uses' => 'EscolaProfessorController@filtrar']);
+    Route::any('filtrar', ['as' => 'escola.professor.filtrar', 'uses' => 'EscolaProfessorController@filtrar']);
 
     Route::post('store', ['as' => 'escola.professor.store', 'uses' => 'EscolaProfessorController@store']);
 

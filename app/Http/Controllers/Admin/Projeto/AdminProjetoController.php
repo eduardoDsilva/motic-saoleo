@@ -51,7 +51,7 @@ class AdminProjetoController extends Controller
     {
         try {
             $disciplinas = Disciplina::all();
-            $escolas = Escola::all();
+            $escolas = Escola::orderBy('name', 'asc')->get();
             return view("admin.projeto.cadastro", compact('disciplinas', 'escolas', 'categorias'));
         } catch (\Exception $e) {
             return abort(100, '181');
@@ -186,7 +186,6 @@ class AdminProjetoController extends Controller
                 $categoria_id[] = $projeto->categoria_id;
             }
             $categoria = $escola->categoria->whereNotIn('id', $categoria_id);
-            //dd($categoria);
 
             return response()->json($categoria);
         } catch (\Exception $e) {
