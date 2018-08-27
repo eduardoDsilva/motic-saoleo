@@ -18,12 +18,11 @@
 
     <div class="section container col s12 m4 l8">
         <div class="card-panel">
-            @include('_layouts._mensagem-sucesso')
             <div class="row">
                 <div class="col s12 m12 l6">
                     <div class="card small red darken-4 hoverable">
                         <div class="card-content white-text">
-                            <span class="card-title">Todos os projetos suplentes de forma resumida</span>
+                            <span class="card-title">Todos os projetos suplentes</span>
                             <p>Para gerar um relatório de todos os projetos do sistema.</p>
                         </div>
                         <div class="card-action">
@@ -32,18 +31,7 @@
                     </div>
                 </div>
                 <div class="col s12 m12 l6">
-                    <div class="card small pink darken-4 hoverable">
-                        <div class="card-content white-text">
-                            <span class="card-title">Todos projetos suplentes completo</span>
-                            <p>Para gerar um relatório de todos os dados dos projetos suplentes do sistema</p>
-                        </div>
-                        <div class="card-action">
-                            <a class="btn" disabled href="">Relatório</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m12 l6">
-                    <div class="card small indigo darken-4 hoverable">
+                    <div class="card small green darken-4 hoverable">
                         <div class="card-content white-text">
                             <span class="card-title">Projetos suplentes por escola</span>
                             <p>Para gerar um relatório dos projetos suplentes de cada escola.</p>
@@ -57,7 +45,7 @@
                     <div class="card small blue darken-4 hoverable">
                         <div class="card-content white-text">
                             <span class="card-title">Projetos suplentes por categoria</span>
-                            <p>Para gerar um relatório dos projetos suplentes por categoria do sistema./p>
+                            <p>Para gerar um relatório dos projetos suplentes por categoria do sistema.</p>
                         </div>
                         <div class="card-action">
                             <button class="modal-trigger btn" disabled type="submit" data-target="modal1"
@@ -67,23 +55,10 @@
                     </div>
                 </div>
                 <div class="col s12 m12 l6">
-                    <div class="card small green darken-4 hoverable">
-                        <div class="card-content white-text">
-                            <span class="card-title">Projetos suplentes por disciplina</span>
-                            <p>Para gerar um relatório dos projetos suplentes por disciplinas do sistema./p>
-                        </div>
-                        <div class="card-action">
-                            <button class="modal-trigger btn" disabled type="submit" data-target="modal1"
-                                    href="#modal1">Relatório
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m12 l6">
-                    <div class="card small purple darken-4 hoverable">
+                    <div class="card small indigo darken-4 hoverable">
                         <div class="card-content white-text">
                             <span class="card-title">Projeto suplente individual</span>
-                            <p>Para gerar um relatório de um projeto suplente específico do sistema./p>
+                            <p>Para gerar um relatório de um projeto suplente específico do sistema.</p>
                         </div>
                         <div class="card-action">
                             <button class="modal-trigger btn" disabled type="submit" data-target="modal1"

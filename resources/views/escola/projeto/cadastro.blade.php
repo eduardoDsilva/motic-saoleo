@@ -10,10 +10,6 @@
 
 @section('content')
 
-    @if(Session::get('mensagem'))
-        @include('_layouts._mensagem-erro')
-    @endif
-
 @section('titulo-header', 'Cadastrar projeto')
 
 @section('conteudo-header', "- Os campos com ' * ' são de preenchimento obrigatório e deve-se selecionar exatamente 3 alunos.")
@@ -23,6 +19,7 @@
 <section class="section container">
     <div class="card-panel">
         <div class="row">
+            @includeIf('_layouts._mensagem-erro')
             <article class="col s12">
                 <form method="POST" enctype="multipart/form-data" action="{{ route('escola.projeto.store') }}">
 
@@ -32,12 +29,12 @@
                         <div class="input-field col s12 m12 l6">
                             <i class="material-icons prefix">perm_identity</i>
                             <label for="nome">Título *</label>
-                            <input type="text" name="titulo" required>
+                            <input type="text" name="titulo" value="{{old('titulo')}}" required>
                         </div>
                         <div class="input-field col s12 m12 l6">
                             <i class="material-icons prefix">perm_identity</i>
                             <label for="nome">Área *</label>
-                            <input type="text" name="area" required>
+                            <input type="text" name="area" value="{{old('area')}}" required>
                         </div>
                     </div>
 
@@ -51,7 +48,7 @@
                         <div class="input-field col s12 m12 l12">
                             <i class="material-icons prefix">assignment</i>
                             <textarea name="resumo" id="textarea1" data-length="3000"
-                                      class="materialize-textarea"></textarea>
+                                      class="materialize-textarea">{{old('resumo')}}</textarea>
                             <label for="textarea1">Resumo *</label>
                         </div>
                     </div>

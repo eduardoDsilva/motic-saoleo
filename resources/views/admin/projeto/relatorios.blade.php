@@ -22,18 +22,7 @@
                 <div class="col s12 m12 l6">
                     <div class="card small red darken-4 hoverable">
                         <div class="card-content white-text">
-                            <span class="card-title">Todos os projetos de forma resumida</span>
-                            <p>Para gerar um relatório de todos os projetos do sistema.</p>
-                        </div>
-                        <div class="card-action">
-                            <a class="btn" disabled href="">Relatório</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m12 l6">
-                    <div class="card small pink darken-4 hoverable">
-                        <div class="card-content white-text">
-                            <span class="card-title">Todos projetos completo</span>
+                            <span class="card-title">Todos projetos</span>
                             <p>Para gerar um relatório de todos os dados dos projetos do sistema</p>
                         </div>
                         <div class="card-action">
@@ -42,7 +31,7 @@
                     </div>
                 </div>
                 <div class="col s12 m12 l6">
-                    <div class="card small indigo darken-4 hoverable">
+                    <div class="card small green darken-4 hoverable">
                         <div class="card-content white-text">
                             <span class="card-title">Projetos por escola</span>
                             <p>Para gerar um relatório dos professores de cada escola.</p>
@@ -56,7 +45,7 @@
                     <div class="card small blue darken-4 hoverable">
                         <div class="card-content white-text">
                             <span class="card-title">Projeto por categoria</span>
-                            <p>Para gerar um relatório dos projetos por categoria do sistema./p>
+                            <p>Para gerar um relatório dos projetos por categoria do sistema.</p>
                         </div>
                         <div class="card-action">
                             <button class="modal-trigger btn" disabled type="submit" data-target="modal1"
@@ -66,23 +55,10 @@
                     </div>
                 </div>
                 <div class="col s12 m12 l6">
-                    <div class="card small green darken-4 hoverable">
-                        <div class="card-content white-text">
-                            <span class="card-title">Projeto por disciplina</span>
-                            <p>Para gerar um relatório dos projetos por disciplinas do sistema./p>
-                        </div>
-                        <div class="card-action">
-                            <button class="modal-trigger btn" disabled type="submit" data-target="modal1"
-                                    href="#modal1">Relatório
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m12 l6">
-                    <div class="card small purple darken-4 hoverable">
+                    <div class="card small indigo darken-4 hoverable">
                         <div class="card-content white-text">
                             <span class="card-title">Projeto individual</span>
-                            <p>Para gerar um relatório de um projeto específico do sistema./p>
+                            <p>Para gerar um relatório de um projeto específico do sistema.</p>
                         </div>
                         <div class="card-action">
                             <button class="modal-trigger btn" disabled type="submit" data-target="modal1"

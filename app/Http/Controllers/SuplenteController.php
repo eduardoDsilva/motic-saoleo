@@ -85,7 +85,6 @@ class SuplenteController extends Controller
             } else if ($dataForm['tipo'] == 'nome') {
                 $filtro = '%' . $dataForm['search'] . '%';
                 $projetos = Projeto::where('titulo', 'like', $filtro)
-                                ->where('tipo', '=', 'normal')
                                 ->paginate(10);
             } else if ($dataForm['tipo'] == 'escola') {
                 $filtro = '%' . $dataForm['search'] . '%';
@@ -100,13 +99,14 @@ class SuplenteController extends Controller
                                 ->paginate(10);
             } else if ($dataForm['tipo'] == 'categoria') {
                 $categoria = Categoria::where('categoria', '=', $dataForm['search'])
-                                ->where('tipo', '=', 'normal')
                                 ->get();
                 $array[] = null;
                 foreach ($categoria as $id) {
                     $array[] = $id->id;
                 }
-                $projetos = Projeto::whereIn('categoria_id', $array)->paginate(10);
+                $projetos = Projeto::whereIn('categoria_id', $array)
+                    ->where('tipo', '=', 'normal')
+                    ->paginate(10);
             }
             return $projetos;
         } catch (\Exception $e) {
