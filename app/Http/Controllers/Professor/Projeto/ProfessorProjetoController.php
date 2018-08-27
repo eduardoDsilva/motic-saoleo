@@ -19,8 +19,14 @@ class ProfessorProjetoController extends Controller
     {
         try {
             //procuro o projeto vinculado ao professor logado no sistema
-            $projeto = Projeto::all()
-                ->where('id', '=', Auth::user()->professor->projeto->id);
+            if(Auth::user()->professor->projeto==null){
+                $id=0;
+                $projeto = null;
+            }else{
+                $id = Auth::user()->professor->projeto->id;
+                $projeto = Projeto::all()
+                    ->where('id', '=', $id);
+            }
             //encaminho para a view professor.projeto.home com o projeto encontrado
             return view('professor.projeto.home', compact('projeto'));
         } catch (\Exception $e) {

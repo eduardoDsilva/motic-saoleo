@@ -3,7 +3,7 @@
         <select required name="tipo">
             <option value="" disabled selected>Filtrar por...</option>
             <option value="id">ID</option>
-            <option value="nome">Nome</option>
+            <option value="usuario">Usuário</option>
             <option value="tipo">Tipo Usuário</option>
         </select>
         <label>Filtros</label>

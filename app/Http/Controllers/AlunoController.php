@@ -55,7 +55,7 @@ class AlunoController extends Controller
             }
             return $alunos;
         } catch (\Exception $e) {
-            return abort(1000, '1100');
+            return abort(600, '1100');
         }
     }
 
@@ -79,7 +79,7 @@ class AlunoController extends Controller
             //insiro uma mensagem de sucesso
             Session::put('mensagem', "O aluno " . $aluno->name . " foi cadastrado com sucesso!");
         } catch (\Exception $e) {
-            return abort(1000, '1110');
+            return abort(600, '1110');
         }
     }
 
@@ -105,7 +105,7 @@ class AlunoController extends Controller
             Session::put('mensagem', "O aluno " . $aluno->name . " foi editado com sucesso!");
 
         } catch (\Exception $e) {
-            return abort(1000, '1120');
+            return abort(600, '1120');
         }
     }
 
@@ -119,7 +119,7 @@ class AlunoController extends Controller
             //insiro uma mensagem de sucesso
             Session::put('mensagem', "O aluno " . $aluno->name . " foi deletado com sucesso!");
         } catch (\Exception $e) {
-            return abort(1000, '1130');
+            return abort(600, '1130');
         }
     }
 

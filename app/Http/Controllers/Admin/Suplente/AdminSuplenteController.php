@@ -73,7 +73,7 @@ class AdminSuplenteController extends Controller
         $dataForm = $request->all();
         try {
             $projetos = $this->suplenteController->filtrar($dataForm);
-            $quantidade = count(Projeto::all()->where('tipo', '=', 'suplente'));
+            $quantidade = $projetos->total();
             return view('admin.suplente.home', compact('projetos', 'quantidade'));
         } catch (\Exception $e) {
             return abort(100, '193');

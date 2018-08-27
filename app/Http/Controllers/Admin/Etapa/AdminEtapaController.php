@@ -34,11 +34,6 @@ class AdminEtapaController extends Controller
      */
     public function create()
     {
-        try {
-
-        } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-        }
     }
 
     /**
@@ -67,11 +62,6 @@ class AdminEtapaController extends Controller
      */
     public function show($id)
     {
-        try {
-
-        } catch (\Exception $e) {
-            return abort(403, '' . $e->getMessage());
-        }
     }
 
     /**

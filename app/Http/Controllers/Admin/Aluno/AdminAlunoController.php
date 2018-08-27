@@ -72,7 +72,7 @@ class AdminAlunoController extends Controller
         try {
             $dataForm = $request->all();
             $alunos = $this->alunoController->filtro($dataForm);
-            $quantidade = count(Aluno::all());
+            $quantidade = $alunos->total();
             return view('admin.aluno.home', compact('alunos', 'quantidade'));
         } catch (\Exception $e) {
             return abort(100,  '114');

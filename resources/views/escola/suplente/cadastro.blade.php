@@ -84,6 +84,10 @@
                         </div>
 
                         <div class="row">
+                            <blockquote>
+                                Atenção!
+                                Primeiro selecione a categoria, e então os alunos serão carregados.
+                            </blockquote>
                             <div class="input-field col s12 m12 l6">
                                 <i class="material-icons prefix">assignment</i>
                                 <select id='categoria' name="categoria_id" required>

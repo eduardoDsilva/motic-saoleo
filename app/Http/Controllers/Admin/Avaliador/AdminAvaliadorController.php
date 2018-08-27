@@ -133,7 +133,7 @@ class AdminAvaliadorController extends Controller
             } else if ($dataForm['tipo'] == 'projetos') {
                 $avaliadores = Avaliador::where('projetos', '=', $dataForm['search'])->paginate(10);
             }
-            $quantidade = count(Avaliador::all());
+            $quantidade = $avaliadores->total();
             return view('admin.avaliador.home', compact('avaliadores', 'quantidade'));
         } catch (\Exception $e) {
             return abort(100,  '126');

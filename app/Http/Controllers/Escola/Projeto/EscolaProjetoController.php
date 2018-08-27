@@ -102,9 +102,11 @@ class EscolaProjetoController extends Controller
             //recebo os dados por request e insiro o escola_id artificialmente
             $dataForm = $request->all() + ['escola_id' => Auth::user()->escola->id];
 
-            $validator = Validator::make($request->all(), [
+            $validator = Validator::make($dataForm, [
                 'resumo'            => 'required|between:50,3000',
+                'disciplina_id'     => 'required',
 
+                'disciplina_id.required'=> 'Selecione ao menos uma disciplina',
                 'resumo.required'       => 'Insira um resumo',
                 'resumo.between'        => 'O resumo deve ter entre 50 e 3000 caracteres',
             ]);
@@ -175,7 +177,9 @@ class EscolaProjetoController extends Controller
             $dataForm = $request->all();
             $validator = Validator::make($dataForm, [
                 'resumo'            => 'required|between:50,3000',
+                'disciplina_id'     => 'required',
 
+                'disciplina_id.required'=> 'Selecione ao menos uma disciplina',
                 'resumo.required'       => 'Insira um resumo',
                 'resumo.between'        => 'O resumo deve ter entre 50 e 3000 caracteres',
             ]);

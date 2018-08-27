@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+
 @section('titulo-header', 'Editar projeto suplente')
 
 @section('conteudo-header', "- Os campos com ' * ' são de preenchimento obrigatório.")

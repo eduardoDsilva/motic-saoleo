@@ -21,6 +21,8 @@
                 @if($projeto == null)
                     <ul class="collection with-header">
                         <li class="collection-header"><h4 class="center-align">Professor sem projeto</h4></li>
+                        <li class="collection-item">Para cadastrar um projeto, logue com o perfil da escola e cadastre. Após fazer isso, ele irá aparecer aqui.</li>
+
                     </ul>
                 @else
                     @foreach($projeto as $p)

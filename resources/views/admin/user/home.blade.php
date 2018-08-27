@@ -21,7 +21,7 @@
             @if(Session::get('mensagem'))
                 @include('_layouts._mensagem-sucesso')
             @endif
-            <form method="POST" enctype="multipart/form-data" action="{{ route('admin.aluno.filtrar') }}">
+            <form method="POST" enctype="multipart/form-data" action="{{ route('admin.user.filtrar') }}">
                 @includeIf('_layouts._usuario._filtro-usuario')
             </form>
         </div>
@@ -36,7 +36,7 @@
         </div>
         <div class="fixed-action-btn">
             <a class="btn-floating btn-large waves-effect waves-light red tooltipped" data-position="top"
-               data-delay="50" data-tooltip="Adicionar aluno"
+               data-delay="50" data-tooltip="Adicionar admin"
                href="{{route ('admin.user.create')}}">
                 <i class="material-icons">add</i></a>
         </div>

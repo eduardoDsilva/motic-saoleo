@@ -78,10 +78,18 @@ class AdminUserController extends Controller
     public function filtrar(Request $request)
     {
         try {
-            //    $dataForm = $request->all();
-            //  $alunos = $this->alunoController->filtro($dataForm);
-            //$quantidade = count(Aluno::all());
-            //return view('admin.aluno.home', compact('alunos', 'quantidade'));
+            $dataForm = $request->all();
+            if ($dataForm['tipo'] == 'id') {
+                $users = User::where('id', '=', $dataForm['search'])->paginate(10);
+            } else if ($dataForm['tipo'] == 'usuario') {
+                $filtro = '%' . $dataForm['search'] . '%';
+                $users = User::where('username', 'like', $filtro)->paginate(10);
+            } else if ($dataForm['tipo'] == 'tipo') {
+                $filtro = '%' . $dataForm['search'] . '%';
+                $users = User::where('tipoUser', 'like', $filtro)->paginate(10);
+            }
+            $quantidade = $users->total();
+            return view("admin.user.home", compact('users', 'quantidade'));
         } catch (\Exception $e) {
             return abort(100, '100.5');
         }

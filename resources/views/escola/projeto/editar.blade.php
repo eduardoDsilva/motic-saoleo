@@ -10,16 +10,6 @@
 
 @section('content')
 
-    @if(session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
-
-    @if(Session::get('mensagem'))
-        @include('_layouts._mensagem-erro')
-    @endif
-
 @section('titulo-header', 'Editar projeto')
 
 @section('conteudo-header', "- Os campos com ' * ' são de preenchimento obrigatório.")
@@ -30,6 +20,7 @@
     <div class="card-panel">
         <div class="row">
             <article class="col s12">
+                @include('_layouts._mensagem-erro')
                 <form method="POST" enctype="multipart/form-data"
                       action="{{ route('escola.projeto.update', $projeto->id) }}">
 

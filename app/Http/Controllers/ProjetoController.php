@@ -86,7 +86,7 @@ class ProjetoController extends Controller
             //defino uam mensagem de sucesso
             Session::put('mensagem', "O projeto " . $projeto->titulo . " foi salvo com sucesso!");
         } catch (\Exception $e) {
-            return abort(1000, '1400');
+            return abort(600, '1400');
         }
     }
 
@@ -94,28 +94,37 @@ class ProjetoController extends Controller
     {
         try {
             if ($dataForm['tipo'] == 'id') {
-                $projetos = Projeto::where('id', '=', $dataForm['search'])->paginate(10);
+                $projetos = Projeto::where('id', '=', $dataForm['search'])
+                   // ->where('tipo', '=', 'normal')
+                    ->paginate(10);
             } else if ($dataForm['tipo'] == 'nome') {
                 $filtro = '%' . $dataForm['search'] . '%';
-                $projetos = Projeto::where('titulo', 'like', $filtro)->paginate(10);
+                $projetos = Projeto::where('titulo', 'like', $filtro)
+                    //->where('tipo', '=', 'normal')
+                    ->paginate(10);
             } else if ($dataForm['tipo'] == 'escola') {
                 $filtro = '%' . $dataForm['search'] . '%';
-                $escola = Escola::where('name', 'like', $filtro)->get();
+                $escola = Escola::where('name', 'like', $filtro)
+                    ->get();
                 foreach ($escola as $id) {
                     $array[] = $id->id;
                 }
-                $projetos = Projeto::whereIn('escola_id', $array)->paginate(10);
+                $projetos = Projeto::whereIn('escola_id', $array)
+                    ->where('tipo', '=', 'normal')
+                    ->paginate(10);
             } else if ($dataForm['tipo'] == 'categoria') {
                 $categoria = Categoria::where('categoria', '=', $dataForm['search'])->get();
                 $array[] = null;
                 foreach ($categoria as $id) {
                     $array[] = $id->id;
                 }
-                $projetos = Projeto::whereIn('categoria_id', $array)->paginate(10);
+                $projetos = Projeto::whereIn('categoria_id', $array)
+                    ->where('tipo', '=', 'normal')
+                    ->paginate(10);
             }
             return $projetos;
         } catch (\Exception $e) {
-            return abort(1000, '1410');
+            return abort(600, '1410');
         }
     }
 
@@ -136,7 +145,7 @@ class ProjetoController extends Controller
             //insiro uma mensagem de sucesso
             Session::put('mensagem', "O projeto " . $projeto->titulo . " foi editado com sucesso!");
         } catch (\Exception $e) {
-            return abort(1000, '1420');
+            return abort(600, '1420');
         }
     }
 
@@ -154,7 +163,7 @@ class ProjetoController extends Controller
             Session::put('mensagem', "O projeto " . $projeto->titulo . " foi deletado com sucesso!");
 
         } catch (\Exception $e) {
-            return abort(1000, '1430');
+            return abort(600, '1430');
         }
     }
 

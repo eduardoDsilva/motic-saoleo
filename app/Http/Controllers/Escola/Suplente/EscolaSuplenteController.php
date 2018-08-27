@@ -103,11 +103,13 @@ class EscolaSuplenteController extends Controller
             //recebo os dados por request e insiro o escola_id artificialmente
             $dataForm = $request->all() + ['escola_id' => Auth::user()->escola->id] + ['tipo' => 'suplente'];
 
-            $validator = Validator::make($request->all(), [
-                'resumo' => 'required|between:50,3000',
+            $validator = Validator::make($dataForm, [
+                'resumo'            => 'required|between:50,3000',
+                'disciplina_id'     => 'required',
 
-                'resumo.required' => 'Insira um resumo',
-                'resumo.between' => 'O resumo deve ter entre 50 e 3000 caracteres',
+                'disciplina_id.required'=> 'Selecione ao menos uma disciplina',
+                'resumo.required'       => 'Insira um resumo',
+                'resumo.between'        => 'O resumo deve ter entre 50 e 3000 caracteres',
             ]);
 
             //se o validador falhar...
@@ -191,10 +193,12 @@ class EscolaSuplenteController extends Controller
             //recebo os dados por request
             $dataForm = $request->all();
             $validator = Validator::make($dataForm, [
-                'resumo' => 'required|between:50,3000',
+                'resumo'            => 'required|between:50,3000',
+                'disciplina_id'     => 'required',
 
-                'resumo.required' => 'Insira um resumo',
-                'resumo.between' => 'O resumo deve ter entre 50 e 3000 caracteres',
+                'disciplina_id.required'=> 'Selecione ao menos uma disciplina',
+                'resumo.required'       => 'Insira um resumo',
+                'resumo.between'        => 'O resumo deve ter entre 50 e 3000 caracteres',
             ]);
 
             //se o validador falhar...

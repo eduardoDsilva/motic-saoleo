@@ -75,7 +75,7 @@ class AdminEscolaController extends Controller
         try {
             $dataForm = $request->all();
             $escolas = $this->escolaController->filtro($dataForm);
-            $quantidade = count(Escola::all());
+            $quantidade = $escolas->total();
             return view('admin.escola.home', compact('escolas', 'quantidade'));
         } catch (\Exception $e) {
             return abort(100, '164');

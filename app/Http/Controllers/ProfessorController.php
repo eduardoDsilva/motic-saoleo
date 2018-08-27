@@ -66,7 +66,7 @@ class ProfessorController extends Controller
 
             return $professores;
         } catch (\Exception $e) {
-            return abort(1000, '1300');
+            return abort(600, '1300');
         }
     }
 
@@ -92,7 +92,7 @@ class ProfessorController extends Controller
             Session::put('mensagem', "O professor " . $user->name . " foi criado com sucesso!");
 
         } catch (\Exception $e) {
-            return abort(1000, '1310');
+            return abort(600, '1310');
         }
     }
 
@@ -116,7 +116,7 @@ class ProfessorController extends Controller
             //insere uma mensagem de sucesso
             Session::put('mensagem', "O professor " . $user->name . " foi editado com sucesso!");
         } catch (\Exception $e) {
-            return abort(1000, '1320');
+            return abort(600, '1320');
         }
     }
 
@@ -131,7 +131,7 @@ class ProfessorController extends Controller
             //insere uma mensagem de sucesso
             Session::put('mensagem', "O professor ".$professor->name." foi deletado com sucesso!");
         } catch (\Exception $e) {
-            return abort(1000, '1330');
+            return abort(600, '1330');
         }
     }
 

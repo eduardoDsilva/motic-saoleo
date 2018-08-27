@@ -12,7 +12,7 @@
 
 @section('titulo-header', $projeto->titulo)
 
-@section('conteudo-header', 'Esses são todos os dados do projeto'.$projeto->titulo)
+@section('conteudo-header', 'Esses são todos os dados do projeto '.$projeto->titulo)
 
 @includeIf('_layouts._sub-titulo')
 
