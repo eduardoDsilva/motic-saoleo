@@ -24,6 +24,7 @@
                 @endif
                 @includeIf('_layouts._mensagem-erro')
                 <div class="row">
+                    <blockquote>Insira o seu e-mail cadastrado no sistema. Você receberá um link para recadastrar sua senha.</blockquote>
                     <form method="POST"
                           action="{{ route('password.email') }}">
                         {{ csrf_field() }}

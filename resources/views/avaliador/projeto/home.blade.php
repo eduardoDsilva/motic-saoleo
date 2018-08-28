@@ -34,7 +34,11 @@
                             </blockquote>
                         </div>
                         <div class="card-action">
-                            <a class="btn" type='submit' href="{{route ('avaliador.projeto.avaliar', $projeto->id)}}">Avaliar</a>
+                            @if((\App\Nota::where('projeto_id', '=', $projeto->id)->where('avaliador_id', '=', \Illuminate\Support\Facades\Auth::user()->avaliador->id)->first()) == null)
+                                <a class="btn" type='submit' href="{{route ('avaliador.projeto.avaliar', $projeto->id)}}">Avaliar</a>
+                            @else
+                                <a class="btn" type='submit' href="{{route ('avaliador.projeto.editar-avaliacao', $projeto->id)}}">Editar nota</a>
+                            @endif
                         </div>
                     </div>
                 </div>

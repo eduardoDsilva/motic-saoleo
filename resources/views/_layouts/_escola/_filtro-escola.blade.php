@@ -4,7 +4,7 @@
             <option value="" disabled selected>Filtrar por...</option>
             <option value="id">ID</option>
             <option value="nome">Nome</option>
-            <option value="email">E-mail</option>
+            <option value="qnt">Escolas sem projetos</option>
         </select>
         <label>Filtros</label>
     </div>

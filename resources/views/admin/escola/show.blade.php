@@ -30,7 +30,7 @@
                             <li class="collection-item">Usuário: {{$escola->user->username}}</li>
                             <li class="collection-item">E-mail: {{$escola->user->email}}</li>
                             <li class="collection-item">Telefone: {{$escola->telefone}}</li>
-                            <li class="collection-item">N° de trabalhos: {{count($escola->projeto)}}</li>
+                            <li class="collection-item">N° de projetos: {{count($escola->projeto)}}</li>
                             <li class="collection-item">N° de alunos: {{count($escola->aluno)}}</li>
                             <li class="collection-item">N° de professores: {{count($escola->professor)}}</li>
                             <li class="collection-item">
