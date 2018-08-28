@@ -80,32 +80,32 @@ class SuplenteController extends Controller
         try {
             if ($dataForm['tipo'] == 'id') {
                 $projetos = Projeto::where('id', '=', $dataForm['search'])
-                                ->where('tipo', '=', 'normal')
-                                ->paginate(10);
+                    ->where('tipo', '=', 'suplente')
+                    ->paginate(10);
             } else if ($dataForm['tipo'] == 'nome') {
                 $filtro = '%' . $dataForm['search'] . '%';
                 $projetos = Projeto::where('titulo', 'like', $filtro)
-                                ->paginate(10);
+                    ->where('tipo', '=', 'suplente')
+                    ->paginate(10);
             } else if ($dataForm['tipo'] == 'escola') {
                 $filtro = '%' . $dataForm['search'] . '%';
                 $escola = Escola::where('name', 'like', $filtro)
-                                ->where('tipo', '=', 'normal')
-                                ->get();
+                    ->get();
                 foreach ($escola as $id) {
                     $array[] = $id->id;
                 }
                 $projetos = Projeto::whereIn('escola_id', $array)
-                                ->where('tipo', '=', 'normal')
-                                ->paginate(10);
+                    ->where('tipo', '=', 'suplente')
+                    ->paginate(10);
             } else if ($dataForm['tipo'] == 'categoria') {
                 $categoria = Categoria::where('categoria', '=', $dataForm['search'])
-                                ->get();
+                    ->get();
                 $array[] = null;
                 foreach ($categoria as $id) {
                     $array[] = $id->id;
                 }
                 $projetos = Projeto::whereIn('categoria_id', $array)
-                    ->where('tipo', '=', 'normal')
+                    ->where('tipo', '=', 'suplente')
                     ->paginate(10);
             }
             return $projetos;

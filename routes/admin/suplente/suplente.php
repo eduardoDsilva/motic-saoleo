@@ -22,7 +22,6 @@ Route::group(['prefix' => 'admin/suplente', 'namespace' => 'Admin\Suplente'], fu
 
     Route::get('relatorios', ['as' => 'admin.suplente.relatorios', 'uses' => 'AdminSuplenteRelatorioController@index']);
 
-
 });
 Route::get('/json-categorias-suplente', 'Admin\Suplente\AdminSuplenteController@categorias');
 

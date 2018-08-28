@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Avaliador;
 
 use App\Avaliador;
+use App\Categoria;
 use App\Dado;
 use App\Endereco;
 use App\Http\Controllers\Controller;
@@ -12,6 +13,7 @@ use App\Projeto;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 
 class AdminAvaliadorController extends Controller
@@ -34,7 +36,7 @@ class AdminAvaliadorController extends Controller
             $quantidade = count(Avaliador::all());
             return view("admin.avaliador.home", compact('avaliadores', 'quantidade'));
         } catch (\Exception $e) {
-            return abort(100,  '120');
+            return abort(100, '120');
         }
     }
 
@@ -44,14 +46,14 @@ class AdminAvaliadorController extends Controller
             $titulo = 'Cadastrar avaliador';
             return view('admin.avaliador.cadastro', compact('titulo'));
         } catch (\Exception $e) {
-            return abort(100,  '121');
+            return abort(100, '121');
         }
     }
 
     public function store(AvaliadorCreateFormRequest $request)
     {
-        $dataForm = $request->all() + ['tipoUser' => 'avaliador'];
         try {
+            $dataForm = $request->all() + ['tipoUser' => 'avaliador'];
             $user = User::create([
                 'name' => $dataForm['name'],
                 'username' => $dataForm['username'],
@@ -68,7 +70,7 @@ class AdminAvaliadorController extends Controller
 
             return redirect()->route("admin.avaliador");
         } catch (\Exception $e) {
-            return abort(100,  '122');
+            return abort(100, '122');
         }
     }
 
@@ -78,7 +80,7 @@ class AdminAvaliadorController extends Controller
             $avaliador = Avaliador::findOrFail($id);
             return view("admin.avaliador.show", compact('avaliador'));
         } catch (\Exception $e) {
-            return abort(100,  '123');
+            return abort(100, '123');
         }
     }
 
@@ -90,14 +92,14 @@ class AdminAvaliadorController extends Controller
 
             return view("admin.avaliador.cadastro", compact('avaliador', 'titulo'));
         } catch (\Exception $e) {
-            return abort(100,  '124');
+            return abort(100, '124');
         }
     }
 
     public function update(AvaliadorUpdateFormRequest $request, $id)
     {
-        $dataForm = $request->all() + ['tipoUser' => 'avaliador'];
         try {
+            $dataForm = $request->all() + ['tipoUser' => 'avaliador'];
             $user = User::findOrFail($id);
 
             $avaliador = $user->avaliador;
@@ -111,7 +113,7 @@ class AdminAvaliadorController extends Controller
             $avaliadores = $this->avaliador->all();
             return redirect()->route("admin.avaliador", compact('avaliadores'));
         } catch (\Exception $e) {
-            return abort(100,  '125');
+            return abort(100, '125');
         }
     }
 
@@ -136,7 +138,7 @@ class AdminAvaliadorController extends Controller
             $quantidade = $avaliadores->total();
             return view('admin.avaliador.home', compact('avaliadores', 'quantidade'));
         } catch (\Exception $e) {
-            return abort(100,  '126');
+            return abort(100, '126');
         }
     }
 
@@ -148,7 +150,7 @@ class AdminAvaliadorController extends Controller
 
             Session::put('mensagem', "O avaliador " . $avaliador->name . " foi deletado com sucesso!");
         } catch (\Exception $e) {
-            return abort(100,  '127');
+            return abort(100, '127');
         }
     }
 
@@ -163,7 +165,7 @@ class AdminAvaliadorController extends Controller
 
             return view('admin.avaliador.atribuir', compact('projetos', 'avaliador'));
         } catch (\Exception $e) {
-            return abort(100,  '128');
+            return abort(100, '128');
         }
     }
 
@@ -179,7 +181,7 @@ class AdminAvaliadorController extends Controller
 
             return view('admin.avaliador.atribuir');
         } catch (\Exception $e) {
-            return abort(100,  '128.1');
+            return abort(100, '128.1');
         }
     }
 
@@ -187,29 +189,10 @@ class AdminAvaliadorController extends Controller
     {
         try {
             $avaliador = Avaliador::findOrFail($id);
-            $educacao_infantil = Projeto::all()
-                ->where('categoria_id', '=', '1')
-                ->where('avaliadores', '<', '3')
-                ->where('tipo', '=', 'normal');
-            $emef1 = Projeto::all()
-                ->where('categoria_id', '=', '2')
-                ->where('avaliadores', '<', '3')
-                ->where('tipo', '=', 'normal');
-            $emef2 = Projeto::all()
-                ->where('categoria_id', '=', '3')
-                ->where('avaliadores', '<', '3')
-                ->where('tipo', '=', 'normal');
-            $emef3 = Projeto::all()
-                ->where('categoria_id', '=', '4')
-                ->where('avaliadores', '<', '3')
-                ->where('tipo', '=', 'normal');
-            $eja = Projeto::all()
-                ->where('categoria_id', '=', '5')
-                ->where('avaliadores', '<', '3')
-                ->where('tipo', '=', 'normal');
-            return view('admin.avaliador.vincular-projetos', compact('avaliador', 'educacao_infantil', 'emef1', 'emef2', 'emef3', 'eja'));
+            $categorias = Categoria::all();
+            return view('admin.avaliador.vincular-projetos', compact('avaliador', 'categorias'));
         } catch (\Exception $e) {
-            return abort(100,  '128.2');
+            return abort(100, '128.2');
         }
     }
 
@@ -219,7 +202,7 @@ class AdminAvaliadorController extends Controller
             $avaliador = Avaliador::findOrFail($id);
             return view('admin.avaliador.desvincular-projetos', compact('avaliador'));
         } catch (\Exception $e) {
-            return abort(100,  '128.3');
+            return abort(100, '128.3');
         }
     }
 
@@ -237,7 +220,7 @@ class AdminAvaliadorController extends Controller
             $projeto->save();
             return redirect()->route("admin.avaliador");
         } catch (\Exception $e) {
-            return abort(100,  '128.4');
+            return abort(100, '128.4');
         }
     }
 
@@ -256,8 +239,18 @@ class AdminAvaliadorController extends Controller
             $projeto->save();
             return redirect()->route("admin.avaliador");
         } catch (\Exception $e) {
-            return abort(100,  '128.5');
+            return abort(100, '128.5');
         }
+    }
+
+    public function projetoAjax()
+    {
+        $categoria = Input::get('categoria');
+        $projetos = Projeto::all()
+                    ->where('categoria_id', '=', $categoria)
+                    ->where('avaliadores', '<', '3')
+                    ->where('tipo', '=', 'normal');
+        return response()->json($projetos);
     }
 
 }

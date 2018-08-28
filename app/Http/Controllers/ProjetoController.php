@@ -100,7 +100,7 @@ class ProjetoController extends Controller
             } else if ($dataForm['tipo'] == 'nome') {
                 $filtro = '%' . $dataForm['search'] . '%';
                 $projetos = Projeto::where('titulo', 'like', $filtro)
-                    //->where('tipo', '=', 'normal')
+                    ->where('tipo', '=', 'normal')
                     ->paginate(10);
             } else if ($dataForm['tipo'] == 'escola') {
                 $filtro = '%' . $dataForm['search'] . '%';

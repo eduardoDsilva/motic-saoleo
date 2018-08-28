@@ -4,6 +4,28 @@
 <li class="white">
     <ul class="collapsible collapsible-accordion">
         <li>
+            <a class="collapsible-header waves-effect waves-blue"><i class="small material-icons">book
+                </i>Avaliação <i
+                        class="material-icons right" style="margin-right:0;">arrow_drop_down</i></a>
+            <div class="collapsible-body">
+                <ul>
+                    <li><a class="waves-effect waves-blue" href="{{route ('admin.aluno')}}"><i class="material-icons">list</i>Classificação</a>
+                    </li>
+                    <li><a class="waves-effect waves-blue" href="{{route ('admin.aluno.create')}}"><i
+                                    class="material-icons">bookmark</i>Projetos avaliados</a></li>
+                    <li><a class="waves-effect waves-blue" href="{{route ('admin.aluno.relatorios')}}"><i
+                                    class="material-icons">bookmark_border</i>Projetos não avaliados</a></li>
+                    <li>
+                        <div class="divider"></div>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</li>
+<li class="white">
+    <ul class="collapsible collapsible-accordion">
+        <li>
             <a class="collapsible-header waves-effect waves-blue"><i class="small material-icons">person</i>Alunos <i
                         class="material-icons right" style="margin-right:0;">arrow_drop_down</i></a>
             <div class="collapsible-body">

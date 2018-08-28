@@ -29,3 +29,4 @@ Route::group(['prefix' => 'admin/avaliador', 'namespace' => 'Admin\Avaliador'], 
     Route::post('vincula-projetos', ['as' => 'admin.avaliador.vincula-projetos', 'uses' => 'AdminAvaliadorController@vinculaProjetos']);
 
 });
+Route::get('/json-projeto-categoria', 'Admin\Avaliador\AdminAvaliadorController@projetoAjax');

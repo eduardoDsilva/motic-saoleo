@@ -59,7 +59,8 @@ class ProfessorController extends Controller
             } else if ($dataForm['tipo'] == 'nascimento') {
                 $professores = Professor::where('nascimento', 'like', $dataForm['search'])->paginate(10);
             } else if ($dataForm['tipo'] == 'sexo') {
-                $professores = Professor::where('sexo', 'like', $dataForm['search'])->paginate(10);
+                $filtro = '%' . $dataForm['search'] . '%';
+                $professores = Professor::where('sexo', 'like', $filtro)->paginate(10);
             } else if ($dataForm['tipo'] == 'cpf') {
                 $professores = Professor::where('cpf', '=', $dataForm['search'])->paginate(10);
             }

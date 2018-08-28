@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Endereco;
 use App\Escola;
+use App\Projeto;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 class EscolaController extends Controller
@@ -40,9 +42,14 @@ class EscolaController extends Controller
             } else if ($dataForm['tipo'] == 'usuario') {
                 $filtro = $dataForm['search'];
                 $escolas = [User::where('username', '=', $filtro)->first()->escola];
-            } else if ($dataForm['tipo'] == 'email') {
+            } else if ($dataForm['tipo'] == 'qnt') {
                 $filtro = '%' . $dataForm['search'] . '%';
-                $escolas = Escola::where('email', 'like', $filtro)->paginate(10);
+                $projetos = Projeto::all();
+                foreach($projetos as $projeto) {
+                    $id[] = $projeto->escola_id;
+                }
+                $escolas = Escola::whereNotIn('id', $id)
+                    ->paginate(10);
             }
             return $escolas;
         } catch (\Exception $e) {

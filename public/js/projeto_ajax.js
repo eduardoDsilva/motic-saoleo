@@ -98,11 +98,25 @@ $('#categoria').on('change', function(e){
     var categoria_id = e.target.value;
     $.get('/json-aluno?categoria_id=' + categoria_id,function(data) {
         console.log(data);
-        $('#alunos').empty()
+        $('#alunos').empty();
         $('#alunos').append('<option disabled selected>Selecione os alunos...</option>');
         $('select').material_select();
         $.each(data, function(index, alunosObj){
             $('#alunos').append('<option value="'+ alunosObj.id +'">'+ alunosObj.name +'</option>');
+            $('select').material_select();
+        })
+    });
+});
+$('#projeto').on('change', function(e){
+    var projeto_id = e.target.value;
+    console.log('id: '+projeto_id);
+    $.get('/json-projeto-categoria?categoria=' + projeto_id,function(data) {
+        console.log('teste');
+        $('#projetos').empty();
+        $('#projetos').append('<option disabled selected>Selecione o projeto...</option>');
+        $('select').material_select();
+        $.each(data, function(index, projetoObj){
+            $('#projetos').append('<option value="'+ projetoObj.id +'">'+ projetoObj.titulo +'</option>');
             $('select').material_select();
         })
     });

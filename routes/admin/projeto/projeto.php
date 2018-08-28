@@ -26,7 +26,6 @@ Route::group(['prefix' => 'admin/projeto', 'namespace' => 'Admin\Projeto'], func
 
     Route::post('vincular', ['as' => 'admin.projeto.vincula', 'uses' => 'AdminProjetoController@vincula']);
 
-
 });
 Route::get('/json-categorias-projeto', 'Admin\Projeto\AdminProjetoController@categorias');
 
