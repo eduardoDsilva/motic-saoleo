@@ -37,6 +37,7 @@ class SuplenteController extends Controller
             $escola = Escola::findOrFail($dataForm['escola_id']);
             $projeto = Projeto::all()
                 ->where('escola_id', '=', $escola->id)
+                ->where('ano', '=', intval(date("Y")))
                 ->where('tipo', '=', "suplente");
             if (count($projeto) >= $escola->projetos) {
                 dd('não pode mais cadastrar suplentes');
@@ -86,6 +87,7 @@ class SuplenteController extends Controller
                 $filtro = '%' . $dataForm['search'] . '%';
                 $projetos = Projeto::where('titulo', 'like', $filtro)
                     ->where('tipo', '=', 'suplente')
+                    ->where('ano', '=', intval(date("Y")))
                     ->paginate(10);
             } else if ($dataForm['tipo'] == 'escola') {
                 $filtro = '%' . $dataForm['search'] . '%';
@@ -96,6 +98,7 @@ class SuplenteController extends Controller
                 }
                 $projetos = Projeto::whereIn('escola_id', $array)
                     ->where('tipo', '=', 'suplente')
+                    ->where('ano', '=', intval(date("Y")))
                     ->paginate(10);
             } else if ($dataForm['tipo'] == 'categoria') {
                 $categoria = Categoria::where('categoria', '=', $dataForm['search'])
@@ -105,6 +108,7 @@ class SuplenteController extends Controller
                     $array[] = $id->id;
                 }
                 $projetos = Projeto::whereIn('categoria_id', $array)
+                    ->where('ano', '=', intval(date("Y")))
                     ->where('tipo', '=', 'suplente')
                     ->paginate(10);
             }

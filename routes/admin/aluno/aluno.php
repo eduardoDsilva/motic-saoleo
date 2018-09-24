@@ -22,13 +22,13 @@ Route::group(['prefix' => 'admin/aluno', 'namespace' => 'Admin\Aluno'], function
 
     Route::get('relatorios', ['as' => 'admin.aluno.relatorios', 'uses' => 'AdminAlunoRelatorioController@index']);
 
-    Route::get('/todos-alunos-resumo', ['as' => 'admin.aluno.relatorios.todos.alunos.resumo', 'uses' => 'AdminAlunoRelatorioController@todosAlunosResumo']);
+    Route::get('/todos-alunos-resumo', ['as' => 'admin.aluno.relatorios.todos.alunos', 'uses' => 'AdminAlunoRelatorioController@todosAlunos']);
 
     Route::get('/alunos-por-escola', ['as' => 'admin.aluno.relatorios.alunos.por.escola', 'uses' => 'AdminAlunoRelatorioController@alunosPorEscola']);
 
-    Route::get('/todos-alunos-completo', ['as' => 'admin.aluno.relatorios.todos.alunos.completo', 'uses' => 'AdminAlunoRelatorioController@todosAlunosCompleto']);
+    Route::get('/relatorio-aluno/{id}', ['as' => 'admin.aluno.relatorios.aluno-individual', 'uses' => 'AdminAlunoRelatorioController@alunoIndividual']);
 
-    Route::get('/relatorio-aluno/{id}', ['as' => 'admin.aluno.relatorio.aluno', 'uses' => 'AdminAlunoRelatorioController@alunoIndividual']);
+    Route::get('relatorios/alunos-ativos', ['as' => 'admin.aluno.relatorios.alunos-ativos', 'uses' => 'AdminAlunoRelatorioController@alunosAtivos']);
 
 });
 

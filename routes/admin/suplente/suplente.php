@@ -22,6 +22,13 @@ Route::group(['prefix' => 'admin/suplente', 'namespace' => 'Admin\Suplente'], fu
 
     Route::get('relatorios', ['as' => 'admin.suplente.relatorios', 'uses' => 'AdminSuplenteRelatorioController@index']);
 
+    Route::get('relatorios/todos-projetos', ['as' => 'admin.suplente.relatorios.todos-projetos', 'uses' => 'AdminSuplenteRelatorioController@todosProjetos']);
+
+    Route::get('relatorios/categoria-projetos/{id}', ['as' => 'admin.suplente.relatorios.categoria-projetos', 'uses' => 'AdminSuplenteRelatorioController@categoriaProjetos']);
+
+    Route::get('relatorios/projeto-individual/{id}', ['as' => 'admin.suplente.relatorios.projeto-individual', 'uses' => 'AdminSuplenteRelatorioController@projetoIndividual']);
+
+    Route::any('relatorios/filtro/projetos', ['as' => 'admin.suplente.relatorios.filtro-projetos', 'uses' => 'AdminSuplenteRelatorioController@filtroProjetos']);
 });
 Route::get('/json-categorias-suplente', 'Admin\Suplente\AdminSuplenteController@categorias');
 

@@ -9,12 +9,20 @@
                         class="material-icons right" style="margin-right:0;">arrow_drop_down</i></a>
             <div class="collapsible-body">
                 <ul>
-                    <li><a class="waves-effect waves-blue" href="{{route ('admin.aluno')}}"><i class="material-icons">list</i>Classificação</a>
+                    <li><a class="waves-effect waves-blue" href="{{route ('admin.avaliacao.classificacao')}}"><i
+                                    class="material-icons">list</i>Classificação</a>
                     </li>
-                    <li><a class="waves-effect waves-blue" href="{{route ('admin.aluno.create')}}"><i
+                    <li><a class="waves-effect waves-blue" href="{{route ('admin.avaliacao.classificacao-popular')}}"><i
+                                    class="material-icons">list</i>Classificação popular</a>
+                    </li>
+                    <li><a class="waves-effect waves-blue" href="{{route ('admin.avaliacao.projetos-avaliados')}}"><i
                                     class="material-icons">bookmark</i>Projetos avaliados</a></li>
-                    <li><a class="waves-effect waves-blue" href="{{route ('admin.aluno.relatorios')}}"><i
+                    <li><a class="waves-effect waves-blue"
+                           href="{{route ('admin.avaliacao.projetos-nao-avaliados')}}"><i
                                     class="material-icons">bookmark_border</i>Projetos não avaliados</a></li>
+                    <li>
+                    <li><a class="waves-effect waves-blue" href="{{route ('admin.avaliacao.calcular-notas')}}"><i
+                                    class="material-icons">stars</i>Calcular notas</a></li>
                     <li>
                         <div class="divider"></div>
                     </li>
@@ -56,6 +64,8 @@
                                     class="material-icons">list</i>Listar auditorias</a></li>
                     <li><a class="waves-effect waves-blue" href="{{route ('admin.auditoria.usuarios')}}"><i
                                     class="material-icons">list</i>Login de Usuários</a></li>
+                    <li><a class="waves-effect waves-blue" href="{{route ('admin.auditoria.usuarios-nao-logados')}}"><i
+                                    class="material-icons">list</i>Usuários não logados</a></li>
                     <li><a class="waves-effect waves-blue" href="{{route ('admin.auditoria.relatorios')}}"><i
                                     class="material-icons">chrome_reader_mode</i>Relatórios</a></li>
                     <li>

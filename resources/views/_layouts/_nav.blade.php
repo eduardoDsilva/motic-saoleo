@@ -7,6 +7,21 @@
             <ul id="nav-mobile" class="left hide-on-med-and-down">
                 <li><a href="{{route('sobre') }}">Sobre</a></li>
                 <li><a href="{{route('contato') }}">Contato</a></li>
+                @php
+                    $avaliacao = \App\Avaliacao::orderBy('id', 'desc')->first();
+                    $data = new \DateTime();
+                    $nova_data = date('Y-m-d', strtotime($data->format('Y-m-d')));
+                    $nova_hora = date('H:i:s', strtotime($data->format('H:i:s')));
+
+                    $de = date('Y-m-d', strtotime($avaliacao->data_inicio));
+                    $hora_inicial = date('H:i:s', strtotime($avaliacao->hora_inicio));
+                    $ate = date('Y-m-d', strtotime($avaliacao->data_fim));
+                    $hora_final = date('H:i:s', strtotime($avaliacao->hora_fim));
+
+                    if(($nova_data >= $de) && ($nova_hora >= $hora_inicial) && ($nova_data <= $ate) && ($nova_hora <= $hora_final)) {
+                        @endphp<li><a href="{{route('votacao-popular') }}">Votação popular</a></li>@php
+                    }
+                @endphp
             </ul>
             <ul class="right hide-on-med-and-down">
                 <li><a href="{{route ('regulamento')}}">Regulamento</a></li>
@@ -16,6 +31,21 @@
                 <li><a href="{{route ('home')}}">Home</a></li>
                 <li><a href="{{route('sobre') }}">Sobre</a></li>
                 <li><a href="{{route('contato') }}">Contato</a></li>
+                @php
+                    $avaliacao = \App\Avaliacao::orderBy('id', 'desc')->first();
+                    $data = new \DateTime();
+                    $nova_data = date('Y-m-d', strtotime($data->format('Y-m-d')));
+                    $nova_hora = date('H:i:s', strtotime($data->format('H:i:s')));
+
+                    $de = date('Y-m-d', strtotime($avaliacao->data_inicio));
+                    $hora_inicial = date('H:i:s', strtotime($avaliacao->hora_inicio));
+                    $ate = date('Y-m-d', strtotime($avaliacao->data_fim));
+                    $hora_final = date('H:i:s', strtotime($avaliacao->hora_fim));
+
+                    if(($nova_data >= $de) && ($nova_hora >= $hora_inicial) && ($nova_data <= $ate) && ($nova_hora <= $hora_final)) {
+                @endphp<li><a href="{{route('votacao-popular') }}">Votação popular</a></li>@php
+                    }
+                @endphp
                 <li><a href="{{route ('regulamento')}}">Regulamento</a></li>
                 <li><a href="{{route('login') }}">Login</a></li>
             </ul>

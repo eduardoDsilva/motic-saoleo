@@ -36,6 +36,7 @@ class ProjetoController extends Controller
             $escola = Escola::findOrFail($dataForm['escola_id']);
             //procuro todos os projetos da escola
             $projeto = Projeto::all()
+                ->where('ano', '=', intval(date("Y")))
                 ->where('escola_id', '=', $escola->id)
                 ->where('tipo', '=', "normal");
             //se a escola tiver uma quantidade de projetos maior ou igual a quantidade delimitada no banco de dados, retorna um erro
@@ -95,11 +96,11 @@ class ProjetoController extends Controller
         try {
             if ($dataForm['tipo'] == 'id') {
                 $projetos = Projeto::where('id', '=', $dataForm['search'])
-                   // ->where('tipo', '=', 'normal')
                     ->paginate(10);
             } else if ($dataForm['tipo'] == 'nome') {
                 $filtro = '%' . $dataForm['search'] . '%';
                 $projetos = Projeto::where('titulo', 'like', $filtro)
+                    ->where('ano', '=', intval(date("Y")))
                     ->where('tipo', '=', 'normal')
                     ->paginate(10);
             } else if ($dataForm['tipo'] == 'escola') {
@@ -111,6 +112,7 @@ class ProjetoController extends Controller
                 }
                 $projetos = Projeto::whereIn('escola_id', $array)
                     ->where('tipo', '=', 'normal')
+                    ->where('ano', '=', intval(date("Y")))
                     ->paginate(10);
             } else if ($dataForm['tipo'] == 'categoria') {
                 $categoria = Categoria::where('categoria', '=', $dataForm['search'])->get();
@@ -120,6 +122,7 @@ class ProjetoController extends Controller
                 }
                 $projetos = Projeto::whereIn('categoria_id', $array)
                     ->where('tipo', '=', 'normal')
+                    ->where('ano', '=', intval(date("Y")))
                     ->paginate(10);
             }
             return $projetos;

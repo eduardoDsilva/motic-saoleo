@@ -34,11 +34,13 @@ class AdminSuplenteController extends Controller
     public function index()
     {
         try {
-            $projetos = Projeto::where('ano', '=', '2018')
+            $projetos = Projeto::where('ano', '=', intval(date("Y")))
                 ->where('tipo', '=', 'suplente')
                 ->orderBy('titulo', 'asc')
                 ->paginate(10);
-            $quantidade = count(Projeto::all()->where('tipo', '=', 'suplente'));
+            $quantidade = count(Projeto::all()
+                ->where('ano', '=', intval(date("Y")))
+                ->where('tipo', '=', 'suplente'));
             return view('admin.suplente.home', compact('projetos', 'quantidade'));
         } catch (\Exception $e) {
             return abort(100, '190');

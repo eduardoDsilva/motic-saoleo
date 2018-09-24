@@ -23,7 +23,13 @@
                 <td>{{$aluno->escola->name}}</td>
             @endif
             <td>{{$aluno->turma}}</td>
-            <td>{{($aluno->projeto_id == null ? ($aluno->projeto_id == null ? "Aluno sem projeto" : $aluno->projeto->titulo) : $aluno->projeto->titulo)}}</td>
+            <td>
+                @if((isset($aluno->projeto_id)) and ($aluno->projeto->ano == intval(date("Y"))))
+                    {{$aluno->projeto->titulo}}
+                @else
+                    Aluno sem projeto
+                @endif
+            </td>
             <td width="20%">
                 @can('view', $inscricao = \App\Inscricao::orderBy('id', 'desc')->first())
                     <a class="modal-trigger tooltipped" data-position="top" data-delay="50"

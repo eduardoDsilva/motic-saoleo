@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-
+<div class="white">
     <img class="responsive-img" src="{{url('images/motic-home.png')}}">
-
+</div>
 @endsection

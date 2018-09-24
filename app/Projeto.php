@@ -10,7 +10,7 @@ class Projeto extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
     protected $fillable = [
-        'titulo', 'area', 'estande', 'resumo', 'ano', 'tipo', 'avaliadores', 'status', 'categoria_id', 'escola_id'
+        'titulo', 'area', 'estande', 'resumo', 'ano', 'tipo', 'avaliadores', 'status', 'categoria_id', 'escola_id', 'notaFinal', 'votacao_popular'
     ];
 
     public function avaliador()

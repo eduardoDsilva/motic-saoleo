@@ -20,4 +20,12 @@ Route::group(['prefix' => 'admin/professor', 'namespace' => 'Admin\Professor'], 
 
     Route::get('relatorios', ['as' => 'admin.professor.relatorios', 'uses' => 'AdminProfessorRelatorioController@index']);
 
+    Route::get('relatorios/todos-professores', ['as' => 'admin.professor.relatorios.todos-professores', 'uses' => 'AdminProfessorRelatorioController@todosProfessores']);
+
+    Route::get('relatorios/professor-individual/{id}', ['as' => 'admin.professor.relatorios.professor-individual', 'uses' => 'AdminProfessorRelatorioController@professorIndividual']);
+
+    Route::any('relatorios/filtro/professores', ['as' => 'admin.professor.relatorios.filtro-professor', 'uses' => 'AdminProfessorRelatorioController@filtroProfessores']);
+
+    Route::get('relatorios/professores-ativos', ['as' => 'admin.professor.relatorios.professores-ativos', 'uses' => 'AdminProfessorRelatorioController@professoresAtivos']);
+
 });

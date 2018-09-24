@@ -36,7 +36,7 @@
                         </div>
                         <div class="input-field col s12 m12 l6">
                             <i class="material-icons prefix">perm_identity</i>
-                            <label for="nome">Área */label>
+                            <label for="nome">Área *</label>
                                 <input type="text" name="area" value="{{$projeto->area}}" required>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
                             <select multiple name="disciplina_id[]">
                                 <option value="" disabled selected>Selecione as disciplinas</option>
                                 @forelse ($disciplinas as $disciplina)
-                                    <option value="{{$disciplina->id}}">{{$disciplina->name}}</option>
+                                    <option value="{{$disciplina->id}}" @foreach($projeto->disciplina as $d) @if($disciplina->name == $d->name) selected @endif @endforeach>{{$disciplina->name}}</option>
                                 @empty
                                     <option value="">Nenhuma disciplina cadastrada no sistema! Entre em contato com
                                         o administrador.

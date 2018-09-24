@@ -26,6 +26,14 @@ Route::group(['prefix' => 'admin/projeto', 'namespace' => 'Admin\Projeto'], func
 
     Route::post('vincular', ['as' => 'admin.projeto.vincula', 'uses' => 'AdminProjetoController@vincula']);
 
+    Route::get('relatorios/todos-projetos', ['as' => 'admin.projeto.relatorios.todos-projetos', 'uses' => 'AdminProjetoRelatorioController@todosProjetos']);
+
+    Route::get('relatorios/categoria-projetos/{id}', ['as' => 'admin.projeto.relatorios.categoria-projetos', 'uses' => 'AdminProjetoRelatorioController@categoriaProjetos']);
+
+    Route::get('relatorios/projeto-individual/{id}', ['as' => 'admin.projeto.relatorios.projeto-individual', 'uses' => 'AdminProjetoRelatorioController@projetoIndividual']);
+
+    Route::any('relatorios/filtro/projetos', ['as' => 'admin.projeto.relatorios.filtro-projetos', 'uses' => 'AdminProjetoRelatorioController@filtroProjetos']);
+
 });
 Route::get('/json-categorias-projeto', 'Admin\Projeto\AdminProjetoController@categorias');
 

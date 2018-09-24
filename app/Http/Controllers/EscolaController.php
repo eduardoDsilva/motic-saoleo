@@ -44,7 +44,8 @@ class EscolaController extends Controller
                 $escolas = [User::where('username', '=', $filtro)->first()->escola];
             } else if ($dataForm['tipo'] == 'qnt') {
                 $filtro = '%' . $dataForm['search'] . '%';
-                $projetos = Projeto::all();
+                $projetos = Projeto::all()
+                    ->where('ano', '=', intval(date("Y")));
                 foreach($projetos as $projeto) {
                     $id[] = $projeto->escola_id;
                 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Avaliador\Conta;
 
+use App\Avaliador;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -29,6 +30,22 @@ class AvaliadorContaController extends Controller
         } catch (\Exception $e) {
             return abort(400, '410');
         }
+    }
+
+    public function edit(){
+        $avaliador = Avaliador::find(Auth::user()->avaliador->id);
+        return view("avaliador.conta.editar", compact('avaliador'));
+    }
+
+
+    public function update(Request $request){
+        $dataForm = $request->all();
+        $avaliador = Avaliador::find(Auth::user()->avaliador->id);
+        $avaliador->update($dataForm);
+        $endereco = $avaliador->user->endereco;
+        $endereco->update($dataForm);
+        Session::put('mensagem', "Os seus dados pessoais foram editados com sucesso!");
+        return view("avaliador.home");
     }
 
     public function alterarSenha()

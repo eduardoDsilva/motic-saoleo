@@ -48,8 +48,7 @@ class AvaliadorProjetoController extends Controller
         $this->periodoAvaliacao();
         try {
             $dataForm = $request->all();
-            $nota = new Nota;
-            $this->salvaNota($dataForm, $nota);
+            $this->salvaNota($dataForm);
             return redirect()->route('avaliador.projeto');
         } catch (\Exception $e) {
             return abort(400, '422');
@@ -82,8 +81,9 @@ class AvaliadorProjetoController extends Controller
         }
     }
 
-    private function salvaNota($dataForm, $nota){
-        $notaFinal = ($dataForm['notaUm'] + $dataForm['notaDois'] + $dataForm['notaTres'] + $dataForm['notaQuatro'] + $dataForm['notaCinco'] + $dataForm['notaSeis'] + $dataForm['notaSete']);
+    private function salvaNota($dataForm){
+        $nota = new Nota;
+        $notaFinal = ($dataForm['notaUm'] + $dataForm['notaDois'] + ($dataForm['notaTres'] + $dataForm['notaQuatro']) + $dataForm['notaCinco'] + $dataForm['notaSeis'] + $dataForm['notaSete']);
         $nota->notaUm = intval($dataForm['notaUm']);
         $nota->notaDois = intval($dataForm['notaDois']);
         $nota->notaTres = intval($dataForm['notaTres']);
@@ -91,8 +91,8 @@ class AvaliadorProjetoController extends Controller
         $nota->notaCinco = intval($dataForm['notaCinco']);
         $nota->notaSeis = intval($dataForm['notaSeis']);
         $nota->notaSete = intval($dataForm['notaSete']);
-        $nota->observacoes = $dataForm['observacao'];
         $nota->notaFinal = intval($notaFinal);
+        $nota->observacoes = $dataForm['observacao'];
         $nota->avaliador_id = Auth::user()->avaliador->id;
         $nota->projeto_id = $dataForm['id_projeto'];
         $nota->save();

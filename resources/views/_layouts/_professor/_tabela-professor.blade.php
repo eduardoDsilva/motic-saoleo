@@ -22,8 +22,15 @@
             @if(Auth::user()->tipoUser == 'admin')
                 <td>{{$professor->escola->name}}</td>
             @endif
-            <td>{{($professor->projeto_id == null ? ($professor->suplente_id == null ? "Professor sem projeto" : $professor->suplente->titulo) : $professor->projeto->titulo)}}</td>
-            <td>{{($professor->projeto_id == null ? ($professor->suplente_id == null ? "Professor sem projeto" : $professor->tipo) : $professor->tipo)}}</td>
+            <td>
+                @if((isset($professor->projeto_id)))
+                    {{$professor->projeto->titulo}}
+                @else
+                    Professor sem projeto
+                @endif
+            </td>
+            <td>{{($professor->projeto_id == null
+            ? "" : $professor->tipo)}}</td>
             <td>
                 @can('view', $inscricao = \App\Inscricao::orderBy('id', 'desc')->first())
                     <a class="modal-trigger tooltipped" data-position="top" data-delay="50"

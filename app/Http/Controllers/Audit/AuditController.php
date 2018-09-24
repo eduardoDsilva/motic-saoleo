@@ -14,6 +14,7 @@ use App\Exports\InvoicesExport;
 use App\Exports\InvoicesExportByUser;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AuditController
@@ -36,6 +37,23 @@ class AuditController
             $accesses = Access::latest()->paginate(10);
             //retorno para a view 'admin.auditoria.usuarios'
             return view('admin.auditoria.usuarios', compact('accesses'));
+        } catch (\Exception $e) {
+            return abort(600, '610');
+        }
+    }
+
+    public function usuariosNaoLogados(){
+        try {
+            //carrego os registros dos acessos do sistema em ordem da mais recente pra mais atual.
+            $accesses = Access::select('user_id')->get();
+            $u[] = null;
+            foreach($accesses as $a){
+                $u[] = intval($a->user_id);
+            }
+            $usuarios = array_unique($u);
+            $users = User::all()->whereNotIn('id',$usuarios)->where('tipoUser', '!=','professor');
+            //retorno para a view 'admin.auditoria.usuarios'
+            return view('admin.auditoria.usuarios-nao-logados', compact('users'));
         } catch (\Exception $e) {
             return abort(600, '610');
         }

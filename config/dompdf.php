@@ -11,7 +11,7 @@ return array(
     | in dompdf_config.inc.php. You can also override the entire config file.
     |
     */
-    'show_warnings' => false,   // Throw an Exception on warnings from dompdf
+    'show_warnings' => true,   // Throw an Exception on warnings from dompdf
     'orientation' => 'portrait',
     'defines' => array(
         /**
@@ -74,7 +74,8 @@ return array(
         "chroot" => realpath(base_path()),
 
         /**
-         * Whether to enable font subsetting or not.
+         * Whether to enable font subsetting     {{dd($aluno->)}}
+        or not.
          */
         "enable_font_subsetting" => false,
 
@@ -149,7 +150,7 @@ return array(
          * Used if no suitable fonts can be found. This must exist in the font folder.
          * @var string
          */
-        "default_font" => "serif",
+        "default_font" => "arial",
 
         /**
          * Image DPI setting
@@ -237,7 +238,7 @@ return array(
         /**
          * Use the more-than-experimental HTML5 Lib parser
          */
-        "enable_html5_parser" => false,
+        "enable_html5_parser" => true,
     ),
 
 

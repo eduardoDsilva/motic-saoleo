@@ -26,7 +26,7 @@
                 <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="Visualizar"
                    href="{{ route("admin.avaliador.show", $avaliador->id) }}"> <i
                             class="small material-icons">library_books</i></a>
-                @if($avaliador->projetos < 3)
+                @if($avaliador->projetos < 5)
                 <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="Vincular projetos"
                    href="{{route ('admin.avaliador.vincular-projetos', $avaliador->id)}}"> <i class="small material-icons">stars</i></a>
                 @endif

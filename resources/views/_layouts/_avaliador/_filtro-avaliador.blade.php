@@ -6,7 +6,6 @@
             <option value="nome">Nome</option>
             <option value="sexo">Sexo</option>
             <option value="cpf">CPF</option>
-            <option value="projetos">Projetos</option>
         </select>
         <label>Filtros</label>
     </div>

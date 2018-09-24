@@ -65,7 +65,7 @@
                             <select multiple name="disciplina_id[]">
                                 <option value="" disabled selected>Selecione as disciplinas</option>
                                 @forelse ($disciplinas as $disciplina)
-                                    <option value="{{$disciplina->id}}">{{$disciplina->name}}</option>
+                                    <option value="{{$disciplina->id}}" @foreach($projeto->disciplina as $d) @if($disciplina->name == $d->name) selected @endif @endforeach>{{$disciplina->name}}</option>
                                 @empty
                                     <option value="">Nenhuma disciplina cadastrada no sistema! Entre em contato com
                                         o administrador.

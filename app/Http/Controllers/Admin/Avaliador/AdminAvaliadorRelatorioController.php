@@ -8,58 +8,74 @@
 
 namespace App\Http\Controllers\Admin\Avaliador;
 
-use App\Aluno;
 use App\Avaliador;
-use App\Escola;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class AdminAvaliadorRelatorioController
+class AdminAvaliadorRelatorioController extends Controller
 {
 
     public function index()
     {
-        try{
-            $avaliadores = Avaliador::all();
+        try {
+            $avaliadores = Avaliador::orderBy('name', 'asc')->paginate(10);
             return view('admin.avaliador.relatorios', compact('avaliadores'));
-        }catch(\Exception $e){
-            return abort(100,  '129');
+        } catch (\Exception $e) {
+            return abort(100, '129');
         }
     }
 
-    /*
-        public function alunosResumidoPdf()
-        {
-            $alunos = Aluno::orderBy('name','asc')->get();
-            return \PDF::setOptions(['dpi' => 325, 'defaultFont' => 'sans-serif'])
-                ->loadView('pdf.aluno.todos-alunos', compact('alunos'))
-                ->stream('todos-alunos-motic'.date('Y').'.pdf');
-        }
+    public function avaliadorProjetos()
+    {
+        $avaliadores = Avaliador::orderBy('name', 'asc')->get();
+        return \PDF::setOptions(['dpi' => 325, 'defaultFont' => 'sans-serif'])
+            ->loadView('pdf.avaliador.avaliador-projetos', compact('avaliadores'))
+            ->stream('avaliadores-projetos-motic' . date('Y') . '.pdf');
+    }
 
-        public function escolaAlunosPdf()
-        {
-            $escolas = Escola::orderBy('name','asc')->get();
-            return  \PDF::setOptions(['dpi' => 325, 'defaultFont' => 'sans-serif'])
-                ->loadView('pdf.aluno.escola-alunos', compact('escolas'))
-                ->stream('todos-alunos-por-escola-motic'.date('Y').'.pdf');
-        }
+    public function todosAvaliadores()
+    {
+        $avaliadores = Avaliador::orderBy('name', 'asc')->get();
+        return \PDF::setOptions(['dpi' => 325, 'defaultFont' => 'sans-serif'])
+            ->loadView('pdf.avaliador.todos-avaliadores', compact('avaliadores'))
+            ->stream('todos-avaliadores-motic' . date('Y') . '.pdf');
+    }
 
-        public function alunoPdf(Request $request)
-        {
+    public function avaliadorIndividual($id)
+    {
+        $avaliador = Avaliador::findOrFail($id);
+        return \PDF::setOptions(['dpi' => 325, 'defaultFont' => 'sans-serif'])
+            ->loadView('pdf.avaliador.avaliador-individual', compact('avaliador'))
+            ->stream('avaliador-' . $avaliador->name . '-' . date('Y') . '.pdf');
+    }
+
+    public function avaliadorIndividualProjetos($id)
+    {
+        $avaliador = Avaliador::findOrFail($id);
+        return \PDF::setOptions(['dpi' => 325, 'defaultFont' => 'sans-serif'])
+            ->loadView('pdf.avaliador.avaliador-individual-projetos', compact('avaliador'))
+            ->stream('avaliador-' . $avaliador->name . '-' . date('Y') . '.pdf');
+    }
+
+    public function filtrar(Request $request)
+    {
+        try {
             $dataForm = $request->all();
-            $aluno = Aluno::findOrFail($dataForm['id']);
-            return  \PDF::setOptions(['dpi' => 325, 'defaultFont' => 'sans-serif'])
-                ->loadView('pdf.aluno.aluno-individual', compact('aluno'))
-                ->stream('aluno-'.$aluno->name.'-'.date('Y').'.pdf');
+            $modal2 = true;
+            if ($dataForm['tipo'] == 'id') {
+                $avaliadores = Avaliador::where('id', '=', $dataForm['search'])->paginate(10);
+            } else if ($dataForm['tipo'] == 'nome') {
+                $filtro = '%' . $dataForm['search'] . '%';
+                $avaliadores = Avaliador::where('name', 'like', $filtro)->paginate(10);
+            } else if ($dataForm['tipo'] == 'sexo') {
+                $filtro = '%' . $dataForm['search'] . '%';
+                $avaliadores = Avaliador::where('sexo', 'like', $filtro)->paginate(10);
+            } else if ($dataForm['tipo'] == 'cpf') {
+                $avaliadores = Avaliador::where('username', '=', $dataForm['search'])->paginate(10);
+            }
+            return view('admin.avaliador.relatorios', compact('avaliadores', 'modal2'));
+        } catch (\Exception $e) {
+            return abort(100, '129.1');
         }
-
-        public function alunoCompletoPdf()
-        {
-            $alunos = Aluno::all();
-            return  \PDF::setOptions(['dpi' => 325, 'defaultFont' => 'sans-serif'])
-                ->loadView('pdf.aluno.todos-alunos-completo', compact('alunos'))
-                ->stream('alunos-completo-'.date('Y').'.pdf');
-        }
-
-    */
-
+    }
 }

@@ -4,7 +4,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <title>Registros</title>
+    <title>Escolas</title>
 
     <style>
         table {
@@ -21,7 +21,6 @@
 
         .motic {
             float: right;
-            padding-bottom: 20px;
         }
 
         .pmsl {
@@ -39,69 +38,47 @@
         }
     </style>
 
-
 </head>
 
 <body>
 
-@foreach($escolas as $escola)
-
+@foreach ($escolas as $escola)
     <div class="header">
-        <img src="{{public_path('images/LOGO_PMSL.png')}}" class="pmsl" width="1000px" height="300px">
-        <img src="{{public_path('images/motic.png')}}" class="motic" width="1200px" height="300px">
+        <img src="{{public_path('images/LOGO_PMSL (2).png')}}" class="pmsl">
+
+        <img src="{{public_path('images/motic-logo (2).png')}}" class="motic">
     </div>
-
-    <h2>Escola {{$escola->name}}</h2>
-
-    <table>
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Telefone</th>
-            <th>Categorias</th>
-            <th>Usuário</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>{{$escola->id}}</td>
-            <td>{{$escola->name}}</td>
-            <td>{{$escola->telefone}}</td>
-            <td>@foreach($escola->categoria as $c){{$c->categoria.', '}}@endforeach</td>
-            <td>{{$escola->user->username}}</td>
-        </tr>
-        </tbody>
-    </table>
-
-    <h2>Endereço</h2>
-
-    <table>
-        <thead>
-        <tr>
-            <th>Rua</th>
-            <th>Número</th>
-            <th>Bairro</th>
-            <th>CEP</th>
-            <th>Cidade</th>
-            <th>Estado</th>
-            <th>País</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>{{$escola->user->endereco->rua}}</td>
-            <td>{{$escola->user->endereco->numero}}</td>
-            <td>{{$escola->user->endereco->bairro}}</td>
-            <td>{{$escola->user->endereco->cep}}</td>
-            <td>{{$escola->user->endereco->cidade}}</td>
-            <td>{{$escola->user->endereco->estado}}</td>
-            <td>{{$escola->user->endereco->pais}}</td>
-        </tr>
-        </tbody>
-    </table>
+    <h2>Dados da escola</h2>
+    <hr>
+    <ul>
+        <li>Nome: {{$escola->name}}</li>
+        <li>Telefone: {{$escola->telefone}}</li>
+        <li>Rua: {{$escola->user->endereco->rua}}</li>
+        <li>Número: {{$escola->user->endereco->numero}}</li>
+        <li>Complemento: {{$escola->user->endereco->complemento}}</li>
+        <li>Bairro: {{$escola->user->endereco->bairro}}</li>
+        <li>CEP: {{$escola->user->endereco->cep}}</li>
+        <li>Cidade: {{$escola->user->endereco->cidade}}</li>
+        <li>Estado: {{$escola->user->endereco->estado}}</li>
+        <li>País: {{$escola->user->endereco->pais}}</li>
+    </ul>
+    <h2>Categorias</h2>
+    <hr>
+    <ul>
+        @foreach($escola->categoria as $categoria)
+            <li>{{$categoria->categoria}}</li>
+        @endforeach
+    </ul>
+    <h2>Projetos</h2>
+    <hr>
+    <ul>
+        @foreach($escola->projeto as $projeto)
+            <li>{{$projeto->titulo}} </li>
+            <dd>Categoria: {{$projeto->categoria->categoria}}</dd>
+            <dd>Tipo: {{$projeto->tipo}}</dd>
+        @endforeach
+    </ul>
     <div class="page-break"></div>
-
 @endforeach
 </body>
 </html>

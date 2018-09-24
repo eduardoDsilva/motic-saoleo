@@ -13,9 +13,7 @@
                         <li class="collection-header"><h4 class="center-align">Projeto</h4></li>
                         <li class="collection-item">Título: {{$projeto->titulo}}</li>
                         <li class="collection-item">Área: {{$projeto->area}}</li>
-                        @if(Auth::user()->tipoUser == 'admin')
-                            <li class="collection-item">Estande: {{$projeto->estande}}</li>
-                        @endif
+                        <li class="collection-item">Estande: {{$projeto->estande}}</li>
                         <li class="collection-item">Resumo: {{$projeto->resumo}}</li>
                         <li class="collection-item">Ano: {{$projeto->ano}}</li>
                         <li class="collection-item">Tipo: {{$projeto->tipo}}</li>

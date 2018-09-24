@@ -63,7 +63,9 @@ class AdminEscolaController extends Controller
             $escola = Escola::findOrFail($id);
             $alunos = Aluno::where('escola_id', '=', $escola->id)->paginate(6);
             $professores = Professor::where('escola_id', '=', $escola->id)->paginate(6);
-            $projetos = Projeto::where('escola_id', '=', $escola->id)->paginate(6);
+            $projetos = Projeto::where('escola_id', '=', $escola->id)
+                ->where('ano', '=', intval(date("Y")))
+                ->paginate(6);
             return view('admin.escola.show', compact('escola', 'alunos', 'professores', 'projetos'));
         } catch (\Exception $e) {
             return abort(100, '163');

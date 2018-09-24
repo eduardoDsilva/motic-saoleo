@@ -6,4 +6,8 @@ Route::group(['prefix' => 'avaliador/conta', 'namespace' => 'Avaliador\Conta'], 
 
     Route::post('altera-senha', ['as' => 'avaliador.config.altera-senha', 'uses' => 'AvaliadorContaController@alteraSenha']);
 
+    Route::get('edit', ['as' => 'avaliador.edit', 'uses' => 'AvaliadorContaController@edit']);
+
+    Route::post('update', ['as' => 'avaliador.update', 'uses' => 'AvaliadorContaController@update']);
+
 });

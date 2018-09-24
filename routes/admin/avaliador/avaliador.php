@@ -6,7 +6,7 @@ Route::group(['prefix' => 'admin/avaliador', 'namespace' => 'Admin\Avaliador'], 
 
     Route::get('show/{id}', ['as' => 'admin.avaliador.show', 'uses' => 'AdminAvaliadorController@show']);
 
-    Route::get('destroy/{id}', ['as' => 'admin.avaliador.destroy', 'uses' => 'AdminAvaliadorController@destroy']);
+    Route::get('avaliador/destroy/{id}', ['as' => 'admin.avaliador.destroy', 'uses' => 'AdminAvaliadorController@destroy']);
 
     Route::get('edit/{id}', ['as' => 'admin.avaliador.edit', 'uses' => 'AdminAvaliadorController@edit']);
 
@@ -28,5 +28,14 @@ Route::group(['prefix' => 'admin/avaliador', 'namespace' => 'Admin\Avaliador'], 
 
     Route::post('vincula-projetos', ['as' => 'admin.avaliador.vincula-projetos', 'uses' => 'AdminAvaliadorController@vinculaProjetos']);
 
+    Route::get('avaliadores-projetos', ['as' => 'admin.avaliador.avaliador-projetos', 'uses' => 'AdminAvaliadorRelatorioController@avaliadorProjetos']);
+
+    Route::get('todos-avaliadores', ['as' => 'admin.avaliador.todos-avaliadores', 'uses' => 'AdminAvaliadorRelatorioController@todosAvaliadores']);
+
+    Route::get('avaliador-individual/{id}', ['as' => 'admin.avaliador.avaliador-individual', 'uses' => 'AdminAvaliadorRelatorioController@avaliadorIndividual']);
+
+    Route::post('filtrar/avaliador-individual', ['as' => 'admin.avaliador.relatorios.filtrar', 'uses' => 'AdminAvaliadorRelatorioController@filtrar']);
+
+    Route::get('avaliador-individual-projetos/{id}', ['as' => 'admin.avaliador.relatorios.projetos-avaliador', 'uses' => 'AdminAvaliadorRelatorioController@avaliadorIndividualProjetos']);
+
 });
-Route::get('/json-projeto-categoria', 'Admin\Avaliador\AdminAvaliadorController@projetoAjax');

@@ -50,7 +50,4 @@
     </div>
 </div>
 
-@section('conteudo-deletar', "Você tem certeza que deseja deletar o avaliador abaixo?")
-@includeIf('_layouts._modal-delete')
-
 @endsection

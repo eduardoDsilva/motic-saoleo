@@ -8,6 +8,12 @@ Route::get('/contato', 'HomeController@contato')->name('contato');
 
 Route::get('/sobre', 'HomeController@sobre')->name('sobre');
 
+Route::get('/votacao-popular', 'HomeController@votacaoPopular')->name('votacao-popular');
+
+Route::post('/votacao', ['as' => 'avaliacao-popular-escolha', 'uses' => 'HomeController@avaliacaoPopular']);
+
+require_once('trofeus/trofeus.php');
+
 require_once('auth/auth.php');
 
 require_once('admin/admin.php');

@@ -22,7 +22,6 @@ class AvaliacaoPolicy
         if ($user->tipoUser == 'admin') {
             return true;
         }
-
         $data = new \DateTime();
         $nova_data = date('Y-m-d', strtotime($data->format('Y-m-d')));
         $nova_hora = date('H:i:s', strtotime($data->format('H:i:s')));

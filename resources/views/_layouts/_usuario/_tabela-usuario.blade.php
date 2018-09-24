@@ -27,7 +27,9 @@
                        data-tooltip="Deletar" href="#modal1" data-id="{{$user->id}}"
                        data-name="{{$user->name}}" data-tipo="user"> <i
                                 class="small material-icons">delete</i></a>
-                    <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="Resetar senha"
+                @endif
+                @if(!($user->id == 1))
+                <a class="tooltipped" data-position="top" data-delay="50" data-tooltip="Resetar senha: usuario123456"
                        href="{{ route("admin.user.mudar-senha", $user->id) }}"> <i
                                 class="small material-icons">lock</i></a>
                 @endif

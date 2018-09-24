@@ -1,6 +1,6 @@
 @extends('_layouts._app')
 
-@section('titulo', $titulo)
+@section('titulo', 'Cadastrar/Editar Escola')
 
 @section('breadcrumb')
     <a href="{{route ('admin')}}" class="breadcrumb">Home</a>

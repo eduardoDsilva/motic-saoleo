@@ -20,8 +20,11 @@ class CreateNotas extends Migration
             $table->bigInteger('notaTres')->unsigned();
             $table->bigInteger('notaQuatro')->unsigned();
             $table->bigInteger('notaCinco')->unsigned();
+            $table->bigInteger('notaSeis')->unsigned();
+            $table->bigInteger('notaSete')->unsigned();
             $table->bigInteger('notaFinal')->unsigned();
             $table->longText('observacoes')->nullable();
+            $table->integer('votacao_popular')->nullable();
             $table->unsignedInteger('projeto_id');
             $table->foreign('projeto_id')->references('id')->on('projetos')->onDelete('cascade');
             $table->unsignedInteger('avaliador_id');

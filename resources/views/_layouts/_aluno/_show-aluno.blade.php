@@ -33,7 +33,7 @@
                     </ul>
                     <ul class="collection with-header col s12 m12 l12">
                         <li class="collection-header"><h4 class="center-align">Projeto</h4></li>
-                        @if(isset($aluno->projeto->titulo))
+                        @if((isset($aluno->projeto)) and ($aluno->projeto->ano == intval(date("Y"))))
                             <li class="collection-item">Título: {{$aluno->projeto->titulo}}</li>
                             <li class="collection-item">Área: {{$aluno->projeto->area}}</li>
                             <li class="collection-item">Resumo: {{$aluno->projeto->resumo}}</li>

@@ -3,11 +3,14 @@
 </li>
 @can('view', $avaliacao = \App\Avaliacao::orderBy('id', 'desc')->first())
 <li class="white">
-    <a class="collapsible-header" href="{{route ('avaliador.projeto')}}"><i class="small material-icons">home</i>Projetos</a>
+    <a class="collapsible-header" href="{{route ('avaliador.projeto')}}"><i class="small material-icons">library_add</i>Projetos</a>
 </li>
 @endcan
 <li class="white">
-    <a class="collapsible-header" href="{{route ('avaliador.config.alterar-senha')}}"><i class="small material-icons">home</i>Conta</a>
+    <a class="collapsible-header" href="{{route ('avaliador.config.alterar-senha')}}"><i class="small material-icons">lock</i>Alterar senha</a>
+</li>
+<li class="white">
+    <a class="collapsible-header" href="{{route ('avaliador.edit')}}"><i class="small material-icons">people_outline</i>Dados Pessoais</a>
 </li>
 <li class="white">
     <a class="collapsible-header" href="{{ route('logout') }}" onclick="event.preventDefault();

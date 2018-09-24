@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin\Aluno;
 use App\Aluno;
 use App\Dado;
 use App\Escola;
-use App\Etapa;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Aluno\AlunoCreateFormRequest;

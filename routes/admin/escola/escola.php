@@ -22,4 +22,10 @@ Route::group(['prefix' => 'admin/escola', 'namespace' => 'Admin\Escola'], functi
 
     Route::get('relatorios/todas-escolas', ['as' => 'admin.escola.relatorios.todas.escolas', 'uses' => 'AdminEscolaRelatorioController@todasEscolas']);
 
+    Route::any('relatorios/filtrar', ['as' => 'admin.escola.relatorios.filtrar', 'uses' => 'AdminEscolaRelatorioController@filtro']);
+
+    Route::get('relatorios/escola-individual/{id}', ['as' => 'admin.escola.relatorios.escola-individual', 'uses' => 'AdminEscolaRelatorioController@escolaIndividual']);
+
+    Route::get('relatorios/escola-avaliadores', ['as' => 'admin.escola.relatorios.escola-avaliador', 'uses' => 'AdminEscolaRelatorioController@escolaAvaliadores']);
+
 });

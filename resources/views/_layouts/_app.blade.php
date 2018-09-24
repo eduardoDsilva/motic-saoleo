@@ -43,7 +43,7 @@
             <div class="col l3 s3 m3">
                 <h5 class="white-text">Redes Sociais</h5>
                 <ul>
-                    <li><a class="white-text" href="https://www.facebook.com/MOTICSAOLEO">Facebook MOTIC</a></li>
+                    <li><a class="white-text" href="https://www.facebook.com/MOTICSAOLEO2018">Facebook MOTIC</a></li>
                     <li><a class="white-text" href="https://www.facebook.com/smedsaoleopoldo">Facebook SMED</a></li>
                 </ul>
             </div>

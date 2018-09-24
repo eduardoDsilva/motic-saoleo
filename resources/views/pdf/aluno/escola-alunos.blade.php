@@ -44,8 +44,9 @@
 
 @foreach ($escolas as $escola)
     <div class="header">
-        <img src="{{public_path('images/LOGO_PMSL.png')}}" class="pmsl" width="1000px" height="300px">
-        <img src="{{public_path('images/motic-logo.png')}}" class="motic" width="1200px" height="300px">
+        <img src="{{public_path('images/LOGO_PMSL (2).png')}}" class="pmsl">
+
+        <img src="{{public_path('images/motic-logo (2).png')}}" class="motic">
     </div>
     <h2>{{$escola->name}}</h2>
     <table>
@@ -62,11 +63,11 @@
                 <td>{{$aluno->nascimento}}</td>
                 <td>{{$aluno->etapa}}</td>
                 <td>{{$aluno->turma}}</td>
-                <td>{{($aluno->projeto_id == null ? ($aluno->suplente_id == null ? "Sem projeto" : $aluno->suplente->titulo) : $aluno->projeto->titulo)}}</td>
+                <td>{{($aluno->projeto_id == null ? ($aluno->projeto_id == null ? "Sem projeto" : $aluno->projeto->titulo) : $aluno->projeto->titulo)}}</td>
             </tr>
         @endforeach
+        <div class="page-break"></div>
     </table>
-    <div class="page-break"></div>
 @endforeach
 </body>
 </html>

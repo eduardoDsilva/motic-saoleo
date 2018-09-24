@@ -40,7 +40,7 @@ class EscolaSuplenteController extends Controller
              *sejam projetos suplentes
              *e retorno em ordem alfabética
             */
-            $projetos = Projeto::where('ano', '=', '2018')
+            $projetos = Projeto::where('ano', '=', intval(date("Y")))
                 ->where('tipo', '=', 'suplente')
                 ->where('escola_id', '=', Auth::user()->escola->id)
                 ->orderBy('titulo', 'asc')
@@ -70,6 +70,7 @@ class EscolaSuplenteController extends Controller
             */
             $projetos = DB::table('projetos')
                 ->select('categoria_id')
+                ->where('ano', '=', intval(date("Y")))
                 ->where('escola_id', '=', $escola->id)
                 ->where('tipo', '=', 'suplente')
                 ->get();
@@ -85,7 +86,7 @@ class EscolaSuplenteController extends Controller
             //procurando os professores da escola que não estejam ligados a um projeto
             $professores = Professor::all()
                 ->where('escola_id', '=', Auth::user()->escola->id)
-                ->where('projeto_id', '=', null)->where('projeto_id', '=', null);
+                ->where('projeto_id', '=', null);
             //retornando para a view escola.suplente.cadastro com as informações acima
             return view("escola.suplente.cadastro", compact('disciplinas', 'escola', 'categorias', 'professores'));
         } catch (\Exception $e) {

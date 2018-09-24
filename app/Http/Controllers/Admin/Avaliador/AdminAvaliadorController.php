@@ -157,7 +157,7 @@ class AdminAvaliadorController extends Controller
     public function atribuir($id)
     {
         try {
-            $projetos = Projeto::where('ano', '=', '2018')
+            $projetos = Projeto::where('ano', '=', intval(date("Y")))
                 ->where('tipo', '=', 'normal')
                 ->where('avaliadores', '<', '3')
                 ->paginate(10);
@@ -247,9 +247,10 @@ class AdminAvaliadorController extends Controller
     {
         $categoria = Input::get('categoria');
         $projetos = Projeto::all()
-                    ->where('categoria_id', '=', $categoria)
-                    ->where('avaliadores', '<', '3')
-                    ->where('tipo', '=', 'normal');
+            ->where('categoria_id', '=', $categoria)
+            ->where('ano', '=', intval(date("Y")))
+            ->where('avaliadores', '<', '3')
+            ->where('tipo', '=', 'normal');
         return response()->json($projetos);
     }
 

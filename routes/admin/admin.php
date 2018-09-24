@@ -47,5 +47,9 @@ Route::middleware(['auth', 'check.admin'])->group(function () {
 
     require_once('user/user.php');
 
+    require_once('avaliacao/avaliacao.php');
+
 });
+
+Route::get('/json-projeto-categoria', 'Admin\Avaliador\AdminAvaliadorController@projetoAjax');
 

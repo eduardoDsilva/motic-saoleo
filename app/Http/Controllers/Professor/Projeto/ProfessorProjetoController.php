@@ -25,6 +25,7 @@ class ProfessorProjetoController extends Controller
             }else{
                 $id = Auth::user()->professor->projeto->id;
                 $projeto = Projeto::all()
+                    ->where('ano', '=', intval(date("Y")))
                     ->where('id', '=', $id);
             }
             //encaminho para a view professor.projeto.home com o projeto encontrado

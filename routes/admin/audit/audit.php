@@ -6,6 +6,8 @@ Route::group(['prefix' => 'admin/auditoria', 'namespace' => 'Audit'], function (
 
     Route::get('/usuarios', ['as' => 'admin.auditoria.usuarios', 'uses' => 'AuditController@usuarios']);
 
+    Route::get('/usuarios-nao-logados', ['as' => 'admin.auditoria.usuarios-nao-logados', 'uses' => 'AuditController@usuariosNaoLogados']);
+
     Route::any('/usuarios/filtrar', ['as' => 'admin.auditoria.usuarios.filtrar', 'uses' => 'AuditController@usuariosFiltrar']);
 
     Route::any('filtrar', ['as' => 'admin.auditoria.filtrar', 'uses' => 'AuditController@filtrar']);

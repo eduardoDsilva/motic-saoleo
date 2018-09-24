@@ -45,13 +45,25 @@ class AdminAlunoRelatorioController
         }
     }
 
-    public function todosAlunosResumo()
+    public function todosAlunos()
     {
         try {
             $alunos = Aluno::orderBy('name', 'asc')->get();
             return \PDF::setOptions(['dpi' => 325, 'defaultFont' => 'sans-serif'])
                 ->loadView('pdf.aluno.todos-alunos', compact('alunos'))
                 ->stream('todos-alunos-motic' . date('Y') . '.pdf');
+        } catch (\Exception $e) {
+            return abort(100,  '119.3');
+        }
+    }
+
+    public function alunosAtivos()
+    {
+        try {
+            $alunos = Aluno::orderBy('name', 'asc')->get();
+            return \PDF::setOptions(['dpi' => 325, 'defaultFont' => 'sans-serif'])
+                ->loadView('pdf.aluno.alunos-ativos', compact('alunos'))
+                ->stream('todos-alunos-ativos-motic' . date('Y') . '.pdf');
         } catch (\Exception $e) {
             return abort(100,  '119.3');
         }
@@ -81,15 +93,4 @@ class AdminAlunoRelatorioController
         }
     }
 
-    public function todosAlunosCompleto()
-    {
-        try {
-            $alunos = Aluno::all();
-            return \PDF::setOptions(['dpi' => 325, 'defaultFont' => 'sans-serif'])
-                ->loadView('pdf.aluno.todos-alunos-completo', compact('alunos'))
-                ->stream('alunos-completo-' . date('Y') . '.pdf');
-        } catch (\Exception $e) {
-            return abort(100,  '119.6');
-        }
-    }
 }

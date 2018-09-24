@@ -116,7 +116,7 @@ $('#projeto').on('change', function(e){
         $('#projetos').append('<option disabled selected>Selecione o projeto...</option>');
         $('select').material_select();
         $.each(data, function(index, projetoObj){
-            $('#projetos').append('<option value="'+ projetoObj.id +'">'+ projetoObj.titulo +'</option>');
+            $('#projetos').append('<option value="'+ projetoObj.id +'">'+ projetoObj.titulo + '</option>');
             $('select').material_select();
         })
     });
